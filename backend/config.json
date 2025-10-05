@@ -1,0 +1,15 @@
+{
+  "rss_urls": [
+    "http://example.com/rss"
+  ],
+  "openai": {
+    "api_key": "test",
+    "api_base": "https://api.openai.com/v1/chat/completions",
+    "model": "gpt-3.5-turbo"
+  },
+  "telegram": {
+    "token": "abc",
+    "chat_id": "123"
+  },
+  "fetch_interval": 120
+}
