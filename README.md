@@ -5,7 +5,7 @@
 – 后端：Python + FastAPI（含 OpenAPI/Swagger、详细日志、可热更新配置、后台定时任务）
 – 前端：黑白配色、简约高级的 Web 页面（查看摘要与在线修改配置）
 
-注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。如需推送到 GitHub，请自行配置远程仓库与权限。
+注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。
 
 ## 功能概览
 
@@ -181,31 +181,9 @@ logging:
 - 基于 `(feed_url, item_uid)` 唯一约束进行去重。`item_uid` 优先使用 RSS 的 `id/guid` 字段；若缺失，则使用 `sha1(link|title)` 作为唯一标识。
 - 存储超过 `max_items` 时自动删除最旧记录。
 
-## 部署建议
-
-- 后端：可使用 `systemd`、`pm2` 或容器方式常驻运行；建议将 `backend/` 单独部署并暴露 3601 端口。
-- 前端：纯静态资源，可托管在任意静态服务器或 CDN；若跨域部署，后端 CORS 已开放。
-
-## 推送到 GitHub
-
-本地完成后：
-
-```
-git init
-git remote add origin git@github.com:<yourname>/rss-ai.git
-git add .
-git commit -m "feat: RSS-AI 初版"
-git push -u origin main
-```
-
-如需我代为推送，请提供仓库写入权限或在当前环境开放网络访问权限。
-
 ## 注意事项
 
 - 首次运行前请在配置中填入有效的 AI `api_key` 与 `base_url`/`model`，以及 Telegram `bot_token` 与 `chat_id`（可选）。
 - 网络环境受限时（例如公司内网），前端可本地打开使用；后端需要能访问 RSS、AI 接口与 Telegram。
 - 本项目以稳定、可维护为目标，尽量减少外部依赖（存储使用 SQLite，调度器为内置线程）。
 
-## 许可证
-
-本项目基于 MIT 许可发布。
