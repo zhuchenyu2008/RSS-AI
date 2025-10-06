@@ -10,11 +10,19 @@ fetch:
   interval_minutes: 10     # 定时抓取间隔（分钟）
   max_items: 500           # 本地存储的文章上限（总量）
   feeds:                   # RSS 列表
-    - https://hnrss.org/frontpage
-    - https://rsshub.app/solidot/linux
+      - https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+      - https://feeds.bbci.co.uk/news/rss.xml?edition=int
+      - https://sanhua.himrr.com/daily-news/feed
+      - https://feeds.washingtonpost.com/rss/world
+      - https://www.theguardian.com/international/rss
+      - https://feeds.bloomberg.com/technology/news.rss
+      - https://feeds.washingtonpost.com/rss/technology
+      - https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+      - https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+      - https://feeds.npr.org/1002/rss.xml
   use_article_page: true   # 抓取原文网页并抽取正文后再送AI
   article_timeout_seconds: 15
-  per_feed_limit: 20       # 单个RSS源每次抓取的最大条数（越新的优先）
+  per_feed_limit: 10       # 单个RSS源每次抓取的最大条数（越新的优先）
 
 # AI 接口配置（OpenAI 通用格式）
 ai:
@@ -26,7 +34,7 @@ ai:
   temperature: 0.2
   # 自定义提示词
   system_prompt: |
-    你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link, pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
+    你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link, pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可，如果不是北京时间需要转换成北京时间）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
   user_prompt_template: |
     标题: {title}
     链接: {link}
