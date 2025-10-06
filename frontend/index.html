@@ -22,6 +22,13 @@
     <main>
       <section id="content" class="tab active">
         <div class="toolbar">
+          <select id="feedSelect" class="select"></select>
+          <input id="searchInput" class="input" type="search" placeholder="搜索摘要…" />
+          <label class="switch">
+            <input type="checkbox" id="autoRefresh" />
+            <span>自动刷新</span>
+          </label>
+          <label class="switch"><input type="checkbox" id="forceFetch" /><span>强制抓取</span></label>
           <button id="refreshBtn" class="primary">手动抓取</button>
           <span id="statusText"></span>
         </div>
@@ -46,8 +53,20 @@
               <input type="number" id="maxItems" min="10" max="50000" />
             </label>
             <label>
+              单源抓取上限（每次）
+              <input type="number" id="perFeedLimit" min="1" max="1000" />
+            </label>
+            <label>
               RSS 列表（每行一个URL）
               <textarea id="feeds" rows="6" placeholder="https://..."></textarea>
+            </label>
+            <label class="switch">
+              <input type="checkbox" id="useArticlePage" />
+              <span>使用原文抽取正文</span>
+            </label>
+            <label>
+              原文抓取超时（秒）
+              <input type="number" id="articleTimeout" min="5" max="60" />
             </label>
           </fieldset>
 
@@ -72,6 +91,14 @@
             <label>
               温度（0-1）
               <input type="number" step="0.1" min="0" max="1" id="aiTemp" />
+            </label>
+            <label>
+              System Prompt（系统提示词）
+              <textarea id="aiSystemPrompt" rows="5" placeholder="自定义系统提示词"></textarea>
+            </label>
+            <label>
+              User Prompt 模板（可用 {title},{link},{pub_date},{author},{content} 占位符）
+              <textarea id="aiUserPrompt" rows="8" placeholder="自定义用户提示词模板"></textarea>
             </label>
           </fieldset>
 
@@ -100,6 +127,24 @@
     </main>
 
     <div id="toast" class="toast">已保存</div>
+    <button id="toTop" class="to-top" title="回到顶部">↑</button>
+
+    <div id="modal" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <h3 id="modalTitle"></h3>
+          <button class="ghost" data-close="1">✕</button>
+        </div>
+        <div class="modal-body">
+          <div id="modalMeta" class="meta" style="margin-bottom:8px"></div>
+          <div id="modalSummary" class="summary"></div>
+        </div>
+        <div class="modal-footer">
+          <a id="modalLink" class="link" target="_blank" rel="noopener">在新标签打开原文</a>
+          <button class="ghost" data-close="1">关闭</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="./app.js"></script>
@@ -117,4 +162,3 @@
   </script>
 </body>
 </html>
-

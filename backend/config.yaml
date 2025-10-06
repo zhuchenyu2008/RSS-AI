@@ -1,35 +1,25 @@
-# RSS-AI 配置示例
-
-# 服务监听配置
 server:
   host: 0.0.0.0
   port: 3601
-
-# 抓取与存储配置
 fetch:
-  interval_minutes: 10     # 定时抓取间隔（分钟）
-  max_items: 500           # 本地存储的文章上限（总量）
-  feeds:                   # RSS 列表
-    - https://hnrss.org/frontpage
-    - https://rsshub.app/solidot/linux
-
-# AI 接口配置（OpenAI 通用格式）
+  interval_minutes: 10
+  max_items: 500
+  feeds:
+  - https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+  - https://feeds.bbci.co.uk/news/rss.xml?edition=int
+  use_article_page: true
+  article_timeout_seconds: 15
+  per_feed_limit: 2
 ai:
   enabled: true
-  base_url: https://api.openai.com/v1
-  api_key: "YOUR_API_KEY"
-  model: gpt-4o-mini
-  # 温度可选
+  base_url: https://api.aioec.tech/v1
+  api_key: sk-WVWB2AVFwx0KdOrP0T7Askg7b9KL8C2mt0qxUkMBTwxFYLzF
+  model: glm-4.6
   temperature: 0.2
-
-# Telegram 推送配置
 telegram:
-  enabled: false
-  bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
-  chat_id: "@your_channel_or_chat_id"
-
-# 运行时日志
+  enabled: true
+  bot_token: 7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo
+  chat_id: '-1002573195446'
 logging:
   level: INFO
   file: logs/app.log
-

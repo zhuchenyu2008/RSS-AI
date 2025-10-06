@@ -11,3 +11,825 @@
 2025-10-06 00:06:08,814 [INFO] root: 应用已启动
 2025-10-06 00:06:08,817 [INFO] root: 开始抓取: https://hnrss.org/frontpage
 2025-10-06 00:06:08,822 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:16:08,917 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:16:08,918 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:16:34,079 [INFO] root: 应用启动中…
+2025-10-06 00:16:34,080 [INFO] root: 调度器已启动
+2025-10-06 00:16:34,080 [INFO] root: 应用已启动
+2025-10-06 00:16:34,082 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:16:34,231 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:26:09,013 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:26:09,015 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:26:19,410 [INFO] root: 手动触发抓取…
+2025-10-06 00:26:19,413 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:26:19,550 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:26:34,356 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:26:34,494 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:27:50,499 [INFO] root: 配置已更新
+2025-10-06 00:27:50,500 [INFO] root: 更新抓取间隔为 10 分钟
+2025-10-06 00:27:50,530 [INFO] root: 调度器已停止
+2025-10-06 00:27:50,530 [INFO] root: 调度器已启动
+2025-10-06 00:27:50,535 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:27:50,681 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:28:03,602 [INFO] root: 手动触发抓取…
+2025-10-06 00:28:03,604 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:28:03,750 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:29:43,700 [INFO] root: 应用即将停止…
+2025-10-06 00:29:43,706 [INFO] root: 调度器已停止
+2025-10-06 00:29:43,706 [INFO] root: 应用已停止
+2025-10-06 00:33:37,718 [INFO] root: 应用启动中…
+2025-10-06 00:33:37,721 [INFO] root: 调度器已启动
+2025-10-06 00:33:37,721 [INFO] root: 应用已启动
+2025-10-06 00:33:37,724 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:33:38,076 [INFO] httpx: HTTP Request: GET https://hnrss.org/frontpage "HTTP/1.1 200 OK"
+2025-10-06 00:33:38,108 [INFO] root: RSS结果 https://hnrss.org/frontpage: 共 20 条
+2025-10-06 00:33:38,109 [INFO] root: 抓取完成: https://hnrss.org/frontpage，条目数 20
+2025-10-06 00:33:38,248 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:38,256 [INFO] root: 新文章入库: Germany outfitted half a million balconies with solar panels (1)
+2025-10-06 00:33:38,948 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:38,949 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:39,028 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:39,033 [INFO] root: 新文章入库: Ken Parker, famed luthier, has died (2)
+2025-10-06 00:33:39,717 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:39,718 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:39,799 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:39,804 [INFO] root: 新文章入库: The dangerous intimacy of social location sharing (3)
+2025-10-06 00:33:40,459 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:40,460 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:40,567 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:40,573 [INFO] root: 新文章入库: The death of industrial design and the era of dull electronics (4)
+2025-10-06 00:33:41,245 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:41,246 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:41,318 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:41,322 [INFO] root: 新文章入库: Ask HN: Any advice on pivoting out of VC-backed tech? (5)
+2025-10-06 00:33:41,962 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:41,963 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:42,107 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:42,112 [INFO] root: 新文章入库: Toybox: All-in-one Linux command line (6)
+2025-10-06 00:33:45,943 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:45,944 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:46,049 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:46,054 [INFO] root: 新文章入库: What GPT-OSS leaks about OpenAI's training data (7)
+2025-10-06 00:33:46,702 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:46,703 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:46,783 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:46,786 [INFO] root: 新文章入库: Callbacks in C++ using template functors (1994) (8)
+2025-10-06 00:33:47,437 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:47,438 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:47,509 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:47,515 [INFO] root: 新文章入库: Show HN: ut – Rust based CLI utilities for devs and IT (9)
+2025-10-06 00:33:48,178 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:48,179 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:48,243 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:48,246 [INFO] root: 新文章入库: Fire destroys S. Korean government's cloud storage system, no backups available (10)
+2025-10-06 00:33:48,905 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:48,906 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:48,970 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:48,973 [INFO] root: 新文章入库: Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR (11)
+2025-10-06 00:33:52,805 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:52,806 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:52,881 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:52,885 [INFO] root: 新文章入库: BYD builds fastest car (12)
+2025-10-06 00:33:53,551 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:53,552 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:53,613 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:53,617 [INFO] root: 新文章入库: NFS at 40 – Remembering the Sun Microsystems Network File System (13)
+2025-10-06 00:33:54,293 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:54,294 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:54,365 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:54,370 [INFO] root: 新文章入库: Show HN: ASCII Drawing Board (14)
+2025-10-06 00:33:55,029 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:55,030 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:55,131 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:55,137 [INFO] root: 新文章入库: The QNX Operating System (15)
+2025-10-06 00:33:55,786 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:55,787 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:55,891 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:55,896 [INFO] root: 新文章入库: 86 GB/s bitpacking with ARM SIMD (single thread) (16)
+2025-10-06 00:33:59,717 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:33:59,718 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:33:59,816 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:33:59,822 [INFO] root: 新文章入库: Self hosting 10TB in S3 on a framework laptop and disks (17)
+2025-10-06 00:34:00,485 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:34:00,486 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:34:00,553 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:34:00,557 [INFO] root: 新文章入库: Social Cooling (2017) (18)
+2025-10-06 00:34:01,207 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:34:01,208 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:34:01,277 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:34:01,281 [INFO] root: 新文章入库: Managing context on the Claude Developer Platform (19)
+2025-10-06 00:34:01,959 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:34:01,960 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:34:02,024 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/v1/chat/completions "HTTP/1.1 404 Not Found"
+2025-10-06 00:34:02,028 [INFO] root: 新文章入库: Ambigr.am (20)
+2025-10-06 00:34:02,670 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:34:02,671 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:34:02,671 [INFO] root: 汇总 https://hnrss.org/frontpage: 新增 20，重复 0，本次处理 20 条
+2025-10-06 00:34:02,671 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:34:05,825 [INFO] httpx: HTTP Request: GET https://rsshub.app/solidot/linux "HTTP/1.1 503 Service Unavailable"
+2025-10-06 00:34:05,826 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://rsshub.app/solidot/linux err=Server error '503 Service Unavailable' for url 'https://rsshub.app/solidot/linux'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+2025-10-06 00:34:05,836 [INFO] root: RSS结果 https://rsshub.app/solidot/linux: 共 0 条
+2025-10-06 00:34:05,836 [INFO] root: 抓取完成: https://rsshub.app/solidot/linux，条目数 0
+2025-10-06 00:34:05,836 [INFO] root: 汇总 https://rsshub.app/solidot/linux: 新增 20，重复 0，本次处理 0 条
+2025-10-06 00:36:09,444 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:36:09,603 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:37:24,914 [INFO] root: 应用即将停止…
+2025-10-06 00:37:25,867 [INFO] root: 调度器已停止
+2025-10-06 00:37:25,867 [INFO] root: 应用已停止
+2025-10-06 00:39:44,616 [INFO] root: 应用启动中…
+2025-10-06 00:39:44,679 [INFO] root: 调度器已启动
+2025-10-06 00:39:44,679 [INFO] root: 应用已启动
+2025-10-06 00:39:44,682 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:39:45,599 [INFO] httpx: HTTP Request: GET https://hnrss.org/frontpage "HTTP/1.1 200 OK"
+2025-10-06 00:39:46,135 [INFO] root: RSS结果 https://hnrss.org/frontpage: 共 20 条
+2025-10-06 00:39:46,136 [INFO] root: 抓取完成: https://hnrss.org/frontpage，条目数 20
+2025-10-06 00:39:46,140 [INFO] root: 汇总 https://hnrss.org/frontpage: 新增 0，重复 20，本次处理 20 条
+2025-10-06 00:39:46,140 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:39:49,473 [INFO] httpx: HTTP Request: GET https://rsshub.app/solidot/linux "HTTP/1.1 503 Service Unavailable"
+2025-10-06 00:39:49,474 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://rsshub.app/solidot/linux err=Server error '503 Service Unavailable' for url 'https://rsshub.app/solidot/linux'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+2025-10-06 00:39:49,482 [INFO] root: RSS结果 https://rsshub.app/solidot/linux: 共 0 条
+2025-10-06 00:39:49,482 [INFO] root: 抓取完成: https://rsshub.app/solidot/linux，条目数 0
+2025-10-06 00:39:49,482 [INFO] root: 汇总 https://rsshub.app/solidot/linux: 新增 0，重复 0，本次处理 0 条
+2025-10-06 00:40:27,440 [INFO] root: 应用即将停止…
+2025-10-06 00:40:27,490 [INFO] root: 调度器已停止
+2025-10-06 00:40:27,490 [INFO] root: 应用已停止
+2025-10-06 00:40:52,648 [INFO] root: 应用启动中…
+2025-10-06 00:40:52,658 [INFO] root: 调度器已启动
+2025-10-06 00:40:52,658 [INFO] root: 应用已启动
+2025-10-06 00:40:52,660 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:40:53,030 [INFO] httpx: HTTP Request: GET https://hnrss.org/frontpage "HTTP/1.1 200 OK"
+2025-10-06 00:40:53,053 [INFO] root: RSS结果 https://hnrss.org/frontpage: 共 20 条
+2025-10-06 00:40:53,053 [INFO] root: 抓取完成: https://hnrss.org/frontpage，条目数 20
+2025-10-06 00:40:53,066 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:40:55,828 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:40:55,922 [INFO] root: 新文章入库: 德国如何为五十万个阳台装配太阳能板 (1)
+2025-10-06 00:40:56,567 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:40:56,568 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:40:56,575 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:40:59,390 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:40:59,395 [INFO] root: 新文章入库: 著名制琴师肯·帕克（Ken Parker）逝世 (2)
+2025-10-06 00:41:00,058 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:00,059 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:00,072 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:08,346 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:08,349 [INFO] root: 新文章入库: The dangerous intimacy of social location sharing (3)
+2025-10-06 00:41:09,006 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:09,006 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:09,014 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:11,300 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:11,305 [INFO] root: 新文章入库: 工业设计的消亡与乏味电子产品的时代 (4)
+2025-10-06 00:41:11,968 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:11,969 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:11,977 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:14,234 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:14,239 [INFO] root: 新文章入库: 寻求建议：如何从VC支持的科技行业转型？ (5)
+2025-10-06 00:41:14,925 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:14,926 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:14,935 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:24,153 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:24,157 [INFO] root: 新文章入库: Toybox: All-in-one Linux command line (6)
+2025-10-06 00:41:24,806 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:24,807 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:24,815 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:27,516 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:27,523 [INFO] root: 新文章入库: GPT-OSS泄漏事件揭示了OpenAI的训练数据 (7)
+2025-10-06 00:41:28,176 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:28,177 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:28,189 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:30,954 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:30,958 [INFO] root: 新文章入库: Callbacks in C++ using template functors (1994) (8)
+2025-10-06 00:41:31,595 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:31,595 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:31,609 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:43,122 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:43,129 [INFO] root: 新文章入库: Show HN: ut – Rust based CLI utilities for devs and IT (9)
+2025-10-06 00:41:43,773 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:43,774 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:43,789 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:53,201 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:53,207 [INFO] root: 新文章入库: 韩国政府云存储系统遭火灾摧毁，无备份可用 (10)
+2025-10-06 00:41:53,885 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:53,886 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:53,895 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:56,520 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:56,526 [INFO] root: 新文章入库: Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR (11)
+2025-10-06 00:41:57,236 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:57,237 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:57,245 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:41:59,272 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:41:59,277 [INFO] root: 新文章入库: 比亚迪打造全球最快汽车 (12)
+2025-10-06 00:41:59,917 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:41:59,918 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:41:59,925 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:08,714 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:08,720 [INFO] root: 新文章入库: NFS at 40 – Remembering the Sun Microsystems Network File System (13)
+2025-10-06 00:42:09,372 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:09,372 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:09,381 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:18,306 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:18,310 [INFO] root: 新文章入库: Show HN: ASCII Drawing Board (14)
+2025-10-06 00:42:18,957 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:18,958 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:18,966 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:26,459 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:26,465 [INFO] root: 新文章入库: The QNX Operating System (15)
+2025-10-06 00:42:27,109 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:27,110 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:27,117 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:29,344 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:29,353 [INFO] root: 新文章入库: 86 GB/s bitpacking with ARM SIMD (single thread) (16)
+2025-10-06 00:42:29,999 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:29,999 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:30,008 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:32,317 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:32,322 [INFO] root: 新文章入库: 在Framework笔记本电脑上自建10TB S3存储 (17)
+2025-10-06 00:42:32,947 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:32,947 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:32,954 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:41,971 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:41,976 [INFO] root: 新文章入库: Social Cooling (2017) (18)
+2025-10-06 00:42:42,631 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:42,632 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:42,639 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:44,256 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:44,262 [INFO] root: 新文章入库: 在 Claude 开发者平台上管理上下文 (19)
+2025-10-06 00:42:44,918 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:44,919 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:44,931 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:42:52,250 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:42:52,254 [INFO] root: 新文章入库: Ambigr.am (20)
+2025-10-06 00:42:52,897 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:42:52,898 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:42:52,899 [INFO] root: 汇总 https://hnrss.org/frontpage: 新增 20，重复 0，本次处理 20 条
+2025-10-06 00:42:52,899 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:42:56,555 [INFO] httpx: HTTP Request: GET https://rsshub.app/solidot/linux "HTTP/1.1 503 Service Unavailable"
+2025-10-06 00:42:56,555 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://rsshub.app/solidot/linux err=Server error '503 Service Unavailable' for url 'https://rsshub.app/solidot/linux'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503
+2025-10-06 00:42:56,564 [INFO] root: RSS结果 https://rsshub.app/solidot/linux: 共 0 条
+2025-10-06 00:42:56,564 [INFO] root: 抓取完成: https://rsshub.app/solidot/linux，条目数 0
+2025-10-06 00:42:56,565 [INFO] root: 汇总 https://rsshub.app/solidot/linux: 新增 20，重复 0，本次处理 0 条
+2025-10-06 00:46:09,695 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:46:09,696 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:48:08,482 [INFO] root: 应用即将停止…
+2025-10-06 00:48:08,615 [INFO] root: 调度器已停止
+2025-10-06 00:48:08,615 [INFO] root: 应用已停止
+2025-10-06 00:48:32,496 [INFO] root: 应用启动中…
+2025-10-06 00:48:32,501 [INFO] root: 调度器已启动
+2025-10-06 00:48:32,502 [INFO] root: 应用已启动
+2025-10-06 00:48:32,504 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:48:32,872 [INFO] httpx: HTTP Request: GET https://hnrss.org/frontpage "HTTP/1.1 200 OK"
+2025-10-06 00:48:32,892 [INFO] root: RSS结果 https://hnrss.org/frontpage: 共 20 条
+2025-10-06 00:48:32,892 [INFO] root: 抓取完成: https://hnrss.org/frontpage，条目数 20
+2025-10-06 00:48:32,982 [INFO] httpx: HTTP Request: GET https://spectrum.ieee.org/ai-energy-use "HTTP/1.1 200 OK"
+2025-10-06 00:48:32,988 [INFO] root: 抓取原文成功 https://spectrum.ieee.org/ai-energy-use status=200 bytes=440668
+2025-10-06 00:48:33,054 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:48:33,064 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:48:45,373 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:48:45,381 [INFO] root: 新文章入库: 生成式AI的能源需求正在重塑世界 (1)
+2025-10-06 00:48:46,057 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:48:46,058 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:48:46,074 [INFO] httpx: HTTP Request: GET https://grist.org/buildings/how-germany-outfitted-half-a-million-balconies-with-solar-panels/ "HTTP/1.1 200 OK"
+2025-10-06 00:48:46,077 [INFO] root: 抓取原文成功 https://grist.org/buildings/how-germany-outfitted-half-a-million-balconies-with-solar-panels/ status=200 bytes=208597
+2025-10-06 00:48:46,151 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:48:46,158 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:00,328 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:00,333 [INFO] root: 新文章入库: 德国如何为五十万个阳台装配太阳能板 (2)
+2025-10-06 00:49:00,992 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:00,992 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:01,143 [INFO] httpx: HTTP Request: GET https://kenparkerarchtops.com "HTTP/1.1 200 OK"
+2025-10-06 00:49:01,175 [INFO] root: 抓取原文成功 https://kenparkerarchtops.com status=200 bytes=59224
+2025-10-06 00:49:01,194 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:01,201 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:11,713 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:11,717 [INFO] root: 新文章入库: Ken Parker, famed luthier, has died (3)
+2025-10-06 00:49:12,354 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:12,354 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:12,419 [INFO] httpx: HTTP Request: GET https://joinreboot.org/p/lighthouses-in-the-sky "HTTP/1.1 200 OK"
+2025-10-06 00:49:12,426 [INFO] root: 抓取原文成功 https://joinreboot.org/p/lighthouses-in-the-sky status=200 bytes=244574
+2025-10-06 00:49:12,477 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:12,483 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:15,688 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:15,692 [INFO] root: 新文章入库: 社交位置共享的危险亲密关系 (4)
+2025-10-06 00:49:16,350 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:16,350 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:16,363 [INFO] httpx: HTTP Request: GET https://hackaday.com/2025/07/23/the-death-of-industrial-design-and-the-era-of-dull-electronics/ "HTTP/1.1 200 OK"
+2025-10-06 00:49:16,368 [INFO] root: 抓取原文成功 https://hackaday.com/2025/07/23/the-death-of-industrial-design-and-the-era-of-dull-electronics/ status=200 bytes=482170
+2025-10-06 00:49:16,753 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:16,759 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:34,308 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:34,312 [INFO] root: 新文章入库: 工业设计的消亡与乏味电子产品的时代 (5)
+2025-10-06 00:49:34,963 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:34,963 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:34,997 [INFO] httpx: HTTP Request: GET https://news.ycombinator.com/item?id=45485089 "HTTP/1.1 200 OK"
+2025-10-06 00:49:34,998 [INFO] root: 抓取原文成功 https://news.ycombinator.com/item?id=45485089 status=200 bytes=58375
+2025-10-06 00:49:35,092 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:35,098 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:37,542 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:37,546 [INFO] root: 新文章入库: Ask HN: Any advice on pivoting out of VC-backed tech? (6)
+2025-10-06 00:49:38,192 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:38,193 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:38,655 [INFO] httpx: HTTP Request: GET https://github.com/landley/toybox "HTTP/1.1 200 OK"
+2025-10-06 00:49:38,707 [INFO] root: 抓取原文成功 https://github.com/landley/toybox status=200 bytes=289638
+2025-10-06 00:49:38,840 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:38,847 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:40,736 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:40,740 [INFO] root: 新文章入库: Toybox: All-in-one Linux command line (7)
+2025-10-06 00:49:41,420 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:41,421 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:41,919 [INFO] httpx: HTTP Request: GET https://fi-le.net/oss/ "HTTP/1.1 200 OK"
+2025-10-06 00:49:42,067 [INFO] root: 抓取原文成功 https://fi-le.net/oss/ status=200 bytes=39950
+2025-10-06 00:49:42,120 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:43,918 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:43,925 [INFO] root: 新文章入库: GPT-OSS泄露事件揭示了OpenAI的训练数据来源 (8)
+2025-10-06 00:49:44,623 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:44,624 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:45,083 [INFO] httpx: HTTP Request: GET http://www.tutok.sk/fastgl/callback.html "HTTP/1.1 200 OK"
+2025-10-06 00:49:45,251 [INFO] root: 抓取原文成功 http://www.tutok.sk/fastgl/callback.html status=200 bytes=47931
+2025-10-06 00:49:45,280 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:45,287 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:49:50,055 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:49:50,060 [INFO] root: 新文章入库: 使用模板仿函数在C++中实现回调 (1994) (9)
+2025-10-06 00:49:50,718 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:49:50,719 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:49:51,170 [INFO] httpx: HTTP Request: GET https://github.com/ksdme/ut "HTTP/1.1 200 OK"
+2025-10-06 00:49:51,222 [INFO] root: 抓取原文成功 https://github.com/ksdme/ut status=200 bytes=355996
+2025-10-06 00:49:51,361 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:49:51,367 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:03,870 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:03,874 [INFO] root: 新文章入库: Show HN: ut – Rust based CLI utilities for devs and IT (10)
+2025-10-06 00:50:04,571 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:04,572 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:04,851 [INFO] httpx: HTTP Request: GET https://koreajoongangdaily.joins.com/news/2025-10-01/national/socialAffairs/NIRS-fire-destroys-governments-cloud-storage-system-no-backups-available/2412936 "HTTP/1.1 200 OK"
+2025-10-06 00:50:04,855 [INFO] root: 抓取原文成功 https://koreajoongangdaily.joins.com/news/2025-10-01/national/socialAffairs/NIRS-fire-destroys-governments-cloud-storage-system-no-backups-available/2412936 status=200 bytes=65836
+2025-10-06 00:50:04,889 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:04,896 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:07,102 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:07,107 [INFO] root: 新文章入库: 韩国政府云存储系统遭大火摧毁，且无任何可用备份 (11)
+2025-10-06 00:50:07,764 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:07,765 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:07,780 [INFO] httpx: HTTP Request: GET https://arxiv.org/abs/2509.02522 "HTTP/1.1 200 OK"
+2025-10-06 00:50:07,782 [INFO] root: 抓取原文成功 https://arxiv.org/abs/2509.02522 status=200 bytes=49879
+2025-10-06 00:50:07,828 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:07,834 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:10,255 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:10,259 [INFO] root: 新文章入库: Implicit Actor Critic Coupling via a Supervised Learning Framework for RLVR (12)
+2025-10-06 00:50:10,915 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:10,916 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:11,147 [INFO] httpx: HTTP Request: GET https://www.autotrader.co.uk/content/news/byd-builds-world-s-fastest-car "HTTP/1.1 200 OK"
+2025-10-06 00:50:11,181 [INFO] root: 抓取原文成功 https://www.autotrader.co.uk/content/news/byd-builds-world-s-fastest-car status=200 bytes=212734
+2025-10-06 00:50:11,224 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:11,231 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:18,162 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:18,166 [INFO] root: 新文章入库: 比亚迪打造全球最快汽车 (13)
+2025-10-06 00:50:18,824 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:18,825 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:19,697 [INFO] httpx: HTTP Request: GET https://nfs40.online/ "HTTP/1.1 200 OK"
+2025-10-06 00:50:19,729 [INFO] root: 抓取原文成功 https://nfs40.online/ status=200 bytes=69218
+2025-10-06 00:50:19,746 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:19,752 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:21,694 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:21,698 [INFO] root: 新文章入库: NFS四十周年：纪念Sun Microsystems网络文件系统 (14)
+2025-10-06 00:50:22,330 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:22,330 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:22,350 [INFO] httpx: HTTP Request: GET https://www.delopsu.com/draw.html "HTTP/1.1 200 OK"
+2025-10-06 00:50:22,351 [INFO] root: 抓取原文成功 https://www.delopsu.com/draw.html status=200 bytes=21211
+2025-10-06 00:50:22,363 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:22,368 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:24,356 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:24,360 [INFO] root: 新文章入库: ASCII Drawing Board (15)
+2025-10-06 00:50:25,021 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:25,022 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:25,097 [INFO] httpx: HTTP Request: GET https://www.abortretry.fail/p/the-qnx-operating-system "HTTP/1.1 200 OK"
+2025-10-06 00:50:25,114 [INFO] root: 抓取原文成功 https://www.abortretry.fail/p/the-qnx-operating-system status=200 bytes=615483
+2025-10-06 00:50:25,218 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:25,225 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:46,079 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:46,083 [INFO] root: 新文章入库: The QNX Operating System (16)
+2025-10-06 00:50:46,764 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:46,765 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:47,107 [INFO] httpx: HTTP Request: GET https://github.com/ashtonsix/perf-portfolio/tree/main/bytepack "HTTP/1.1 200 OK"
+2025-10-06 00:50:47,173 [INFO] root: 抓取原文成功 https://github.com/ashtonsix/perf-portfolio/tree/main/bytepack status=200 bytes=216165
+2025-10-06 00:50:47,255 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:47,261 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:50:57,731 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:50:57,735 [INFO] root: 新文章入库: 86 GB/s bitpacking with ARM SIMD (single thread) (17)
+2025-10-06 00:50:58,386 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:50:58,386 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:50:58,512 [INFO] httpx: HTTP Request: GET https://jamesoclaire.com/2025/10/05/self-hosting-10tb-in-s3-on-a-framework-laptop-disks/ "HTTP/1.1 200 OK"
+2025-10-06 00:50:58,524 [INFO] root: 抓取原文成功 https://jamesoclaire.com/2025/10/05/self-hosting-10tb-in-s3-on-a-framework-laptop-disks/ status=200 bytes=38069
+2025-10-06 00:50:58,543 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:50:58,549 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:51:00,825 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:51:00,831 [INFO] root: 新文章入库: 自建10TB S3存储：一台Framework笔记本与磁盘阵列的实践 (18)
+2025-10-06 00:51:01,474 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:51:01,475 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:51:01,723 [INFO] httpx: HTTP Request: GET https://www.socialcooling.com/ "HTTP/1.1 200 OK"
+2025-10-06 00:51:01,724 [INFO] root: 抓取原文成功 https://www.socialcooling.com/ status=200 bytes=28129
+2025-10-06 00:51:01,768 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:51:01,775 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:51:05,097 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:51:05,102 [INFO] root: 新文章入库: 社会冷却：数据评分如何导致自我审查与从众压力 (19)
+2025-10-06 00:51:05,745 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:51:05,746 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:51:05,888 [INFO] httpx: HTTP Request: GET https://www.anthropic.com/news/context-management "HTTP/1.1 200 OK"
+2025-10-06 00:51:05,939 [INFO] root: 抓取原文成功 https://www.anthropic.com/news/context-management status=200 bytes=94436
+2025-10-06 00:51:05,970 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:51:05,977 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:51:08,862 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:51:08,867 [INFO] root: 新文章入库: Claude开发者平台推出上下文管理新功能：上下文编辑与记忆工具 (20)
+2025-10-06 00:51:09,514 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:51:09,516 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:51:09,516 [INFO] root: 汇总 https://hnrss.org/frontpage: 新增 20，重复 0，本次处理 20 条
+2025-10-06 00:51:09,516 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:51:24,559 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://rsshub.app/solidot/linux err=The read operation timed out
+2025-10-06 00:51:24,568 [INFO] root: RSS结果 https://rsshub.app/solidot/linux: 共 0 条
+2025-10-06 00:51:24,568 [INFO] root: 抓取完成: https://rsshub.app/solidot/linux，条目数 0
+2025-10-06 00:51:24,569 [INFO] root: 汇总 https://rsshub.app/solidot/linux: 新增 20，重复 0，本次处理 0 条
+2025-10-06 00:53:44,321 [INFO] root: 配置已更新
+2025-10-06 00:53:44,321 [INFO] root: 更新抓取间隔为 10 分钟
+2025-10-06 00:53:44,591 [INFO] root: 调度器已停止
+2025-10-06 00:53:44,592 [INFO] root: 调度器已启动
+2025-10-06 00:53:44,597 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 00:53:44,619 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 00:53:44,635 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 15 条
+2025-10-06 00:53:44,635 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 15
+2025-10-06 00:53:44,666 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/politics/pritzker-chicago-immigration.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:53:44,667 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/politics/pritzker-chicago-immigration.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/politics/pritzker-chicago-immigration.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:53:44,673 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:53:52,249 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:53:52,253 [INFO] root: 新文章入库: Pritzker Says Federal Agents Are Trying to Make Chicago a ‘War Zone’ (21)
+2025-10-06 00:53:52,914 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:53:52,915 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:53:52,956 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/politics/chicago-motorists-charged-border-patrol.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:53:52,956 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/politics/chicago-motorists-charged-border-patrol.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/politics/chicago-motorists-charged-border-patrol.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:53:52,963 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:53:55,358 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:53:55,364 [INFO] root: 新文章入库: 两名驾车者在芝加哥被起诉，其中一人被联邦特工开枪击中 (22)
+2025-10-06 00:53:56,009 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:53:56,009 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:53:56,061 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/world/middleeast/trump-netanyahu-gaza-deal.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:53:56,061 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/world/middleeast/trump-netanyahu-gaza-deal.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/world/middleeast/trump-netanyahu-gaza-deal.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:53:56,069 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:53:58,428 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:53:58,433 [INFO] root: 新文章入库: 在特朗普施压下，内塔尼亚胡将加沙协议包装为个人胜利 (23)
+2025-10-06 00:53:59,083 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:53:59,084 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:53:59,115 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/world/middleeast/trump-israel-hamas-gaza.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:53:59,133 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/world/middleeast/trump-israel-hamas-gaza.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/world/middleeast/trump-israel-hamas-gaza.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:53:59,140 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:03,124 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:03,129 [INFO] root: 新文章入库: 鲁比奥：美国希望尽快达成协议，以带回加沙人质 (24)
+2025-10-06 00:54:03,775 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:03,776 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:03,802 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/des-moines-iowa-superintendent-ian-roberts-immigration-ice.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:03,803 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/des-moines-iowa-superintendent-ian-roberts-immigration-ice.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/des-moines-iowa-superintendent-ian-roberts-immigration-ice.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:03,808 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:23,708 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:23,713 [INFO] root: 新文章入库: Ian Roberts, Des Moines Superintendent, Had a Story Too Good to Be True (25)
+2025-10-06 00:54:24,347 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:24,348 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:24,378 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/business/craft-breweries-close-sales-decline.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:24,379 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/business/craft-breweries-close-sales-decline.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/business/craft-breweries-close-sales-decline.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:24,384 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:26,229 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:26,234 [INFO] root: 新文章入库: 精酿啤酒市场遇冷：销量下滑，众多酒厂面临生存困境 (26)
+2025-10-06 00:54:27,078 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:27,079 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:27,118 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/nicaragua-people-disappearing.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:27,119 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/nicaragua-people-disappearing.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/nicaragua-people-disappearing.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:27,126 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:30,026 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:30,032 [INFO] root: 新文章入库: 尼加拉瓜的骇人新策略：先逮捕，再让其在公众视野中消失 (27)
+2025-10-06 00:54:30,695 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:30,696 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:30,724 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/04/nyregion/central-park-e-bikes-walking.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:30,725 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/04/nyregion/central-park-e-bikes-walking.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/04/nyregion/central-park-e-bikes-walking.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:30,731 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:32,616 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:32,620 [INFO] root: 新文章入库: 纽约中央公园空间争夺战：行人、马匹与电动自行车 (28)
+2025-10-06 00:54:33,477 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:33,478 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:33,505 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/upshot/sports-betting-prediction-markets.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:33,506 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/upshot/sports-betting-prediction-markets.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/upshot/sports-betting-prediction-markets.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:33,513 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:36,423 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:36,427 [INFO] root: 新文章入库: 体育博彩在你的州是否违法？只要你称其为“预测市场”即可 (29)
+2025-10-06 00:54:37,094 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:37,095 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:37,130 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/09/30/dining/tony-shalhoub-breaking-bread-cnn.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:37,131 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/09/30/dining/tony-shalhoub-breaking-bread-cnn.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/09/30/dining/tony-shalhoub-breaking-bread-cnn.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:37,139 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:54:51,192 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:54:51,196 [INFO] root: 新文章入库: Tony Shalhoub Stars in New Travel Show ‘Breaking Bread’ (30)
+2025-10-06 00:54:51,858 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:54:51,858 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:54:51,886 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:54:51,887 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:54:51,894 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:01,578 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:01,581 [INFO] root: 新文章入库: This Crazy Crypto Heist Is the Story of Our Time (31)
+2025-10-06 00:55:02,253 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:02,253 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:02,287 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:55:02,288 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:55:02,295 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:04,776 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:04,784 [INFO] root: 新文章入库: 共和党向Z世代发出最后通牒：支付双倍保费，或失去医保 (32)
+2025-10-06 00:55:05,470 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:05,470 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:05,502 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/04/health/osteoporosis-men.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:55:05,502 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/04/health/osteoporosis-men.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/04/health/osteoporosis-men.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:55:05,510 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:14,733 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:14,737 [INFO] root: 新文章入库: Why Brittle Bones Aren’t Just a Woman’s Problem (33)
+2025-10-06 00:55:15,453 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:15,453 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:15,486 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/inmate-murder-kansas-adair-fatherley.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:55:15,487 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/inmate-murder-kansas-adair-fatherley.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/inmate-murder-kansas-adair-fatherley.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:55:15,494 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:17,536 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:17,540 [INFO] root: 新文章入库: 副警长因谋杀罪被起诉，文件称其曾跪压囚犯背部致其死亡 (34)
+2025-10-06 00:55:18,183 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:18,183 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:18,213 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/health/ozempic-wegovy-costco.html "HTTP/1.1 403 Forbidden"
+2025-10-06 00:55:18,213 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/health/ozempic-wegovy-costco.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/health/ozempic-wegovy-costco.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 00:55:18,219 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:29,269 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:29,273 [INFO] root: 新文章入库: Costco将在全美500多家药房销售Ozempic和Wegovy减肥药 (35)
+2025-10-06 00:55:29,927 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:29,928 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:29,928 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 15，重复 0，本次处理 15 条
+2025-10-06 00:55:29,928 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 00:55:29,955 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 00:55:29,973 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 00:55:29,973 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 00:55:30,065 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cj3y6g43248o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:55:30,071 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cj3y6g43248o?at_medium=RSS&at_campaign=rss status=200 bytes=256598
+2025-10-06 00:55:30,170 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:55:30,177 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:32,867 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:32,873 [INFO] root: 新文章入库: 特朗普敦促加沙和谈“快速推进”，哈马斯部分接受美国和平方案 (36)
+2025-10-06 00:55:33,508 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:33,508 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:33,550 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c24rmdngrrjo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:55:33,552 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c24rmdngrrjo?at_medium=RSS&at_campaign=rss status=200 bytes=234579
+2025-10-06 00:55:33,598 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:55:33,604 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:47,042 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:47,046 [INFO] root: 新文章入库: 英国内政大臣计划赋予警方更多权力以限制重复抗议活动 (37)
+2025-10-06 00:55:47,700 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:47,701 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:55:47,745 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cj4ykkgxqwko?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:55:47,747 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cj4ykkgxqwko?at_medium=RSS&at_campaign=rss status=200 bytes=223950
+2025-10-06 00:55:47,799 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:55:47,804 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:55:58,776 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:55:58,780 [INFO] root: 新文章入库: 珠峰东坡近千人因暴雪被困，救援行动正在进行 (38)
+2025-10-06 00:55:59,437 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:55:59,438 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:00,335 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/ckge0ex5g27o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:00,340 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/ckge0ex5g27o?at_medium=RSS&at_campaign=rss status=200 bytes=248807
+2025-10-06 00:56:00,519 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:00,527 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:56:09,792 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 00:56:09,793 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 00:56:12,912 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:56:12,916 [INFO] root: 新文章入库: 捷豹路虎将逐步恢复生产，此前因网络攻击导致工厂停工 (39)
+2025-10-06 00:56:13,592 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:56:13,593 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:13,919 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c4gzv9j78dyo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:13,922 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c4gzv9j78dyo?at_medium=RSS&at_campaign=rss status=200 bytes=250758
+2025-10-06 00:56:13,977 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:13,983 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:56:17,316 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:56:17,320 [INFO] root: 新文章入库: 保守党公布计划，拟削减470亿英镑公共支出 (40)
+2025-10-06 00:56:18,040 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:56:18,040 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:18,062 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cdx2d9lynk1o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:18,065 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cdx2d9lynk1o?at_medium=RSS&at_campaign=rss status=200 bytes=259219
+2025-10-06 00:56:18,117 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:18,124 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:56:32,210 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:56:32,215 [INFO] root: 新文章入库: As Gisèle Pelicot faces one of her rapists in court, what has changed in France? (41)
+2025-10-06 00:56:33,040 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:56:33,040 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:33,278 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cly05lekyrvo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:33,280 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cly05lekyrvo?at_medium=RSS&at_campaign=rss status=200 bytes=216704
+2025-10-06 00:56:33,325 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:33,332 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:56:37,032 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:56:37,036 [INFO] root: 新文章入库: 幸存者描述曼彻斯特犹太教堂恐袭时刻：袭击者如“怪物”般冲撞大门 (42)
+2025-10-06 00:56:37,681 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:56:37,682 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:38,080 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cly6x3xvyy0o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:38,083 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cly6x3xvyy0o?at_medium=RSS&at_campaign=rss status=200 bytes=257054
+2025-10-06 00:56:38,139 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:38,145 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:56:49,802 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:56:49,805 [INFO] root: 新文章入库: 洞穴探险者经历30小时风暴救援后安全获救 (43)
+2025-10-06 00:56:50,451 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:56:50,452 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:56:50,473 [INFO] httpx: HTTP Request: GET https://www.bbc.com/sport/football/articles/c4gwrplwyz8o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:56:50,476 [INFO] root: 抓取原文成功 https://www.bbc.com/sport/football/articles/c4gwrplwyz8o?at_medium=RSS&at_campaign=rss status=200 bytes=344488
+2025-10-06 00:56:50,547 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:56:50,552 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:03,723 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:03,726 [INFO] root: 新文章入库: Rangers sack head coach Russell Martin after 17 games (44)
+2025-10-06 00:57:04,548 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:04,548 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:04,572 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/videos/cj6xwz5x8exo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:04,575 [INFO] root: 抓取原文成功 https://www.bbc.com/news/videos/cj6xwz5x8exo?at_medium=RSS&at_campaign=rss status=200 bytes=271755
+2025-10-06 00:57:04,645 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:04,656 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:06,421 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:06,426 [INFO] root: 新文章入库: 视频：特朗普总统会获得诺贝尔和平奖吗？ (45)
+2025-10-06 00:57:07,078 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:07,079 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:07,100 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c0jqy8pn275o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:07,102 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c0jqy8pn275o?at_medium=RSS&at_campaign=rss status=200 bytes=244401
+2025-10-06 00:57:07,150 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:07,156 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:10,824 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:10,829 [INFO] root: 新文章入库: 英国特殊教育需求（Send）家庭的困境：一场关于孩子未来的战斗 (46)
+2025-10-06 00:57:11,505 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:11,506 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:12,907 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cz6946ez6dqo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:12,910 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cz6946ez6dqo?at_medium=RSS&at_campaign=rss status=200 bytes=204031
+2025-10-06 00:57:12,948 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:12,954 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:15,349 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:15,353 [INFO] root: 新文章入库: 吉姆·加文因个人争议宣布退出爱尔兰总统大选 (47)
+2025-10-06 00:57:15,988 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:15,989 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:16,010 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/czrpedexleno?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:16,013 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/czrpedexleno?at_medium=RSS&at_campaign=rss status=200 bytes=283574
+2025-10-06 00:57:16,073 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:16,079 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:21,053 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:21,057 [INFO] root: 新文章入库: BBC调查：追踪针对青少年的网络性勒索 (48)
+2025-10-06 00:57:21,710 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:21,711 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:21,735 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c1792qwg85qo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:21,737 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c1792qwg85qo?at_medium=RSS&at_campaign=rss status=200 bytes=254734
+2025-10-06 00:57:21,791 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:21,797 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:25,009 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:25,012 [INFO] root: 新文章入库: 印度欲借美国签证政策东风吸引顶尖人才回流，但挑战重重 (49)
+2025-10-06 00:57:25,655 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:25,656 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:25,679 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cgmz2vm3yv8o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:25,682 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cgmz2vm3yv8o?at_medium=RSS&at_campaign=rss status=200 bytes=265188
+2025-10-06 00:57:25,741 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:25,748 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:28,728 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:28,732 [INFO] root: 新文章入库: 中国如何挑战英伟达在AI芯片领域的主导地位 (50)
+2025-10-06 00:57:29,423 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:29,424 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:29,523 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c0m42dwvlk8o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:29,528 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c0m42dwvlk8o?at_medium=RSS&at_campaign=rss status=200 bytes=257026
+2025-10-06 00:57:29,592 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:29,599 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:43,952 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 00:57:43,957 [INFO] root: 新文章入库: 斐济HIV病例激增超1000%，毒品注射与血液共享成主因 (51)
+2025-10-06 00:57:44,599 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 00:57:44,600 [INFO] root: 推送Telegram: 成功
+2025-10-06 00:57:44,910 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c147218x7rgo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 00:57:44,913 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c147218x7rgo?at_medium=RSS&at_campaign=rss status=200 bytes=275110
+2025-10-06 00:57:44,972 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 00:57:44,979 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 00:57:46,594 [INFO] root: 应用即将停止…
+2025-10-06 00:57:48,595 [INFO] root: 应用已停止
+2025-10-06 01:00:22,477 [INFO] root: 应用启动中…
+2025-10-06 01:00:22,478 [INFO] root: 调度器已启动
+2025-10-06 01:00:22,478 [INFO] root: 应用已启动
+2025-10-06 01:00:22,480 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:00:22,503 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 01:00:22,522 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 13 条
+2025-10-06 01:00:22,522 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 13
+2025-10-06 01:00:22,524 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 13，本次处理 13 条
+2025-10-06 01:00:22,525 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:00:22,546 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 01:00:22,563 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 01:00:22,563 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 01:00:22,563 [INFO] root: 限制单源抓取上限为 20 条（优先最新）
+2025-10-06 01:00:22,586 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c5ye8zj5l4jo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:00:22,590 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c5ye8zj5l4jo?at_medium=RSS&at_campaign=rss status=200 bytes=297599
+2025-10-06 01:00:22,647 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:00:22,653 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:00:33,738 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:00:33,742 [INFO] root: 新文章入库: 英国企业面临严重网络攻击：捷豹路虎等巨头遭重创，供应链模式成软肋 (52)
+2025-10-06 01:00:34,594 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:00:34,595 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:00:34,618 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c740elm70z7o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:00:34,621 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c740elm70z7o?at_medium=RSS&at_campaign=rss status=200 bytes=240052
+2025-10-06 01:00:34,677 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:00:34,683 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:00:39,848 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:00:39,851 [INFO] root: 新文章入库: 在法院否决部署后，特朗普将从加州调派军队至波特兰 (53)
+2025-10-06 01:00:40,508 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:00:40,508 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:00:40,532 [INFO] httpx: HTTP Request: GET https://www.bbc.com/sport/football/articles/c93053rr56wo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:00:40,536 [INFO] root: 抓取原文成功 https://www.bbc.com/sport/football/articles/c93053rr56wo?at_medium=RSS&at_campaign=rss status=200 bytes=344674
+2025-10-06 01:00:40,609 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:00:40,616 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:00:44,053 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:00:44,057 [INFO] root: 新文章入库: 马丁在流浪者队的痛苦时代以混乱的方式告终 (54)
+2025-10-06 01:00:44,707 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:00:44,708 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:00:44,734 [INFO] httpx: HTTP Request: GET https://www.bbc.com/sport/football/videos/cpvleyn4nw3o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:00:44,739 [INFO] root: 抓取原文成功 https://www.bbc.com/sport/football/videos/cpvleyn4nw3o?at_medium=RSS&at_campaign=rss status=200 bytes=355889
+2025-10-06 01:00:44,831 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:00:44,838 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:00:47,129 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:00:47,133 [INFO] root: 新文章入库: 纽卡斯尔新援沃尔特梅德能否证明其6900万英镑身价？ (55)
+2025-10-06 01:00:47,786 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:00:47,787 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:00:47,808 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cy0v7zwp0dlo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:00:47,810 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cy0v7zwp0dlo?at_medium=RSS&at_campaign=rss status=200 bytes=234208
+2025-10-06 01:00:47,856 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:00:47,862 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:00:51,090 [INFO] root: 配置已更新
+2025-10-06 01:00:51,090 [INFO] root: 更新抓取间隔为 10 分钟
+2025-10-06 01:00:53,091 [INFO] root: 调度器已启动
+2025-10-06 01:00:53,095 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:00:53,115 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 01:00:53,129 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 13 条
+2025-10-06 01:00:53,129 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 13
+2025-10-06 01:00:53,129 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 01:00:53,130 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 2，本次处理 2 条
+2025-10-06 01:00:53,130 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:00:53,382 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 01:00:53,399 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 01:00:53,399 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 01:00:53,399 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 01:00:53,400 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 0，重复 2，本次处理 2 条
+2025-10-06 01:01:00,561 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:01:00,569 [INFO] root: 新文章入库: 英国政府推出重大购房改革计划，旨在降低成本并减少交易失败 (56)
+2025-10-06 01:01:01,234 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:01:01,234 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:01:01,254 [INFO] httpx: HTTP Request: GET https://www.bbc.com/sport/football/articles/c79vgyyx0vdo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:01:01,258 [INFO] root: 抓取原文成功 https://www.bbc.com/sport/football/articles/c79vgyyx0vdo?at_medium=RSS&at_campaign=rss status=200 bytes=346444
+2025-10-06 01:01:01,342 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:01:01,352 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:01:04,046 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:01:04,051 [INFO] root: 新文章入库: 萨拉赫的防守问题已成为利物浦的“小麻烦” (57)
+2025-10-06 01:01:04,918 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:01:04,919 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:01:04,939 [INFO] httpx: HTTP Request: GET https://www.bbc.com/sport/football/articles/clyl8e80l9do?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:01:04,943 [INFO] root: 抓取原文成功 https://www.bbc.com/sport/football/articles/clyl8e80l9do?at_medium=RSS&at_campaign=rss status=200 bytes=343923
+2025-10-06 01:01:05,019 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:01:05,026 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:01:07,717 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:01:07,722 [INFO] root: 新文章入库: 瓜迪奥拉达成英超250胜里程碑，计划邀请弗格森与温格共进晚餐 (58)
+2025-10-06 01:01:08,368 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:01:08,369 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:01:08,391 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c20zeyynnrgo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 01:01:08,394 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c20zeyynnrgo?at_medium=RSS&at_campaign=rss status=200 bytes=246798
+2025-10-06 01:01:08,446 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 01:01:08,452 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:01:22,475 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 01:01:22,478 [INFO] root: 新文章入库: 首位名人选手在《舞动奇迹》舞蹈对决后遭淘汰 (59)
+2025-10-06 01:01:23,155 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 01:01:23,155 [INFO] root: 推送Telegram: 成功
+2025-10-06 01:01:23,156 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 8，重复 12，本次处理 20 条
+2025-10-06 01:06:09,890 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:06:09,891 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:06:41,721 [INFO] root: 应用即将停止…
+2025-10-06 01:06:42,221 [INFO] root: 调度器已停止
+2025-10-06 01:06:42,465 [INFO] root: 调度器已停止
+2025-10-06 01:06:42,465 [INFO] root: 应用已停止
+2025-10-06 01:06:57,651 [INFO] root: 应用启动中…
+2025-10-06 01:06:57,652 [INFO] root: 调度器已启动
+2025-10-06 01:06:57,652 [INFO] root: 应用已启动
+2025-10-06 01:06:57,655 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:06:57,680 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 01:06:57,698 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 13 条
+2025-10-06 01:06:57,698 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 13
+2025-10-06 01:06:57,698 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 01:06:57,699 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 2，本次处理 2 条
+2025-10-06 01:06:57,699 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:06:57,721 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 01:06:57,739 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 01:06:57,739 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 01:06:57,739 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 01:06:57,740 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 0，重复 2，本次处理 2 条
+2025-10-06 01:12:19,384 [INFO] root: 应用即将停止…
+2025-10-06 01:12:19,833 [INFO] root: 调度器已停止
+2025-10-06 01:12:19,834 [INFO] root: 应用已停止

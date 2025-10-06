@@ -19,6 +19,7 @@ from .models import (
 )
 from .storage import init_db, list_articles, get_article, insert_article, prune_articles, exists_article
 from .rss_service import fetch_feed
+from .extractor import extract_from_url
 from .ai_client import AIClient, fallback_summary
 from .telegram_client import TelegramClient
 from .scheduler import FetchScheduler
@@ -107,23 +108,57 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
         except Exception as e:
             logging.exception(f"抓取失败 {feed}: {e}")
             continue
+        logging.info(f"抓取完成: {feed}，条目数 {len(entries)}")
+        # 按时间倒序优先处理，并限制单源抓取上限
+        if entries:
+            try:
+                entries.sort(key=lambda x: getattr(x, 'sort_ts', 0), reverse=True)
+            except Exception:
+                pass
+            limit = max(1, int(settings.fetch.per_feed_limit))
+            if len(entries) > limit:
+                logging.info(f"限制单源抓取上限为 {limit} 条（优先最新）")
+                entries = entries[:limit]
+        dup = 0
         for e in entries:
             processed += 1
             if not force and exists_article(feed, e.uid):
+                dup += 1
                 continue
 
             # summarize via AI or fallback
             ai_obj = None
             if ai is not None:
+                logging.debug(f"AI总结开始: {e.title}")
+                # Prefer extracted fulltext from original page when enabled
+                content_for_ai = None
+                if settings.fetch.use_article_page and e.link:
+                    content_for_ai = extract_from_url(e.link, timeout=float(settings.fetch.article_timeout_seconds))
+                    if content_for_ai:
+                        logging.info("使用原文抽取正文进行AI总结")
+                if not content_for_ai:
+                    content_for_ai = e.content
                 ai_obj = ai.summarize(
                     title=e.title,
                     link=e.link,
                     pub_date=e.pub_date,
                     author=e.author,
-                    content=e.content,
+                    content=content_for_ai,
+                    system_prompt=settings.ai.system_prompt,
+                    user_prompt_template=settings.ai.user_prompt_template,
                 )
             if ai_obj is None:
-                ai_obj = fallback_summary(e.title, e.link, e.pub_date, e.author, e.content)
+                logging.info("AI未启用或调用失败，使用降级摘要")
+                content_for_fallback = None
+                if settings.fetch.use_article_page and e.link:
+                    content_for_fallback = extract_from_url(e.link, timeout=float(settings.fetch.article_timeout_seconds))
+                ai_obj = fallback_summary(
+                    e.title,
+                    e.link,
+                    e.pub_date,
+                    e.author,
+                    content_for_fallback or e.content,
+                )
 
             from .models import ArticleCreate  # local import to avoid circular
 
@@ -146,6 +181,9 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                     text = _format_telegram_message(ai_obj)
                     ok = tg.send_message(settings.telegram.chat_id, text, parse_mode="HTML", disable_web_page_preview=False)
                     logging.info(f"推送Telegram: {'成功' if ok else '失败'}")
+            else:
+                logging.debug(f"入库跳过或失败(可能重复): {article.title}")
+        logging.info(f"汇总 {feed}: 新增 {new_items}，重复 {dup}，本次处理 {len(entries)} 条")
     return FetchResponse(
         fetched_feeds=feeds_count,
         new_items=new_items,
@@ -189,6 +227,12 @@ def get_settings():
         safe.ai.api_key = "***"
     if safe.telegram.bot_token:
         safe.telegram.bot_token = "***"
+    # 为避免用户从零填写提示词，若为空则回填默认提示词
+    defaults = AppSettings()
+    if not (safe.ai.system_prompt and safe.ai.system_prompt.strip()):
+        safe.ai.system_prompt = defaults.ai.system_prompt
+    if not (safe.ai.user_prompt_template and safe.ai.user_prompt_template.strip()):
+        safe.ai.user_prompt_template = defaults.ai.user_prompt_template
     return safe
 
 
@@ -200,6 +244,12 @@ def update_settings(new_settings: AppSettings):
         new_settings.ai.api_key = old.ai.api_key
     if new_settings.telegram.bot_token == "***":
         new_settings.telegram.bot_token = old.telegram.bot_token
+    # 若提示词为空，填充为默认值，避免出现空白
+    defaults = AppSettings()
+    if not (new_settings.ai.system_prompt and new_settings.ai.system_prompt.strip()):
+        new_settings.ai.system_prompt = defaults.ai.system_prompt
+    if not (new_settings.ai.user_prompt_template and new_settings.ai.user_prompt_template.strip()):
+        new_settings.ai.user_prompt_template = defaults.ai.user_prompt_template
     save_settings(new_settings)
     logging.info("配置已更新")
     # 重启调度器
@@ -237,4 +287,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-

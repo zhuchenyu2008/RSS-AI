@@ -11,5 +11,5 @@ fi
 
 mkdir -p logs data
 
-python -m uvicorn app.main:app --host 0.0.0.0 --port 3601
-
+# 使用应用内置的端口配置启动（server.port，默认3602）
+python -m app.main
