@@ -115,6 +115,7 @@ async function loadSettings() {
   q('#tgEnabled').checked = !!s.telegram.enabled;
   q('#tgToken').value = ''; // 安全：不回显
   q('#tgChatId').value = s.telegram.chat_id || '';
+  q('#tgPushSummary').checked = !!s.telegram.push_summary;
 
   // 渲染筛选源
   const sel = q('#feedSelect');
@@ -148,6 +149,7 @@ function gatherSettingsFromForm() {
       enabled: q('#tgEnabled').checked,
       bot_token: q('#tgToken').value.trim() || '***',
       chat_id: q('#tgChatId').value.trim(),
+      push_summary: q('#tgPushSummary').checked,
     },
     logging: current.logging,
   };

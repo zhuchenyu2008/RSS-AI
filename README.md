@@ -5,7 +5,7 @@
 – 后端：Python + FastAPI（含 OpenAPI/Swagger、详细日志、可热更新配置、后台定时任务）
 – 前端：黑白配色、简约高级的 Web 页面（查看摘要与在线修改配置）
 
-注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。
+注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。如需推送到 GitHub，请自行配置远程仓库与权限。
 
 ## 功能概览
 
@@ -19,6 +19,7 @@
 - 去重与存储：使用 SQLite 本地存储，基于 `feed_url + item_uid` 唯一约束去重；可配置最大存储条数，自动裁剪旧数据。
 - 单源抓取上限：可为每个 RSS 源设置“单次抓取最多处理 N 条”，按时间倒序优先（越新越先处理）。
 - Telegram 推送：将 AI 总结以精简排版推送到指定群组或频道。
+- 抓取汇总推送（可选）：可将每次抓取的汇总信息（条目总数、入库成功/重复/失败、AI 调用成功/失败次数、Token 消耗等）推送到 Telegram。
 - 标准 API：提供 RESTful 接口与 `/docs` Swagger UI。
 - 前端管理：查看摘要列表、手动抓取、在线修改配置（无需重启服务）。
  - 可自定义提示词：支持自定义 System Prompt 与 User Prompt 模板（可用 {title}、{link}、{pub_date}、{author}、{content} 占位符）。
@@ -131,6 +132,7 @@ telegram:
   enabled: false
   bot_token: YOUR_TELEGRAM_BOT_TOKEN
   chat_id: "@your_channel_or_chat_id"
+  push_summary: false   # 是否推送抓取汇总
 
 logging:
   level: INFO
@@ -139,6 +141,7 @@ logging:
 
 - AI 接口为 OpenAI 兼容格式（`/v1/chat/completions`），你可替换 `base_url` 与 `model` 指向任意兼容服务。
 - 前端“设置”页支持在线更新以上配置。为安全起见，`api_key` 与 `bot_token` 在界面不回显；若不修改请留空，后端会保留旧值。
+- 若开启 `telegram.push_summary`，每次抓取结束后会发送一条汇总消息，包含：源数量、获取条目、入库成功、重复跳过、处理失败、AI 调用次数（成功/失败）、Token 消耗；有助于监控运行状态与用量。
 - 自定义提示词：
   - System Prompt 与 User Prompt 模板均可在前端“AI 设置”中修改并保存。
   - 若模板中需要字面量大括号，请使用双大括号进行转义，例如 `{{` 与 `}}`。
@@ -181,9 +184,31 @@ logging:
 - 基于 `(feed_url, item_uid)` 唯一约束进行去重。`item_uid` 优先使用 RSS 的 `id/guid` 字段；若缺失，则使用 `sha1(link|title)` 作为唯一标识。
 - 存储超过 `max_items` 时自动删除最旧记录。
 
+## 部署建议
+
+- 后端：可使用 `systemd`、`pm2` 或容器方式常驻运行；建议将 `backend/` 单独部署并暴露 3601 端口。
+- 前端：纯静态资源，可托管在任意静态服务器或 CDN；若跨域部署，后端 CORS 已开放。
+
+## 推送到 GitHub
+
+本地完成后：
+
+```
+git init
+git remote add origin git@github.com:<yourname>/rss-ai.git
+git add .
+git commit -m "feat: RSS-AI 初版"
+git push -u origin main
+```
+
+如需我代为推送，请提供仓库写入权限或在当前环境开放网络访问权限。
+
 ## 注意事项
 
 - 首次运行前请在配置中填入有效的 AI `api_key` 与 `base_url`/`model`，以及 Telegram `bot_token` 与 `chat_id`（可选）。
 - 网络环境受限时（例如公司内网），前端可本地打开使用；后端需要能访问 RSS、AI 接口与 Telegram。
 - 本项目以稳定、可维护为目标，尽量减少外部依赖（存储使用 SQLite，调度器为内置线程）。
 
+## 许可证
+
+本项目基于 MIT 许可发布。

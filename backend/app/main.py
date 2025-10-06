@@ -101,12 +101,22 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
     new_items = 0
     processed = 0
     feeds_count = len(settings.fetch.feeds)
+    duplicates = 0
+    failed_items = 0
+    ai_calls = 0
+    ai_success = 0
+    ai_failed = 0
+    tokens_prompt = 0
+    tokens_completion = 0
+    tokens_total = 0
+    feed_fetch_failed = 0
     for feed in settings.fetch.feeds:
         logging.info(f"开始抓取: {feed}")
         try:
             entries = fetch_feed(feed)
         except Exception as e:
             logging.exception(f"抓取失败 {feed}: {e}")
+            feed_fetch_failed += 1
             continue
         logging.info(f"抓取完成: {feed}，条目数 {len(entries)}")
         # 按时间倒序优先处理，并限制单源抓取上限
@@ -138,6 +148,7 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                         logging.info("使用原文抽取正文进行AI总结")
                 if not content_for_ai:
                     content_for_ai = e.content
+                ai_calls += 1
                 ai_obj = ai.summarize(
                     title=e.title,
                     link=e.link,
@@ -149,6 +160,7 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 )
             if ai_obj is None:
                 logging.info("AI未启用或调用失败，使用降级摘要")
+                ai_failed += 1 if ai is not None else 0
                 content_for_fallback = None
                 if settings.fetch.use_article_page and e.link:
                     content_for_fallback = extract_from_url(e.link, timeout=float(settings.fetch.article_timeout_seconds))
@@ -159,6 +171,13 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                     e.author,
                     content_for_fallback or e.content,
                 )
+            else:
+                ai_success += 1
+                usage = ai_obj.get("_ai_usage") if isinstance(ai_obj, dict) else None
+                if isinstance(usage, dict):
+                    tokens_prompt += int(usage.get("prompt_tokens", 0) or 0)
+                    tokens_completion += int(usage.get("completion_tokens", 0) or 0)
+                    tokens_total += int(usage.get("total_tokens", 0) or 0)
 
             from .models import ArticleCreate  # local import to avoid circular
 
@@ -171,19 +190,43 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 author=ai_obj.get("author") or e.author,
                 summary_text=ai_obj.get("summary_text") or "",
             )
-            row_id = insert_article(article)
-            if row_id:
-                new_items += 1
-                logging.info(f"新文章入库: {article.title} ({row_id})")
-                prune_articles(settings.fetch.max_items)
-                # send to telegram
-                if tg is not None:
-                    text = _format_telegram_message(ai_obj)
-                    ok = tg.send_message(settings.telegram.chat_id, text, parse_mode="HTML", disable_web_page_preview=False)
-                    logging.info(f"推送Telegram: {'成功' if ok else '失败'}")
-            else:
-                logging.debug(f"入库跳过或失败(可能重复): {article.title}")
+            try:
+                row_id = insert_article(article)
+                if row_id:
+                    new_items += 1
+                    logging.info(f"新文章入库: {article.title} ({row_id})")
+                    prune_articles(settings.fetch.max_items)
+                    # send to telegram
+                    if tg is not None:
+                        text = _format_telegram_message(ai_obj)
+                        ok = tg.send_message(settings.telegram.chat_id, text, parse_mode="HTML", disable_web_page_preview=False)
+                        logging.info(f"推送Telegram: {'成功' if ok else '失败'}")
+                else:
+                    logging.debug(f"入库跳过或失败(可能重复): {article.title}")
+            except Exception as ex:
+                failed_items += 1
+                logging.exception(f"入库过程中异常: {ex}")
         logging.info(f"汇总 {feed}: 新增 {new_items}，重复 {dup}，本次处理 {len(entries)} 条")
+        duplicates += dup
+    # 抓取汇总后报告到 Telegram（可选）
+    if tg is not None and settings.telegram.push_summary:
+        summary_lines = [
+            "<b>RSS-AI 抓取汇总</b>",
+            f"RSS 源：{feeds_count} 个",
+            f"获取条目：{processed} 条",
+            f"新增入库：{new_items} 条",
+            f"重复跳过：{duplicates} 条",
+            f"处理失败：{failed_items} 条",
+        ]
+        if ai is not None:
+            summary_lines.extend([
+                f"AI 调用：{ai_calls} 次（成功 {ai_success}，失败 {ai_failed}）",
+                f"Token 消耗：prompt {tokens_prompt}，completion {tokens_completion}，total {tokens_total}",
+            ])
+        if feed_fetch_failed:
+            summary_lines.append(f"源抓取失败：{feed_fetch_failed} 个源")
+        tg.send_message(settings.telegram.chat_id, "\n".join(summary_lines), parse_mode="HTML", disable_web_page_preview=True)
+
     return FetchResponse(
         fetched_feeds=feeds_count,
         new_items=new_items,

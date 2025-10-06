@@ -43,6 +43,7 @@ class SettingsTelegram(BaseModel):
     enabled: bool = False
     bot_token: str = ""
     chat_id: str = ""
+    push_summary: bool = False
 
 
 class SettingsLogging(BaseModel):

@@ -945,3 +945,465 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2025-10-06 09:33:36,268 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
 2025-10-06 09:33:51,294 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/ukraine-russia-energy-attack/: The read operation timed out
 2025-10-06 09:33:51,305 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:34:00,339 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:34:00,346 [INFO] root: 新文章入库: Russian air attack across Ukraine damages energy networks, kills five (68)
+2025-10-06 09:34:01,058 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:34:01,059 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:34:16,097 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/canada-wildfires-indigenous-people/: The read operation timed out
+2025-10-06 09:34:16,108 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:34:17,617 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:34:17,621 [INFO] root: 新文章入库: 加拿大历史性野火季中，原住民受灾最为严重 (69)
+2025-10-06 09:34:18,291 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:34:18,292 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:34:33,329 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/israel-gaza-soldiers-ptsd-suicide/: The read operation timed out
+2025-10-06 09:34:33,340 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:34:46,737 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:34:46,741 [INFO] root: 新文章入库: 以色列军队中PTSD和自杀率因加沙战争急剧上升 (70)
+2025-10-06 09:34:47,410 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:34:47,410 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:35:02,448 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/russia-ai-digital-resurrection-soldiers/: The read operation timed out
+2025-10-06 09:35:02,461 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:35:04,935 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:35:04,940 [INFO] root: 新文章入库: AI让俄罗斯战争遗孀再次“见到”牺牲的丈夫 (71)
+2025-10-06 09:35:05,613 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:35:05,614 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:35:20,648 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/pakistan-deports-afghan-refugees-taliban-resettlement/: The read operation timed out
+2025-10-06 09:35:20,662 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:35:32,894 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:35:32,899 [INFO] root: 新文章入库: Afghans awaited U.S. resettlement. Pakistan sent them back to the Taliban. (72)
+2025-10-06 09:35:33,553 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:35:33,554 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:35:33,554 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/world: 新增 11，重复 0，本次处理 5 条
+2025-10-06 09:35:33,554 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 09:35:33,577 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/international/rss "HTTP/1.1 200 OK"
+2025-10-06 09:35:33,732 [INFO] root: RSS结果 https://www.theguardian.com/international/rss: 共 110 条
+2025-10-06 09:35:33,734 [INFO] root: 抓取完成: https://www.theguardian.com/international/rss，条目数 110
+2025-10-06 09:35:33,734 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:35:33,755 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/culture/2025/oct/06/louis-ck-defends-riyadh-comedy-festival-performance-good-opportunity "HTTP/1.1 200 OK"
+2025-10-06 09:35:33,759 [INFO] root: 抓取原文成功 https://www.theguardian.com/culture/2025/oct/06/louis-ck-defends-riyadh-comedy-festival-performance-good-opportunity status=200 bytes=352646
+2025-10-06 09:35:33,820 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:35:33,829 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:35:41,937 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:35:41,942 [INFO] root: 新文章入库: 路易·C·K为在利雅得喜剧节演出辩护，称其为“好机会” (73)
+2025-10-06 09:35:42,588 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:35:42,589 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:35:42,609 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/world/2025/oct/06/indonesia-school-collapse-death-toll-rises-as-search-for-missing-students-continues "HTTP/1.1 200 OK"
+2025-10-06 09:35:42,611 [INFO] root: 抓取原文成功 https://www.theguardian.com/world/2025/oct/06/indonesia-school-collapse-death-toll-rises-as-search-for-missing-students-continues status=200 bytes=367578
+2025-10-06 09:35:42,673 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:35:42,682 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:35:57,025 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:35:57,029 [INFO] root: 新文章入库: 印尼一所伊斯兰寄宿学校倒塌致49人死亡，搜救仍在进行 (74)
+2025-10-06 09:35:57,691 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:35:57,692 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:35:57,943 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/world/2025/oct/06/ukraine-war-briefing-snag-for-eus-support-of-kyiv-after-aid-opponent-wins-czech-election "HTTP/1.1 200 OK"
+2025-10-06 09:35:57,946 [INFO] root: 抓取原文成功 https://www.theguardian.com/world/2025/oct/06/ukraine-war-briefing-snag-for-eus-support-of-kyiv-after-aid-opponent-wins-czech-election status=200 bytes=327155
+2025-10-06 09:35:58,005 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:35:58,021 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 01:36:10,206 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:36:10,207 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:36:10,208 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 01:36:10,209 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 01:36:10,210 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 01:36:10,212 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 01:36:10,213 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 01:36:10,214 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 01:36:10,215 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 01:36:10,216 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 09:36:11,336 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:11,341 [INFO] root: 新文章入库: Ukraine war briefing: Snag for EU’s support of Kyiv after aid opponent wins Czech election (75)
+2025-10-06 09:36:12,012 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:12,012 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:12,033 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/society/2025/oct/06/one-in-four-uk-people-fear-a-loved-one-drinks-too-much-survey-finds "HTTP/1.1 200 OK"
+2025-10-06 09:36:12,037 [INFO] root: 抓取原文成功 https://www.theguardian.com/society/2025/oct/06/one-in-four-uk-people-fear-a-loved-one-drinks-too-much-survey-finds status=200 bytes=323341
+2025-10-06 09:36:12,093 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:36:12,102 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:16,352 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:16,357 [INFO] root: 新文章入库: 英国四分之一民众担忧亲友饮酒过量，调查显示成瘾问题日益严重 (76)
+2025-10-06 09:36:17,009 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:17,010 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:17,178 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/commentisfree/2025/oct/06/arab-australians-push-against-stereotypes-write-themselves-into-national-narrative "HTTP/1.1 200 OK"
+2025-10-06 09:36:17,181 [INFO] root: 抓取原文成功 https://www.theguardian.com/commentisfree/2025/oct/06/arab-australians-push-against-stereotypes-write-themselves-into-national-narrative status=200 bytes=362913
+2025-10-06 09:36:17,252 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:36:17,262 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:20,211 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:20,216 [INFO] root: 新文章入库: 阿拉伯裔澳大利亚人通过文学创作打破刻板印象，重塑国家叙事 (77)
+2025-10-06 09:36:20,889 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:20,889 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:20,889 [INFO] root: 汇总 https://www.theguardian.com/international/rss: 新增 16，重复 0，本次处理 5 条
+2025-10-06 09:36:20,889 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 09:36:21,128 [INFO] httpx: HTTP Request: GET https://feeds.bloomberg.com/technology/news.rss "HTTP/1.1 200 OK"
+2025-10-06 09:36:21,136 [INFO] root: RSS结果 https://feeds.bloomberg.com/technology/news.rss: 共 11 条
+2025-10-06 09:36:21,136 [INFO] root: 抓取完成: https://feeds.bloomberg.com/technology/news.rss，条目数 11
+2025-10-06 09:36:21,136 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:36:21,237 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/articles/2025-10-06/insight-owned-veeam-nears-1-8-billion-deal-to-buy-securiti "HTTP/1.1 403 Forbidden"
+2025-10-06 09:36:21,239 [WARNING] root: 抓取原文失败 https://www.bloomberg.com/news/articles/2025-10-06/insight-owned-veeam-nears-1-8-billion-deal-to-buy-securiti: Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/articles/2025-10-06/insight-owned-veeam-nears-1-8-billion-deal-to-buy-securiti'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:36:21,249 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:31,766 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:31,771 [INFO] root: 新文章入库: Insight旗下Veeam接近以18亿美元收购Securiti (78)
+2025-10-06 09:36:32,426 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:32,427 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:32,530 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/newsletters/2025-10-05/sora-proves-hollywood-is-already-losing-the-fight-against-ai "HTTP/1.1 403 Forbidden"
+2025-10-06 09:36:32,530 [WARNING] root: 抓取原文失败 https://www.bloomberg.com/news/newsletters/2025-10-05/sora-proves-hollywood-is-already-losing-the-fight-against-ai: Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/newsletters/2025-10-05/sora-proves-hollywood-is-already-losing-the-fight-against-ai'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:36:32,539 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:34,631 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:34,637 [INFO] root: 新文章入库: 好莱坞已在AI视频领域落后 (79)
+2025-10-06 09:36:35,286 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:35,287 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:35,380 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/articles/2025-10-05/byd-s-skyrail-to-nowhere-marks-a-rare-misstep-for-ev-juggernaut "HTTP/1.1 403 Forbidden"
+2025-10-06 09:36:35,398 [WARNING] root: 抓取原文失败 https://www.bloomberg.com/news/articles/2025-10-05/byd-s-skyrail-to-nowhere-marks-a-rare-misstep-for-ev-juggernaut: Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/articles/2025-10-05/byd-s-skyrail-to-nowhere-marks-a-rare-misstep-for-ev-juggernaut'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:36:35,409 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:45,545 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:45,549 [INFO] root: 新文章入库: BYD的SkyRail项目成为电动汽车巨头的罕见失误 (80)
+2025-10-06 09:36:46,214 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:46,215 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:46,335 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/articles/2025-10-05/musk-s-neuralink-submits-brain-implant-patient-data-to-journal "HTTP/1.1 403 Forbidden"
+2025-10-06 09:36:46,336 [WARNING] root: 抓取原文失败 https://www.bloomberg.com/news/articles/2025-10-05/musk-s-neuralink-submits-brain-implant-patient-data-to-journal: Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/articles/2025-10-05/musk-s-neuralink-submits-brain-implant-patient-data-to-journal'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:36:46,345 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:55,717 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:55,723 [INFO] root: 新文章入库: Musk’s Neuralink Submits Brain Implant Patient Data to Journal (81)
+2025-10-06 09:36:56,385 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:56,386 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:56,477 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/newsletters/2025-10-05/who-will-be-apple-s-next-ceo-after-tim-cook-apple-shelves-vision-air-m5-ipad "HTTP/1.1 403 Forbidden"
+2025-10-06 09:36:56,478 [WARNING] root: 抓取原文失败 https://www.bloomberg.com/news/newsletters/2025-10-05/who-will-be-apple-s-next-ceo-after-tim-cook-apple-shelves-vision-air-m5-ipad: Client error '403 Forbidden' for url 'https://www.bloomberg.com/news/newsletters/2025-10-05/who-will-be-apple-s-next-ceo-after-tim-cook-apple-shelves-vision-air-m5-ipad'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:36:56,486 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:36:58,848 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:36:58,852 [INFO] root: 新文章入库: 苹果将硬件主管John Ternus推向继任者聚光灯下 (82)
+2025-10-06 09:36:59,507 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:36:59,508 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:36:59,508 [INFO] root: 汇总 https://feeds.bloomberg.com/technology/news.rss: 新增 21，重复 0，本次处理 5 条
+2025-10-06 09:36:59,508 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 09:37:09,630 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/technology "HTTP/1.1 404 Not Found"
+2025-10-06 09:37:09,631 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://feeds.washingtonpost.com/rss/technology err=Client error '404 Not Found' for url 'https://feeds.washingtonpost.com/rss/technology'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-10-06 09:37:18,727 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/technology: 共 0 条
+2025-10-06 09:37:18,727 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/technology，条目数 0
+2025-10-06 09:37:18,728 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/technology: 新增 21，重复 0，本次处理 0 条
+2025-10-06 09:37:18,728 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 09:37:18,772 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml "HTTP/1.1 200 OK"
+2025-10-06 09:37:18,794 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 共 22 条
+2025-10-06 09:37:18,794 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml，条目数 22
+2025-10-06 09:37:18,795 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:37:18,846 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/science/awards-prizes-non-nobels.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:18,846 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/science/awards-prizes-non-nobels.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/science/awards-prizes-non-nobels.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:18,856 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:26,884 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:26,888 [INFO] root: 新文章入库: Beyond the Nobel Prizes Is a World of Scientific Awards (83)
+2025-10-06 09:37:27,561 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:27,562 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:27,593 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/technology/cows-ai-collars.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:27,594 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/technology/cows-ai-collars.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/technology/cows-ai-collars.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:27,603 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:34,958 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:34,964 [INFO] root: 新文章入库: 奶牛佩戴高科技项圈以提升产量 (84)
+2025-10-06 09:37:35,805 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:35,806 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:35,851 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/books/review/cory-doctorow-enshittification.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:35,852 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/books/review/cory-doctorow-enshittification.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/books/review/cory-doctorow-enshittification.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:35,866 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:39,844 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:39,850 [INFO] root: 新文章入库: 科里·道克特罗新书《平台绞肉机》能否改变科技辩论？ (85)
+2025-10-06 09:37:40,668 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:40,669 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:40,705 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/03/science/phyllis-gardner-dead.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:40,718 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/03/science/phyllis-gardner-dead.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/03/science/phyllis-gardner-dead.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:40,727 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:43,110 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:43,114 [INFO] root: 新文章入库: 菲利斯·加德纳逝世：最早质疑Theranos的科学家 (86)
+2025-10-06 09:37:43,986 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:43,987 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:44,021 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/02/business/tesla-cybertruck-doors-lawsuit-california.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:44,022 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/02/business/tesla-cybertruck-doors-lawsuit-california.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/02/business/tesla-cybertruck-doors-lawsuit-california.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:44,031 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:46,216 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:46,220 [INFO] root: 新文章入库: 特斯拉因赛博卡车车门故障遭起诉，被指导致两人死亡 (87)
+2025-10-06 09:37:46,893 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:46,894 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:46,894 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 新增 26，重复 0，本次处理 5 条
+2025-10-06 09:37:46,894 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 09:37:47,346 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml "HTTP/1.1 200 OK"
+2025-10-06 09:37:47,396 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 共 45 条
+2025-10-06 09:37:47,396 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml，条目数 45
+2025-10-06 09:37:47,396 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:37:47,433 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/hope-grace-michigan-shooting.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:47,434 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/hope-grace-michigan-shooting.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/hope-grace-michigan-shooting.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:47,443 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:49,270 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:49,275 [INFO] root: 新文章入库: 走出分裂的道路 (88)
+2025-10-06 09:37:50,124 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:50,125 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:50,169 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/04/opinion/progressives-populists-post-liberal-fear.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:50,170 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/04/opinion/progressives-populists-post-liberal-fear.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/04/opinion/progressives-populists-post-liberal-fear.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:50,181 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:37:53,425 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:37:53,429 [INFO] root: 新文章入库: 为何左派与右派无法理解对方的恐惧 (89)
+2025-10-06 09:37:54,281 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:37:54,281 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:37:54,338 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:37:54,338 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/bitcoin-georgia-ivanishvili-bachiashvili.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:37:54,347 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:08,147 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:08,152 [INFO] root: 新文章入库: 这起疯狂的加密货币劫案是我们这个时代的故事 (90)
+2025-10-06 09:38:08,810 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:08,811 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:08,855 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:38:08,856 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/shutdown-health-care-republicans-young.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:38:08,866 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:10,745 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:10,750 [INFO] root: 新文章入库: 共和党计划：让Z世代年轻人支付双倍医保费或放弃保障 (91)
+2025-10-06 09:38:11,412 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:11,412 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:11,460 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/opinion/israel-gaza-hostages-october-7-anniversary.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:38:11,461 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/opinion/israel-gaza-hostages-october-7-anniversary.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/opinion/israel-gaza-hostages-october-7-anniversary.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:38:11,470 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:13,710 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:13,714 [INFO] root: 新文章入库: 等待人质两年：他们的坚持与仪式 (92)
+2025-10-06 09:38:14,405 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:14,405 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:14,405 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 新增 31，重复 0，本次处理 5 条
+2025-10-06 09:38:14,406 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 09:38:14,462 [INFO] httpx: HTTP Request: GET https://feeds.npr.org/1002/rss.xml "HTTP/1.1 200 OK"
+2025-10-06 09:38:14,473 [INFO] root: RSS结果 https://feeds.npr.org/1002/rss.xml: 共 10 条
+2025-10-06 09:38:14,473 [INFO] root: 抓取完成: https://feeds.npr.org/1002/rss.xml，条目数 10
+2025-10-06 09:38:14,473 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:38:14,548 [INFO] httpx: HTTP Request: GET https://www.npr.org/2025/10/05/nx-s1-5563182/shutdown-lawsuit-education-department-partisan-messages "HTTP/1.1 200 OK"
+2025-10-06 09:38:14,549 [INFO] root: 抓取原文成功 https://www.npr.org/2025/10/05/nx-s1-5563182/shutdown-lawsuit-education-department-partisan-messages status=200 bytes=89754
+2025-10-06 09:38:14,600 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:38:14,610 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:27,399 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:27,404 [INFO] root: 新文章入库: 联邦雇员起诉教育部，因政府停摆邮件被植入党派言论 (93)
+2025-10-06 09:38:28,066 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:28,067 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:28,265 [INFO] httpx: HTTP Request: GET https://www.npr.org/2025/10/05/nx-s1-5563170/trump-national-guard-chicago-portland-illinois-oregon-pritzker "HTTP/1.1 200 OK"
+2025-10-06 09:38:28,265 [INFO] root: 抓取原文成功 https://www.npr.org/2025/10/05/nx-s1-5563170/trump-national-guard-chicago-portland-illinois-oregon-pritzker status=200 bytes=86279
+2025-10-06 09:38:28,367 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:38:28,379 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:31,122 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:31,127 [INFO] root: 新文章入库: 特朗普联邦化国民警卫队部署芝加哥，同时部队抵达俄勒冈 (94)
+2025-10-06 09:38:31,797 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:31,797 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:31,906 [INFO] httpx: HTTP Request: GET https://www.npr.org/2025/10/05/nx-s1-5563116/bad-bunny-snl-premiere-trump "HTTP/1.1 200 OK"
+2025-10-06 09:38:31,907 [INFO] root: 抓取原文成功 https://www.npr.org/2025/10/05/nx-s1-5563116/bad-bunny-snl-premiere-trump status=200 bytes=86659
+2025-10-06 09:38:31,940 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:38:31,949 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:35,630 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:35,635 [INFO] root: 新文章入库: 《周六夜现场》首播嘲讽特朗普，坏痞兔回应超级碗中场秀争议 (95)
+2025-10-06 09:38:36,296 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:36,297 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:36,369 [INFO] httpx: HTTP Request: GET https://www.npr.org/2025/10/05/nx-s1-5558321/states-are-cutting-medicaid-provider-payments-long-before-trump-cuts-hit "HTTP/1.1 200 OK"
+2025-10-06 09:38:36,370 [INFO] root: 抓取原文成功 https://www.npr.org/2025/10/05/nx-s1-5558321/states-are-cutting-medicaid-provider-payments-long-before-trump-cuts-hit status=200 bytes=111063
+2025-10-06 09:38:36,422 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:38:36,431 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:39,824 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:39,828 [INFO] root: 新文章入库: 各州在特朗普政府削减医疗补助金之前已先行削减支付 (96)
+2025-10-06 09:38:40,680 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:40,681 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:40,735 [INFO] httpx: HTTP Request: GET https://www.npr.org/2025/10/05/nx-s1-5563061/nighttime-russian-strike-ukraine "HTTP/1.1 200 OK"
+2025-10-06 09:38:40,736 [INFO] root: 抓取原文成功 https://www.npr.org/2025/10/05/nx-s1-5563061/nighttime-russian-strike-ukraine status=200 bytes=88050
+2025-10-06 09:38:40,776 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:38:40,786 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:38:54,752 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:38:54,759 [INFO] root: 新文章入库: 俄罗斯对乌克兰发动大规模夜间袭击，至少5人死亡 (97)
+2025-10-06 09:38:55,437 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:38:55,437 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:38:55,438 [INFO] root: 汇总 https://feeds.npr.org/1002/rss.xml: 新增 36，重复 0，本次处理 5 条
+2025-10-06 01:46:10,356 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:46:10,358 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:46:10,359 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 01:46:10,361 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 01:46:10,362 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 01:46:10,363 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 01:46:10,365 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 01:46:10,366 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 01:46:10,368 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 01:46:10,369 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 09:48:55,533 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 09:48:55,553 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 09:48:55,570 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 14 条
+2025-10-06 09:48:55,570 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 14
+2025-10-06 09:48:55,570 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:48:55,571 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:48:55,572 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 09:48:55,751 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 09:48:55,765 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 09:48:55,765 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 09:48:55,765 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:48:55,794 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cn0rn7rwk24o?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 09:48:55,796 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cn0rn7rwk24o?at_medium=RSS&at_campaign=rss status=200 bytes=228779
+2025-10-06 09:48:55,843 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:48:55,852 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:48:59,149 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:48:59,153 [INFO] root: 新文章入库: 消费者组织Qualcomm发起反垄断诉讼，英国近3000万苹果和三星用户或获赔偿 (98)
+2025-10-06 09:49:00,005 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:49:00,006 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:49:00,043 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/c5ye8zj5l4jo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 09:49:00,049 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/c5ye8zj5l4jo?at_medium=RSS&at_campaign=rss status=200 bytes=297600
+2025-10-06 09:49:00,181 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:49:00,211 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:49:07,491 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:49:07,497 [INFO] root: 新文章入库: 英国企业遭受网络攻击的严重程度及其根本弱点分析 (99)
+2025-10-06 09:49:08,156 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:49:08,156 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:49:08,156 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 2，重复 3，本次处理 5 条
+2025-10-06 09:49:08,157 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 09:49:09,538 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/daily-news/feed "HTTP/1.1 200 OK"
+2025-10-06 09:49:10,366 [INFO] root: RSS结果 https://sanhua.himrr.com/daily-news/feed: 共 25 条
+2025-10-06 09:49:10,367 [INFO] root: 抓取完成: https://sanhua.himrr.com/daily-news/feed，条目数 25
+2025-10-06 09:49:10,367 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:10,368 [INFO] root: 汇总 https://sanhua.himrr.com/daily-news/feed: 新增 2，重复 5，本次处理 5 条
+2025-10-06 09:49:10,368 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 09:49:19,470 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/world "HTTP/1.1 200 OK"
+2025-10-06 09:49:19,475 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/world: 共 11 条
+2025-10-06 09:49:19,475 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/world，条目数 11
+2025-10-06 09:49:19,475 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:19,477 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/world: 新增 2，重复 5，本次处理 5 条
+2025-10-06 09:49:19,477 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 09:49:19,637 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/international/rss "HTTP/1.1 200 OK"
+2025-10-06 09:49:19,781 [INFO] root: RSS结果 https://www.theguardian.com/international/rss: 共 110 条
+2025-10-06 09:49:19,782 [INFO] root: 抓取完成: https://www.theguardian.com/international/rss，条目数 110
+2025-10-06 09:49:19,782 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:19,783 [INFO] root: 汇总 https://www.theguardian.com/international/rss: 新增 2，重复 5，本次处理 5 条
+2025-10-06 09:49:19,783 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 09:49:20,009 [INFO] httpx: HTTP Request: GET https://feeds.bloomberg.com/technology/news.rss "HTTP/1.1 200 OK"
+2025-10-06 09:49:20,023 [INFO] root: RSS结果 https://feeds.bloomberg.com/technology/news.rss: 共 12 条
+2025-10-06 09:49:20,023 [INFO] root: 抓取完成: https://feeds.bloomberg.com/technology/news.rss，条目数 12
+2025-10-06 09:49:20,023 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:20,538 [INFO] httpx: HTTP Request: GET https://www.bloomberg.com/news/articles/2025-10-06/bitcoin-bitcoin-hovers-near-record-after-topping-125-000-on-sunday "HTTP/1.1 200 OK"
+2025-10-06 09:49:20,543 [INFO] root: 抓取原文成功 https://www.bloomberg.com/news/articles/2025-10-06/bitcoin-bitcoin-hovers-near-record-after-topping-125-000-on-sunday status=200 bytes=309345
+2025-10-06 09:49:20,608 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:49:20,619 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:49:22,817 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:49:22,822 [INFO] root: 新文章入库: 比特币周日突破12.5万美元创历史新高 (100)
+2025-10-06 09:49:23,538 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:49:23,539 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:49:23,540 [INFO] root: 汇总 https://feeds.bloomberg.com/technology/news.rss: 新增 3，重复 4，本次处理 5 条
+2025-10-06 09:49:23,540 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 09:49:32,625 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/technology "HTTP/1.1 404 Not Found"
+2025-10-06 09:49:32,626 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://feeds.washingtonpost.com/rss/technology err=Client error '404 Not Found' for url 'https://feeds.washingtonpost.com/rss/technology'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-10-06 09:49:42,720 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/technology: 共 0 条
+2025-10-06 09:49:42,720 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/technology，条目数 0
+2025-10-06 09:49:42,720 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/technology: 新增 3，重复 0，本次处理 0 条
+2025-10-06 09:49:42,720 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 09:49:42,743 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml "HTTP/1.1 200 OK"
+2025-10-06 09:49:42,768 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 共 22 条
+2025-10-06 09:49:42,769 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml，条目数 22
+2025-10-06 09:49:42,769 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:42,771 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 新增 3，重复 5，本次处理 5 条
+2025-10-06 09:49:42,771 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 09:49:42,802 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml "HTTP/1.1 200 OK"
+2025-10-06 09:49:42,840 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 共 45 条
+2025-10-06 09:49:42,841 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml，条目数 45
+2025-10-06 09:49:42,841 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:42,842 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 新增 3，重复 5，本次处理 5 条
+2025-10-06 09:49:42,842 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 09:49:42,873 [INFO] httpx: HTTP Request: GET https://feeds.npr.org/1002/rss.xml "HTTP/1.1 200 OK"
+2025-10-06 09:49:42,881 [INFO] root: RSS结果 https://feeds.npr.org/1002/rss.xml: 共 10 条
+2025-10-06 09:49:42,881 [INFO] root: 抓取完成: https://feeds.npr.org/1002/rss.xml，条目数 10
+2025-10-06 09:49:42,881 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:49:42,883 [INFO] root: 汇总 https://feeds.npr.org/1002/rss.xml: 新增 3，重复 5，本次处理 5 条
+2025-10-06 01:56:10,481 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:56:10,483 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:56:10,483 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 01:56:10,484 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 01:56:10,485 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 01:56:10,486 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 01:56:10,486 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 01:56:10,487 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 01:56:10,487 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 01:56:10,488 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 09:59:42,975 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 09:59:42,998 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 09:59:43,015 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 14 条
+2025-10-06 09:59:43,015 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 14
+2025-10-06 09:59:43,016 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:43,018 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:43,018 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 09:59:43,189 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 09:59:43,207 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 35 条
+2025-10-06 09:59:43,207 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 35
+2025-10-06 09:59:43,207 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:43,208 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:43,208 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 09:59:44,412 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/daily-news/feed "HTTP/1.1 200 OK"
+2025-10-06 09:59:44,948 [INFO] root: RSS结果 https://sanhua.himrr.com/daily-news/feed: 共 25 条
+2025-10-06 09:59:44,948 [INFO] root: 抓取完成: https://sanhua.himrr.com/daily-news/feed，条目数 25
+2025-10-06 09:59:44,948 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:44,950 [INFO] root: 汇总 https://sanhua.himrr.com/daily-news/feed: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:44,950 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 09:59:53,056 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/world "HTTP/1.1 200 OK"
+2025-10-06 09:59:53,062 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/world: 共 11 条
+2025-10-06 09:59:53,062 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/world，条目数 11
+2025-10-06 09:59:53,062 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:53,063 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/world: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:53,063 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 09:59:53,090 [INFO] httpx: HTTP Request: GET https://www.theguardian.com/international/rss "HTTP/1.1 200 OK"
+2025-10-06 09:59:53,235 [INFO] root: RSS结果 https://www.theguardian.com/international/rss: 共 110 条
+2025-10-06 09:59:53,236 [INFO] root: 抓取完成: https://www.theguardian.com/international/rss，条目数 110
+2025-10-06 09:59:53,236 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:53,237 [INFO] root: 汇总 https://www.theguardian.com/international/rss: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:53,237 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 09:59:53,466 [INFO] httpx: HTTP Request: GET https://feeds.bloomberg.com/technology/news.rss "HTTP/1.1 200 OK"
+2025-10-06 09:59:53,474 [INFO] root: RSS结果 https://feeds.bloomberg.com/technology/news.rss: 共 12 条
+2025-10-06 09:59:53,475 [INFO] root: 抓取完成: https://feeds.bloomberg.com/technology/news.rss，条目数 12
+2025-10-06 09:59:53,475 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:59:53,476 [INFO] root: 汇总 https://feeds.bloomberg.com/technology/news.rss: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:59:53,476 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 10:00:02,570 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/technology "HTTP/1.1 404 Not Found"
+2025-10-06 10:00:02,571 [WARNING] root: HTTP获取RSS失败，将直接解析URL: https://feeds.washingtonpost.com/rss/technology err=Client error '404 Not Found' for url 'https://feeds.washingtonpost.com/rss/technology'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2025-10-06 10:00:11,670 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/technology: 共 0 条
+2025-10-06 10:00:11,670 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/technology，条目数 0
+2025-10-06 10:00:11,670 [INFO] root: 汇总 https://feeds.washingtonpost.com/rss/technology: 新增 0，重复 0，本次处理 0 条
+2025-10-06 10:00:11,670 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 10:00:11,710 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml "HTTP/1.1 200 OK"
+2025-10-06 10:00:11,735 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 共 22 条
+2025-10-06 10:00:11,736 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml，条目数 22
+2025-10-06 10:00:11,736 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 10:00:11,737 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 10:00:11,737 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 10:00:11,785 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml "HTTP/1.1 200 OK"
+2025-10-06 10:00:11,825 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 共 45 条
+2025-10-06 10:00:11,825 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml，条目数 45
+2025-10-06 10:00:11,825 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 10:00:11,827 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 10:00:11,827 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 10:00:11,855 [INFO] httpx: HTTP Request: GET https://feeds.npr.org/1002/rss.xml "HTTP/1.1 200 OK"
+2025-10-06 10:00:11,865 [INFO] root: RSS结果 https://feeds.npr.org/1002/rss.xml: 共 10 条
+2025-10-06 10:00:11,865 [INFO] root: 抓取完成: https://feeds.npr.org/1002/rss.xml，条目数 10
+2025-10-06 10:00:11,865 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 10:00:11,866 [INFO] root: 汇总 https://feeds.npr.org/1002/rss.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 02:06:10,600 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 02:06:10,602 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 02:06:10,602 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 02:06:10,603 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 02:06:10,604 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 02:06:10,605 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 02:06:10,605 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 02:06:10,606 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 02:06:10,607 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 02:06:10,608 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
+2025-10-06 02:16:10,708 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 02:16:10,709 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 02:16:10,710 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 02:16:10,711 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 02:16:10,711 [INFO] root: 开始抓取: https://www.theguardian.com/international/rss
+2025-10-06 02:16:10,712 [INFO] root: 开始抓取: https://feeds.bloomberg.com/technology/news.rss
+2025-10-06 02:16:10,712 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/technology
+2025-10-06 02:16:10,713 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+2025-10-06 02:16:10,714 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+2025-10-06 02:16:10,739 [INFO] root: 开始抓取: https://feeds.npr.org/1002/rss.xml
