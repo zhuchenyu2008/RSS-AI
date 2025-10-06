@@ -5,7 +5,7 @@
 – 后端：Python + FastAPI（含 OpenAPI/Swagger、详细日志、可热更新配置、后台定时任务）
 – 前端：黑白配色、简约高级的 Web 页面（查看摘要与在线修改配置）
 
-注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。如需推送到 GitHub，请自行配置远程仓库与权限。
+注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。
 
 ## 功能概览
 
@@ -42,6 +42,7 @@
 
 ```
 git clone https://github.com/zhuchenyu2008/RSS-AI
+cd RSS-AI
 ```
 
 2) 安装依赖并启动后端（端口 3601）
