@@ -109,6 +109,15 @@ class AIClient:
                 obj["pubDate"] = pub_date or ""
             if not obj.get("author"):
                 obj["author"] = author or ""
+            # usage tokens if present
+            usage = data.get("usage") if isinstance(data, dict) else None
+            if isinstance(usage, dict):
+                meta = {
+                    "prompt_tokens": int(usage.get("prompt_tokens", 0) or 0),
+                    "completion_tokens": int(usage.get("completion_tokens", 0) or 0),
+                    "total_tokens": int(usage.get("total_tokens", 0) or 0),
+                }
+                obj["_ai_usage"] = meta
             return obj
         except Exception as e:
             logging.warning(f"AI响应解析失败: {e}")

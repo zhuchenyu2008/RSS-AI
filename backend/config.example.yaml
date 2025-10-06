@@ -42,6 +42,7 @@ telegram:
   enabled: false
   bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
   chat_id: "@your_channel_or_chat_id"
+  push_summary: false
 
 # 运行时日志
 logging:
