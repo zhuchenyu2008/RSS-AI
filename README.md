@@ -7,6 +7,26 @@
 
 注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。
 
+## 图片
+
+
+<details>
+<summary>WEB</summary>
+    
+  ![屏幕截图_6-10-2025_11614_rss zhuchenyu cn](https://github.com/user-attachments/assets/8632d112-dcc7-4fe6-a4a2-0a68f67b6e9f)
+    ![屏幕截图_6-10-2025_11638_rss zhuchenyu cn](https://github.com/user-attachments/assets/b9de54ea-8a70-4314-9d9e-42a8fd12e3bf)
+</details>
+
+
+<details>
+<summary>telegram</summary>
+    <img width="1480" height="897" alt="Desktop Screenshot 2025 10 06 - 11 07 55 93" src="https://github.com/user-attachments/assets/e78dc129-af0b-40bd-bdca-dfcd8aa02132" />
+
+
+</details>
+
+
+
 ## 功能概览
 
 - 定时抓取：从配置文件读取多个 RSS 源，按间隔抓取最新文章。
