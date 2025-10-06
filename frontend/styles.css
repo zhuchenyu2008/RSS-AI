@@ -5,6 +5,7 @@
   --card: #17171a;
   --accent: #ffffff;
   --primary: #222226;
+  --focus: #3a3a42;
 }
 
 * { box-sizing: border-box; }
@@ -14,13 +15,16 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .header {
   position: sticky;
   top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 20px;
+  padding: calc(12px + env(safe-area-inset-top)) 20px 12px;
   background: linear-gradient(180deg, rgba(14,14,16,.9), rgba(14,14,16,.6));
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #1f1f23;
@@ -32,12 +36,62 @@ body {
 .tab-btn.active { background: var(--primary); border-color: #34343a; }
 
 main { max-width: 980px; margin: 0 auto; padding: 24px 16px 80px; }
-.toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.toolbar {
+  display: flex; align-items: center; gap: 12px; row-gap: 10px; margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.toolbar-row { display: contents; }
+.toolbar .row2 { align-items: center; }
+.toolbar .select { flex: 1 1 220px; min-width: 160px; }
+#statusText { margin-left: auto; color: var(--muted); font-size: 12px; }
+
+/* 主按钮（保持原有动画与风格） */
 .primary { background: var(--fg); color: #000; border: none; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-weight: 600; transition: transform .08s ease; }
 .primary:active { transform: scale(.98); }
+/* 调整筛选行中“手动抓取”按钮的固定宽度 */
+.toolbar .row1 #refreshBtn { flex: 0 0 132px; text-align: center; }
+
+/* 将复选开关外观统一为按钮样式 */
+.switch.as-btn {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid #2a2a2e;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  transition: transform .08s ease, background .2s ease, border-color .2s ease;
+}
+.switch.as-btn:hover { background: #1a1a1e; }
+.switch.as-btn:active { transform: scale(.98); }
+.switch.as-btn input { position: absolute; opacity: 0; width: 0; height: 0; }
+.switch.as-btn span { color: inherit; display: inline-flex; align-items: center; }
+/* 勾选态标记 */
+.switch.as-btn span::before { content: ''; display: none; }
+.switch.as-btn input:checked + span::before {
+  content: '✓';
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px; height: 16px;
+  margin-right: 6px;
+  font-size: 12px;
+  line-height: 1;
+  border-radius: 4px;
+  background: #1a1a1e;
+  color: var(--fg);
+  border: 1px solid #2a2a2e;
+}
+/* 区分两种开关的选中态颜色 */
+.switch.as-btn input#autoRefresh:checked + span { color: #86efac; }
+.switch.as-btn input#autoRefresh:checked + span::before { background: #14532d; border-color: #14532d; color: #86efac; }
+.switch.as-btn input#forceFetch:checked + span { color: #fca5a5; }
+.switch.as-btn input#forceFetch:checked + span::before { background: #7f1d1d; border-color: #7f1d1d; color: #fca5a5; }
 
 .list { display: grid; gap: 12px; }
-.card { background: var(--card); border: 1px solid #232329; border-radius: 12px; padding: 16px; transition: transform .16s ease, background .2s ease; }
+.card { background: var(--card); border: 1px solid #232329; border-radius: 12px; padding: 16px; transition: transform .16s ease, background .2s ease; will-change: transform; }
 .card:hover { transform: translateY(-2px); background: #1a1a1e; }
 .title { font-weight: 600; margin: 0 0 6px; }
 .title.clickable { cursor: pointer; }
@@ -57,13 +111,26 @@ input, textarea { background: #101013; color: var(--fg); border: 1px solid #2a2a
 input[type="checkbox"] { width: 18px; height: 18px; }
 .actions { display: flex; align-items: center; gap: 12px; }
 
-.toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%) translateY(20px); opacity: 0; transition: all .25s ease; background: #1f1f23; color: var(--fg); padding: 10px 12px; border: 1px solid #2a2a2e; border-radius: 10px; }
+/* 焦点可见性（无障碍） */
+.tab-btn:focus-visible,
+.primary:focus-visible,
+.ghost:focus-visible,
+.pager button:focus-visible,
+.to-top:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.toast { position: fixed; left: 50%; bottom: calc(28px + env(safe-area-inset-bottom)); transform: translateX(-50%) translateY(20px); opacity: 0; transition: all .25s ease; background: #1f1f23; color: var(--fg); padding: 10px 12px; border: 1px solid #2a2a2e; border-radius: 10px; }
 .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
 .tab { display: none; opacity: 0; transform: translateY(6px); transition: all .2s ease; }
 .tab.active { display: block; opacity: 1; transform: translateY(0); }
 
-/* 新增：过滤、搜索、骨架屏、弹窗、按钮 */
+/* 新增：过滤、骨架屏、弹窗、按钮 */
 .select, .input { background: #101013; color: var(--fg); border: 1px solid #2a2a2e; border-radius: 8px; padding: 6px 10px; }
 .switch { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); }
 .ghost { background: transparent; color: var(--fg); border: 1px solid #2a2a2e; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
@@ -84,7 +151,59 @@ mark { background: #2a2a2e; color: var(--fg); padding: 0 2px; border-radius: 3px
 .modal-header, .modal-footer { padding: 12px 14px; display:flex; align-items:center; justify-content: space-between; border-bottom: 1px solid #232329; }
 .modal-footer { border-top: 1px solid #232329; border-bottom: none; }
 .modal-body { padding: 12px 14px; overflow:auto; }
+/* 标题布局：占满剩余空间并自动换行，避免被关闭按钮遮挡 */
+.modal-header h3 { flex: 1 1 auto; margin: 0; padding-right: 8px; overflow-wrap: anywhere; }
+
+/* 打开弹窗时，禁止背景滚动 */
+body.modal-open { overflow: hidden; }
 
 /* 返回顶部 */
-.to-top { position: fixed; right: 16px; bottom: 24px; background: #1a1a1e; color: var(--fg); border: 1px solid #2a2a2e; border-radius: 999px; width: 40px; height: 40px; display:flex; align-items:center; justify-content:center; cursor: pointer; opacity:.85; }
+.to-top { position: fixed; right: 16px; bottom: max(24px, env(safe-area-inset-bottom)); background: #1a1a1e; color: var(--fg); border: 1px solid #2a2a2e; border-radius: 999px; width: 40px; height: 40px; display:flex; align-items:center; justify-content:center; cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(6px); transition: all .2s ease; }
+.to-top.show { opacity: .9; pointer-events: auto; transform: translateY(0); }
 .to-top:hover { opacity: 1; }
+
+/* 卡片入场动画 */
+.card.enter { animation: cardIn .28s ease both; }
+@keyframes cardIn { from { opacity: 0; transform: translateY(6px) } to { opacity: 1; transform: translateY(0) } }
+
+/* Modal 动画 */
+.modal.show .modal-dialog { animation: modalIn .22s ease; }
+@keyframes modalIn { from { opacity: 0; transform: translateY(6px) scale(.98) } to { opacity: 1; transform: translateY(0) scale(1) } }
+
+/* 移动端适配 */
+@media (max-width: 900px) {
+  main { padding: 20px 14px 84px; }
+}
+@media (max-width: 768px) {
+  .nav { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tab-btn { min-height: 36px; }
+  .toolbar { gap: 8px; }
+  /* 让两行成为独立行 */
+  .toolbar .toolbar-row { display: flex; width: 100%; gap: 8px; }
+  /* 第一行：源选择 + 手动抓取 并排，选择器自适应占满剩余 */
+  .toolbar .row1 #feedSelect { flex: 1 1 auto; max-width: none; min-width: 0; }
+  /* 第二行：其余元素自然排布，状态靠右 */
+  .toolbar .row2 { align-items: center; }
+  .toolbar .row2 #statusText { margin-left: auto; text-align: right; font-size: 12px; }
+  input, textarea, select { padding: 10px 12px; font-size: 16px; }
+  .primary, .ghost, .pager button, .tab-btn { padding: 10px 12px; }
+}
+@media (max-width: 600px) {
+  /* 自适应弹窗：依据屏幕百分比显示，居中并保留上下留白 */
+  .modal { padding: 16px; }
+  .modal-dialog { width: 94vw; max-height: 90vh; height: auto; border-radius: 12px; }
+  .modal-header { position: static; padding-top: 12px; padding-bottom: 12px; background: var(--card); }
+  .modal-footer { position: static; padding-top: 12px; padding-bottom: 12px; background: var(--card); }
+  .modal-body { flex: 1 1 auto; -webkit-overflow-scrolling: touch; overscroll-behavior: contain; }
+  /* 提升移动端可读性 */
+  #modalTitle { font-size: 18px; line-height: 1.35; }
+  #modalSummary { font-size: 15px; line-height: 1.75; word-break: break-word; overflow-wrap: anywhere; }
+  #modalMeta { font-size: 12px; }
+  .modal-header .ghost { padding: 10px 12px; }
+  .modal-footer a#modalLink { display: inline-block; padding: 10px 12px; }
+}
+
+/* 减少动画（系统偏好） */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: 0s !important; }
+}

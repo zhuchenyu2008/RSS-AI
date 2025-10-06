@@ -14,7 +14,6 @@ let state = {
   settings: null,
   feeds: [],
   filterFeed: '',
-  search: '',
   autoRefresh: false,
   autoTimer: null,
 };
@@ -50,13 +49,14 @@ async function loadArticles() {
 function renderArticles() {
   const root = q('#articles');
   root.innerHTML = '';
-  state.items.forEach(item => {
+  state.items.forEach((item, idx) => {
     const el = document.createElement('div');
-    el.className = 'card';
+    el.className = 'card enter';
+    el.style.animationDelay = `${Math.min(idx * 30, 300)}ms`;
     el.innerHTML = `
       <h3 class="title clickable" data-id="${item.id}">${escapeHtml(item.title)}</h3>
       <div class="meta">${escapeHtml(item.pub_date || '')} · ${escapeHtml(item.author || '')}</div>
-      <div class="summary">${highlight(escapeHtml(item.summary_text), state.search)}</div>
+      <div class="summary">${escapeHtml(item.summary_text)}</div>
       <div class="actions-row">
         <a class="link" target="_blank" rel="noopener" href="${item.link}">原文链接</a>
         <button class="ghost" data-copy="${item.link}">复制链接</button>
@@ -195,10 +195,7 @@ function showSkeleton(show) {
   }
 }
 
-function highlight(text, qy) {
-  if (!qy) return text;
-  try { return text.replace(new RegExp(qy.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'ig'), m=>`<mark>${m}</mark>`); } catch { return text; }
-}
+// 搜索高亮功能已移除
 
 async function openModal(id) {
   try {
@@ -210,15 +207,15 @@ async function openModal(id) {
     q('#modalSummary').innerHTML = escapeHtml(item.summary_text).replace(/\n/g,'<br/>');
     q('#modalLink').href = item.link;
     m.classList.add('show');
+    document.body.classList.add('modal-open');
   } catch {}
 }
 
-function closeModal(){ q('#modal').classList.remove('show'); }
+function closeModal(){ q('#modal').classList.remove('show'); document.body.classList.remove('modal-open'); }
 
 function bindEvents() {
   q('#refreshBtn').addEventListener('click', manualFetch);
   q('#feedSelect').addEventListener('change', (e)=>{ state.filterFeed=e.target.value; state.page=0; loadArticles(); });
-  q('#searchInput').addEventListener('input', debounce((e)=>{ state.search=e.target.value.trim(); renderArticles(); }, 200));
   q('#prevPage').addEventListener('click', () => {
     if (state.page > 0) { state.page--; loadArticles(); }
   });
@@ -230,6 +227,14 @@ function bindEvents() {
   q('#autoRefresh').addEventListener('change', (e)=> setAutoRefresh(e.target.checked));
   q('#modal').addEventListener('click', (e)=>{ if (e.target.id==='modal' || e.target.dataset.close==='1') closeModal(); });
   q('#toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+  // 显示/隐藏返回顶部（移动端更友好）
+  const onScroll = () => {
+    const btn = q('#toTop');
+    if (window.scrollY > 400) btn.classList.add('show'); else btn.classList.remove('show');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
 }
 
 async function init() {

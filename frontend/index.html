@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>RSS‑AI 控制台</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,15 +22,18 @@
     <main>
       <section id="content" class="tab active">
         <div class="toolbar">
-          <select id="feedSelect" class="select"></select>
-          <input id="searchInput" class="input" type="search" placeholder="搜索摘要…" />
-          <label class="switch">
-            <input type="checkbox" id="autoRefresh" />
-            <span>自动刷新</span>
-          </label>
-          <label class="switch"><input type="checkbox" id="forceFetch" /><span>强制抓取</span></label>
-          <button id="refreshBtn" class="primary">手动抓取</button>
-          <span id="statusText"></span>
+          <div class="toolbar-row row1">
+            <select id="feedSelect" class="select"></select>
+            <button id="refreshBtn" class="primary">手动抓取</button>
+          </div>
+          <div class="toolbar-row row2">
+            <label class="switch as-btn">
+              <input type="checkbox" id="autoRefresh" />
+              <span>自动刷新</span>
+            </label>
+            <label class="switch as-btn"><input type="checkbox" id="forceFetch" /><span>强制抓取</span></label>
+            <span id="statusText"></span>
+          </div>
         </div>
         <div id="articles" class="list"></div>
         <div class="pager">
