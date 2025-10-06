@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RSS‑AI 控制台</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="brand">RSS‑AI</div>
+      <nav class="nav">
+        <button class="tab-btn active" data-tab="content">内容</button>
+        <button class="tab-btn" data-tab="settings">设置</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="content" class="tab active">
+        <div class="toolbar">
+          <button id="refreshBtn" class="primary">手动抓取</button>
+          <span id="statusText"></span>
+        </div>
+        <div id="articles" class="list"></div>
+        <div class="pager">
+          <button id="prevPage">上一页</button>
+          <span id="pageInfo"></span>
+          <button id="nextPage">下一页</button>
+        </div>
+      </section>
+
+      <section id="settings" class="tab">
+        <form id="settingsForm" class="settings-form">
+          <fieldset>
+            <legend>抓取与存储</legend>
+            <label>
+              抓取间隔（分钟）
+              <input type="number" id="interval" min="1" max="1440" />
+            </label>
+            <label>
+              存储上限（条）
+              <input type="number" id="maxItems" min="10" max="50000" />
+            </label>
+            <label>
+              RSS 列表（每行一个URL）
+              <textarea id="feeds" rows="6" placeholder="https://..."></textarea>
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>AI 设置（OpenAI兼容）</legend>
+            <label>
+              启用AI
+              <input type="checkbox" id="aiEnabled" />
+            </label>
+            <label>
+              API Base URL
+              <input type="text" id="aiBaseUrl" placeholder="https://api.openai.com/v1" />
+            </label>
+            <label>
+              API Key
+              <input type="password" id="aiApiKey" placeholder="sk-...（留空不变）" />
+            </label>
+            <label>
+              模型
+              <input type="text" id="aiModel" placeholder="gpt-4o-mini" />
+            </label>
+            <label>
+              温度（0-1）
+              <input type="number" step="0.1" min="0" max="1" id="aiTemp" />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>Telegram 推送</legend>
+            <label>
+              启用Telegram推送
+              <input type="checkbox" id="tgEnabled" />
+            </label>
+            <label>
+              Bot Token
+              <input type="password" id="tgToken" placeholder="（留空不变）" />
+            </label>
+            <label>
+              Chat ID / Channel
+              <input type="text" id="tgChatId" placeholder="@your_channel 或 chat id" />
+            </label>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="primary">保存设置</button>
+            <span id="saveStatus"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div id="toast" class="toast">已保存</div>
+  </div>
+
+  <script src="./app.js"></script>
+  <script>
+    // Tab switching
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.tab').forEach(sec => sec.classList.remove('active'));
+        document.getElementById(tab).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
+

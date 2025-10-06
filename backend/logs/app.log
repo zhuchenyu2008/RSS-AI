@@ -1,0 +1,13 @@
+2025-10-06 00:05:50,642 [INFO] root: 应用启动中…
+2025-10-06 00:05:50,651 [INFO] root: 调度器已启动
+2025-10-06 00:05:50,651 [INFO] root: 应用已启动
+2025-10-06 00:05:50,653 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:05:50,656 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
+2025-10-06 00:05:52,964 [INFO] root: 应用即将停止…
+2025-10-06 00:05:53,658 [INFO] root: 调度器已停止
+2025-10-06 00:05:53,659 [INFO] root: 应用已停止
+2025-10-06 00:06:08,812 [INFO] root: 应用启动中…
+2025-10-06 00:06:08,814 [INFO] root: 调度器已启动
+2025-10-06 00:06:08,814 [INFO] root: 应用已启动
+2025-10-06 00:06:08,817 [INFO] root: 开始抓取: https://hnrss.org/frontpage
+2025-10-06 00:06:08,822 [INFO] root: 开始抓取: https://rsshub.app/solidot/linux
