@@ -117,6 +117,14 @@ async function loadSettings() {
   q('#tgChatId').value = s.telegram.chat_id || '';
   q('#tgPushSummary').checked = !!s.telegram.push_summary;
 
+  if (!s.feishu) {
+    s.feishu = { enabled: false, webhook_url: '', secret: '', push_summary: false };
+  }
+  q('#fsEnabled').checked = !!s.feishu.enabled;
+  q('#fsWebhook').value = s.feishu.webhook_url || '';
+  q('#fsSecret').value = '';
+  q('#fsPushSummary').checked = !!s.feishu.push_summary;
+
   // 渲染筛选源
   const sel = q('#feedSelect');
   sel.innerHTML = '<option value="">全部源</option>' + state.feeds.map(f => `<option value="${escapeHtml(f)}">${escapeHtml(f)}</option>`).join('');
@@ -124,7 +132,7 @@ async function loadSettings() {
 }
 
 function gatherSettingsFromForm() {
-  const current = state.settings;
+  const current = state.settings || { server: {}, logging: {}, feishu: {} };
   const feeds = q('#feeds').value.split(/\n+/).map(s => s.trim()).filter(Boolean);
   return {
     server: current.server,
@@ -150,6 +158,12 @@ function gatherSettingsFromForm() {
       bot_token: q('#tgToken').value.trim() || '***',
       chat_id: q('#tgChatId').value.trim(),
       push_summary: q('#tgPushSummary').checked,
+    },
+    feishu: {
+      enabled: q('#fsEnabled').checked,
+      webhook_url: q('#fsWebhook').value.trim(),
+      secret: q('#fsSecret').value.trim() || '***',
+      push_summary: q('#fsPushSummary').checked,
     },
     logging: current.logging,
   };

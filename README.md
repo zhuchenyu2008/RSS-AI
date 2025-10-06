@@ -39,7 +39,8 @@
 - 去重与存储：使用 SQLite 本地存储，基于 `feed_url + item_uid` 唯一约束去重；可配置最大存储条数，自动裁剪旧数据。
 - 单源抓取上限：可为每个 RSS 源设置“单次抓取最多处理 N 条”，按时间倒序优先（越新越先处理）。
 - Telegram 推送：将 AI 总结以精简排版推送到指定群组或频道。
-- 抓取汇总推送（可选）：可将每次抓取的汇总信息（条目总数、入库成功/重复/失败、AI 调用成功/失败次数、Token 消耗等）推送到 Telegram。
+- 飞书推送：通过自定义机器人 Webhook 推送文章摘要，可选开启签名校验。
+- 抓取汇总推送（可选）：可将每次抓取的汇总信息（条目总数、入库成功/重复/失败、AI 调用成功/失败次数、Token 消耗等）推送到 Telegram / 飞书。
 - 标准 API：提供 RESTful 接口与 `/docs` Swagger UI。
 - 前端管理：查看摘要列表、手动抓取、在线修改配置（无需重启服务）。
  - 可自定义提示词：支持自定义 System Prompt 与 User Prompt 模板（可用 {title}、{link}、{pub_date}、{author}、{content} 占位符）。
@@ -159,6 +160,12 @@ telegram:
   chat_id: "@your_channel_or_chat_id"
   push_summary: false   # 是否推送抓取汇总
 
+feishu:
+  enabled: false
+  webhook_url: https://open.feishu.cn/open-apis/bot/v2/hook/xxxx
+  secret: 可选签名密钥，若启用请填写
+  push_summary: false   # 是否推送抓取汇总到飞书
+
 logging:
   level: INFO
   file: logs/app.log
@@ -167,6 +174,7 @@ logging:
 - AI 接口为 OpenAI 兼容格式（`/v1/chat/completions`），你可替换 `base_url` 与 `model` 指向任意兼容服务。
 - 前端“设置”页支持在线更新以上配置。为安全起见，`api_key` 与 `bot_token` 在界面不回显；若不修改请留空，后端会保留旧值。
 - 若开启 `telegram.push_summary`，每次抓取结束后会发送一条汇总消息，包含：源数量、获取条目、入库成功、重复跳过、处理失败、AI 调用次数（成功/失败）、Token 消耗；有助于监控运行状态与用量。
+- 飞书推送：前端同样提供启用、Webhook、签名密钥与汇总开关；密钥字段留空会在后端保持原值，若填写则会按飞书规范自动计算签名并发送。
 - 自定义提示词：
   - System Prompt 与 User Prompt 模板均可在前端“AI 设置”中修改并保存。
   - 若模板中需要字面量大括号，请使用双大括号进行转义，例如 `{{` 与 `}}`。
@@ -177,6 +185,15 @@ logging:
 - 若抽取失败，会回退使用 RSS 内置的 `content/summary`。
 - 可通过 `fetch.use_article_page` 开关控制是否启用该能力；超时由 `fetch.article_timeout_seconds` 控制。
 - 每次抓取会先按时间倒序对条目排序，再截取 `fetch.per_feed_limit` 条进行处理，避免一次处理过多历史项。
+
+### 飞书推送配置与调试
+
+1. 在飞书中创建自定义机器人，记录 Webhook URL，并视情况启用“签名校验”获取密钥。
+2. 在前端“设置”页的“飞书推送”区域勾选启用，填写 Webhook、（可选）Secret，并选择是否推送抓取汇总。
+3. 保存设置后，可在“内容”页点击“手动抓取”触发一次抓取：
+   - 若有新文章入库，会实时推送到飞书群聊；
+   - 若开启“推送抓取汇总”，抓取结束后会额外发送一条汇总信息，便于核对调用次数与失败项。
+4. 如推送失败，请检查日志 `backend/logs/app.log`，后端会输出“推送飞书: 失败”或“推送飞书汇总: 失败”便于排查（例如签名错误、Webhook 配置有误等）。
 
 ## API 速览
 

@@ -46,6 +46,13 @@ class SettingsTelegram(BaseModel):
     push_summary: bool = False
 
 
+class SettingsFeishu(BaseModel):
+    enabled: bool = False
+    webhook_url: str = ""
+    secret: str = ""
+    push_summary: bool = False
+
+
 class SettingsLogging(BaseModel):
     level: str = "INFO"
     file: str = "logs/app.log"
@@ -61,6 +68,7 @@ class AppSettings(BaseModel):
     fetch: SettingsFetch = SettingsFetch()
     ai: SettingsAI = SettingsAI()
     telegram: SettingsTelegram = SettingsTelegram()
+    feishu: SettingsFeishu = SettingsFeishu()
     logging: SettingsLogging = SettingsLogging()
 
 

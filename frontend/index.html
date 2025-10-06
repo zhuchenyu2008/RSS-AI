@@ -125,6 +125,26 @@
             </label>
           </fieldset>
 
+          <fieldset>
+            <legend>飞书推送</legend>
+            <label>
+              启用飞书推送
+              <input type="checkbox" id="fsEnabled" />
+            </label>
+            <label>
+              Webhook URL
+              <input type="text" id="fsWebhook" placeholder="https://open.feishu.cn/open-apis/bot/v2/hook/..." />
+            </label>
+            <label>
+              Secret（可选，留空沿用旧值）
+              <input type="password" id="fsSecret" placeholder="（留空不变）" />
+            </label>
+            <label class="switch">
+              <input type="checkbox" id="fsPushSummary" />
+              <span>推送抓取汇总到飞书</span>
+            </label>
+          </fieldset>
+
           <div class="actions">
             <button type="submit" class="primary">保存设置</button>
             <span id="saveStatus"></span>

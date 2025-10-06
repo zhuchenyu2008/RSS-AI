@@ -52,6 +52,13 @@ telegram:
   chat_id: "@your_channel_or_chat_id"
   push_summary: false
 
+# 飞书推送配置
+feishu:
+  enabled: false
+  webhook_url: "https://open.feishu.cn/open-apis/bot/v2/hook/xxxx"
+  secret: "可选：填写自定义机器人签名密钥"
+  push_summary: false
+
 # 运行时日志
 logging:
   level: INFO

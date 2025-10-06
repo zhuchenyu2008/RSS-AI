@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import logging
 import os
-from typing import Optional
+from typing import List, Optional
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -21,6 +21,7 @@ from .storage import init_db, list_articles, get_article, insert_article, prune_
 from .rss_service import fetch_feed
 from .extractor import extract_from_url
 from .ai_client import AIClient, fallback_summary
+from .feishu_client import FeishuClient
 from .telegram_client import TelegramClient
 from .scheduler import FetchScheduler
 
@@ -69,6 +70,15 @@ def _build_telegram_client(settings: AppSettings) -> Optional[TelegramClient]:
     return None
 
 
+def _build_feishu_client(settings: AppSettings) -> Optional[FeishuClient]:
+    if settings.feishu.enabled and settings.feishu.webhook_url:
+        return FeishuClient(
+            webhook_url=settings.feishu.webhook_url,
+            secret=settings.feishu.secret or None,
+        )
+    return None
+
+
 def _format_telegram_message(item: dict) -> str:
     # item has title, link, pubDate, author, summary_text
     title = item.get("title", "")
@@ -93,10 +103,67 @@ def _format_telegram_message(item: dict) -> str:
     return "\n".join(parts)
 
 
+def _format_feishu_message(item: dict) -> str:
+    title = item.get("title", "")
+    link = item.get("link", "")
+    pub_date = item.get("pubDate", "")
+    author = item.get("author", "")
+    summary_text = item.get("summary_text", "")
+    parts: List[str] = []
+    if title:
+        parts.append(f"【{title}】")
+    if link:
+        parts.append(link)
+    meta = []
+    if pub_date:
+        meta.append(f"发布时间：{pub_date}")
+    if author:
+        meta.append(f"作者：{author}")
+    if meta:
+        parts.append(" | ".join(meta))
+    if summary_text:
+        parts.append(summary_text)
+    return "\n".join(parts)
+
+
+def _build_summary_lines(
+    feeds_count: int,
+    processed: int,
+    new_items: int,
+    duplicates: int,
+    failed_items: int,
+    ai: Optional[AIClient],
+    ai_calls: int,
+    ai_success: int,
+    ai_failed: int,
+    tokens_prompt: int,
+    tokens_completion: int,
+    tokens_total: int,
+    feed_fetch_failed: int,
+) -> List[str]:
+    lines = [
+        "RSS-AI 抓取汇总",
+        f"RSS 源：{feeds_count} 个",
+        f"获取条目：{processed} 条",
+        f"新增入库：{new_items} 条",
+        f"重复跳过：{duplicates} 条",
+        f"处理失败：{failed_items} 条",
+    ]
+    if ai is not None:
+        lines.extend([
+            f"AI 调用：{ai_calls} 次（成功 {ai_success}，失败 {ai_failed}）",
+            f"Token 消耗：prompt {tokens_prompt}，completion {tokens_completion}，total {tokens_total}",
+        ])
+    if feed_fetch_failed:
+        lines.append(f"源抓取失败：{feed_fetch_failed} 个源")
+    return lines
+
+
 def do_fetch_once(force: bool = False) -> FetchResponse:
     settings = load_settings()
     ai = _build_ai_client(settings)
     tg = _build_telegram_client(settings)
+    fs = _build_feishu_client(settings)
 
     new_items = 0
     processed = 0
@@ -201,6 +268,10 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                         text = _format_telegram_message(ai_obj)
                         ok = tg.send_message(settings.telegram.chat_id, text, parse_mode="HTML", disable_web_page_preview=False)
                         logging.info(f"推送Telegram: {'成功' if ok else '失败'}")
+                    if fs is not None:
+                        text = _format_feishu_message(ai_obj)
+                        ok = fs.send_message(text)
+                        logging.info(f"推送飞书: {'成功' if ok else '失败'}")
                 else:
                     logging.debug(f"入库跳过或失败(可能重复): {article.title}")
             except Exception as ex:
@@ -208,24 +279,35 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 logging.exception(f"入库过程中异常: {ex}")
         logging.info(f"汇总 {feed}: 新增 {new_items}，重复 {dup}，本次处理 {len(entries)} 条")
         duplicates += dup
-    # 抓取汇总后报告到 Telegram（可选）
+    # 抓取汇总后报告到 Telegram / 飞书（可选）
+    summary_lines = _build_summary_lines(
+        feeds_count,
+        processed,
+        new_items,
+        duplicates,
+        failed_items,
+        ai,
+        ai_calls,
+        ai_success,
+        ai_failed,
+        tokens_prompt,
+        tokens_completion,
+        tokens_total,
+        feed_fetch_failed,
+    )
     if tg is not None and settings.telegram.push_summary:
-        summary_lines = [
-            "<b>RSS-AI 抓取汇总</b>",
-            f"RSS 源：{feeds_count} 个",
-            f"获取条目：{processed} 条",
-            f"新增入库：{new_items} 条",
-            f"重复跳过：{duplicates} 条",
-            f"处理失败：{failed_items} 条",
-        ]
-        if ai is not None:
-            summary_lines.extend([
-                f"AI 调用：{ai_calls} 次（成功 {ai_success}，失败 {ai_failed}）",
-                f"Token 消耗：prompt {tokens_prompt}，completion {tokens_completion}，total {tokens_total}",
-            ])
-        if feed_fetch_failed:
-            summary_lines.append(f"源抓取失败：{feed_fetch_failed} 个源")
-        tg.send_message(settings.telegram.chat_id, "\n".join(summary_lines), parse_mode="HTML", disable_web_page_preview=True)
+        tg_summary = summary_lines.copy()
+        tg_summary[0] = "<b>RSS-AI 抓取汇总</b>"
+        ok = tg.send_message(
+            settings.telegram.chat_id,
+            "\n".join(tg_summary),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+        logging.info(f"推送Telegram汇总: {'成功' if ok else '失败'}")
+    if fs is not None and settings.feishu.push_summary:
+        ok = fs.send_message("\n".join(summary_lines))
+        logging.info(f"推送飞书汇总: {'成功' if ok else '失败'}")
 
     return FetchResponse(
         fetched_feeds=feeds_count,
@@ -270,6 +352,8 @@ def get_settings():
         safe.ai.api_key = "***"
     if safe.telegram.bot_token:
         safe.telegram.bot_token = "***"
+    if safe.feishu.secret:
+        safe.feishu.secret = "***"
     # 为避免用户从零填写提示词，若为空则回填默认提示词
     defaults = AppSettings()
     if not (safe.ai.system_prompt and safe.ai.system_prompt.strip()):
@@ -287,6 +371,8 @@ def update_settings(new_settings: AppSettings):
         new_settings.ai.api_key = old.ai.api_key
     if new_settings.telegram.bot_token == "***":
         new_settings.telegram.bot_token = old.telegram.bot_token
+    if new_settings.feishu.secret == "***":
+        new_settings.feishu.secret = old.feishu.secret
     # 若提示词为空，填充为默认值，避免出现空白
     defaults = AppSettings()
     if not (new_settings.ai.system_prompt and new_settings.ai.system_prompt.strip()):
