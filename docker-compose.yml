@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: ./backend
+    container_name: rss-ai-backend
+    ports:
+      - "3601:3601"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./backend/config.yaml:/app/config.yaml:rw
+      - ./backend/logs:/app/logs:rw
+      - ./backend/data:/app/data:rw
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    container_name: rss-ai-frontend
+    ports:
+      - "3602:3602"
+    environment:
+      - PORT=3602
+      - BACKEND_BASE_URL=http://backend:3601
+      - TZ=Asia/Shanghai
+    depends_on:
+      - backend
+    restart: unless-stopped

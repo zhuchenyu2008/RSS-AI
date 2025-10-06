@@ -58,6 +58,39 @@ PORT=3602 BACKEND_BASE_URL=http://127.0.0.1:3601 ./run.sh
 
 打开浏览器访问 `http://127.0.0.1:3602`。该前端服务会将 `/api/*` 请求反向代理到后端 3601，实现同源访问，无需 CORS。
 
+## 使用 Docker 运行（推荐）
+
+确保已安装 Docker 与 Docker Compose：
+
+```
+docker compose build
+docker compose up -d
+```
+
+启动完成后：
+
+- 后端 API：http://127.0.0.1:3601 （Swagger: /docs）
+- 前端 Web：http://127.0.0.1:3602 （同源反代到后端）
+
+数据与配置持久化：
+
+- `backend/config.yaml` 会被挂载到容器 `/app/config.yaml`，可本地编辑后热更新（保存配置也会写回本地文件）。
+- `backend/logs/` 与 `backend/data/` 挂载为持久化目录（日志与 SQLite 数据库）。
+
+常用命令：
+
+```
+# 查看日志
+docker compose logs -f backend
+docker compose logs -f frontend
+
+# 重建镜像
+docker compose build --no-cache
+
+# 停止并移除容器
+docker compose down
+```
+
 ## 配置说明（backend/config.yaml）
 
 首次运行若不存在会自动从 `config.example.yaml` 生成。关键字段：

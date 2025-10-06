@@ -833,3 +833,115 @@ For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/St
 2025-10-06 01:12:19,384 [INFO] root: 应用即将停止…
 2025-10-06 01:12:19,833 [INFO] root: 调度器已停止
 2025-10-06 01:12:19,834 [INFO] root: 应用已停止
+2025-10-06 01:16:09,990 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:16:09,991 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 01:26:10,087 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 01:26:10,090 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 09:26:52,345 [INFO] root: 应用启动中…
+2025-10-06 09:26:52,346 [INFO] root: 调度器已启动
+2025-10-06 09:26:52,347 [INFO] root: 应用已启动
+2025-10-06 09:26:52,349 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 09:26:52,381 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 09:26:52,402 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 14 条
+2025-10-06 09:26:52,403 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 14
+2025-10-06 09:26:52,403 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 09:26:52,438 [INFO] httpx: HTTP Request: GET https://www.nytimes.com/2025/10/05/us/trump-national-guard-california-oregon-newsom.html "HTTP/1.1 403 Forbidden"
+2025-10-06 09:26:52,439 [WARNING] root: 抓取原文失败 https://www.nytimes.com/2025/10/05/us/trump-national-guard-california-oregon-newsom.html: Client error '403 Forbidden' for url 'https://www.nytimes.com/2025/10/05/us/trump-national-guard-california-oregon-newsom.html'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403
+2025-10-06 09:26:52,449 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:26:55,647 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:26:55,651 [INFO] root: 新文章入库: 特朗普派遣加州国民警卫队前往俄勒冈州波特兰市 (60)
+2025-10-06 09:26:56,309 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:26:56,310 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:26:56,310 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 1，重复 1，本次处理 2 条
+2025-10-06 09:26:56,310 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 09:26:56,482 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 09:26:56,502 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 34 条
+2025-10-06 09:26:56,502 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 34
+2025-10-06 09:26:56,502 [INFO] root: 限制单源抓取上限为 2 条（优先最新）
+2025-10-06 09:26:56,544 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cn0rnj6504yo?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 09:26:56,548 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cn0rnj6504yo?at_medium=RSS&at_campaign=rss status=200 bytes=266487
+2025-10-06 09:26:56,610 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:26:56,622 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:27:11,285 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:27:11,290 [INFO] root: 新文章入库: 时间为何对决定Kemi Badenoch未来的保守党议员至关重要 (61)
+2025-10-06 09:27:11,945 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7212570576:AAGCtl7Xl42aiZgl024q8dJ5Ic2bLIinLDo/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:27:11,946 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:27:11,947 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 2，重复 1，本次处理 2 条
+2025-10-06 09:32:35,614 [INFO] root: 配置已更新
+2025-10-06 09:32:35,615 [INFO] root: 更新抓取间隔为 10 分钟
+2025-10-06 09:32:36,053 [INFO] root: 调度器已停止
+2025-10-06 09:32:36,054 [INFO] root: 调度器已启动
+2025-10-06 09:32:36,060 [INFO] root: 开始抓取: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+2025-10-06 09:32:36,225 [INFO] httpx: HTTP Request: GET https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml "HTTP/1.1 200 OK"
+2025-10-06 09:32:36,239 [INFO] root: RSS结果 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 共 14 条
+2025-10-06 09:32:36,240 [INFO] root: 抓取完成: https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml，条目数 14
+2025-10-06 09:32:36,240 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:32:36,241 [INFO] root: 汇总 https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml: 新增 0，重复 5，本次处理 5 条
+2025-10-06 09:32:36,241 [INFO] root: 开始抓取: https://feeds.bbci.co.uk/news/rss.xml?edition=int
+2025-10-06 09:32:36,266 [INFO] httpx: HTTP Request: GET https://feeds.bbci.co.uk/news/rss.xml?edition=int "HTTP/1.1 200 OK"
+2025-10-06 09:32:36,280 [INFO] root: RSS结果 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 共 34 条
+2025-10-06 09:32:36,280 [INFO] root: 抓取完成: https://feeds.bbci.co.uk/news/rss.xml?edition=int，条目数 34
+2025-10-06 09:32:36,281 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:32:36,314 [INFO] httpx: HTTP Request: GET https://www.bbc.com/news/articles/cr4qp4nlppko?at_medium=RSS&at_campaign=rss "HTTP/1.1 200 OK"
+2025-10-06 09:32:36,317 [INFO] root: 抓取原文成功 https://www.bbc.com/news/articles/cr4qp4nlppko?at_medium=RSS&at_campaign=rss status=200 bytes=255381
+2025-10-06 09:32:36,375 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:32:36,385 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:32:39,135 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:32:39,139 [INFO] root: 新文章入库: “风格差距”是亲密关系的杀手吗？ (62)
+2025-10-06 09:32:41,059 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:32:41,059 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:32:41,061 [INFO] root: 汇总 https://feeds.bbci.co.uk/news/rss.xml?edition=int: 新增 1，重复 4，本次处理 5 条
+2025-10-06 09:32:41,061 [INFO] root: 开始抓取: https://sanhua.himrr.com/daily-news/feed
+2025-10-06 09:32:42,162 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/daily-news/feed "HTTP/1.1 200 OK"
+2025-10-06 09:32:42,186 [INFO] root: RSS结果 https://sanhua.himrr.com/daily-news/feed: 共 25 条
+2025-10-06 09:32:42,186 [INFO] root: 抓取完成: https://sanhua.himrr.com/daily-news/feed，条目数 25
+2025-10-06 09:32:42,186 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:32:43,702 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/news/9df8f8a4-562a-4565-9ca1-86072107ea93 "HTTP/1.1 200 OK"
+2025-10-06 09:32:43,975 [INFO] root: 抓取原文成功 https://sanhua.himrr.com/news/9df8f8a4-562a-4565-9ca1-86072107ea93 status=200 bytes=55942
+2025-10-06 09:32:43,999 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:32:44,008 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:32:54,166 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:32:54,170 [INFO] root: 新文章入库: Suno AI 发布 V5 音乐模型：号称世界最佳音乐生成 AI (63)
+2025-10-06 09:32:54,878 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:32:54,879 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:32:56,394 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/news/27273397-776e-4bc8-b0c8-ca00d2c4a629 "HTTP/1.1 200 OK"
+2025-10-06 09:32:56,670 [INFO] root: 抓取原文成功 https://sanhua.himrr.com/news/27273397-776e-4bc8-b0c8-ca00d2c4a629 status=200 bytes=60065
+2025-10-06 09:32:56,694 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:32:56,703 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:33:05,864 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:33:05,869 [INFO] root: 新文章入库: Figma 推出 MCP 服务器 (64)
+2025-10-06 09:33:06,515 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:33:06,516 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:33:07,683 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/news/b84c54b4-d507-4982-b601-6292784225c1 "HTTP/1.1 200 OK"
+2025-10-06 09:33:07,860 [INFO] root: 抓取原文成功 https://sanhua.himrr.com/news/b84c54b4-d507-4982-b601-6292784225c1 status=200 bytes=55376
+2025-10-06 09:33:07,888 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:33:07,897 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:33:09,650 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:33:09,655 [INFO] root: 新文章入库: GitHub 推出 Copilot-SWE 实验模型：专为代码编辑与重构优化 (65)
+2025-10-06 09:33:10,320 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:33:10,321 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:33:11,884 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/news/88d65b37-f721-4447-9a62-405c1c340bb2 "HTTP/1.1 200 OK"
+2025-10-06 09:33:12,173 [INFO] root: 抓取原文成功 https://sanhua.himrr.com/news/88d65b37-f721-4447-9a62-405c1c340bb2 status=200 bytes=55338
+2025-10-06 09:33:12,196 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:33:12,205 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:33:14,419 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:33:14,424 [INFO] root: 新文章入库: Cloudflare 开源 VibeSDK：用自然语言生成并部署 Web 应用 (66)
+2025-10-06 09:33:15,122 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:33:15,123 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:33:16,467 [INFO] httpx: HTTP Request: GET https://sanhua.himrr.com/news/be1d9f53-90bd-4016-b0bf-fe5fe654ec07 "HTTP/1.1 200 OK"
+2025-10-06 09:33:16,697 [INFO] root: 抓取原文成功 https://sanhua.himrr.com/news/be1d9f53-90bd-4016-b0bf-fe5fe654ec07 status=200 bytes=68546
+2025-10-06 09:33:16,726 [INFO] root: 使用原文抽取正文进行AI总结
+2025-10-06 09:33:16,736 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6
+2025-10-06 09:33:26,452 [INFO] httpx: HTTP Request: POST https://api.aioec.tech/v1/chat/completions "HTTP/1.1 200 OK"
+2025-10-06 09:33:26,457 [INFO] root: 新文章入库: 谷歌推出 Chrome DevTools MCP：让 AI 代码助手拥有浏览器调试超能力 (67)
+2025-10-06 09:33:27,159 [INFO] httpx: HTTP Request: POST https://api.telegram.org/bot7698712513:AAEf4Fyjc4D4Kb9GFq3IJvCZ4-ptRIfcuu4/sendMessage "HTTP/1.1 200 OK"
+2025-10-06 09:33:27,160 [INFO] root: 推送Telegram: 成功
+2025-10-06 09:33:27,160 [INFO] root: 汇总 https://sanhua.himrr.com/daily-news/feed: 新增 6，重复 0，本次处理 5 条
+2025-10-06 09:33:27,160 [INFO] root: 开始抓取: https://feeds.washingtonpost.com/rss/world
+2025-10-06 09:33:36,262 [INFO] httpx: HTTP Request: GET https://feeds.washingtonpost.com/rss/world "HTTP/1.1 200 OK"
+2025-10-06 09:33:36,268 [INFO] root: RSS结果 https://feeds.washingtonpost.com/rss/world: 共 11 条
+2025-10-06 09:33:36,268 [INFO] root: 抓取完成: https://feeds.washingtonpost.com/rss/world，条目数 11
+2025-10-06 09:33:36,268 [INFO] root: 限制单源抓取上限为 5 条（优先最新）
+2025-10-06 09:33:51,294 [WARNING] root: 抓取原文失败 https://www.washingtonpost.com/world/2025/10/05/ukraine-russia-energy-attack/: The read operation timed out
+2025-10-06 09:33:51,305 [INFO] root: AI请求: url=https://api.aioec.tech/v1/chat/completions model=glm-4.6

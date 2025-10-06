@@ -1,0 +1,29 @@
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Node/Front-end (future proof)
+node_modules/
+dist/
+build/
+
+# Local runtime files
+backend/config.yaml
+backend/logs/
+backend/data/
+*.sqlite
+
+# Docker
+.env
+*.log
+
