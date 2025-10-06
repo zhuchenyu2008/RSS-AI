@@ -40,6 +40,10 @@
 - Python 3.10+
 - 可选：创建虚拟环境 `python -m venv .venv && source .venv/bin/activate`
 
+```
+git clone https://github.com/zhuchenyu2008/RSS-AI
+```
+
 2) 安装依赖并启动后端（端口 3601）
 
 ```
