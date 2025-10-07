@@ -87,6 +87,39 @@ PORT=3602 BACKEND_BASE_URL=http://127.0.0.1:3601 ./run.sh
 
 ## 使用 Docker 运行（推荐）
 
+### 使用 Docker Hub 预构建镜像
+
+已在 Docker Hub 发布官方镜像，可直接拉取并运行：
+
+```bash
+docker pull zhuchenyu2008/rss-ai-backend
+docker pull zhuchenyu2008/rss-ai-frontend
+```
+
+若仅使用后端，可通过以下命令启动（默认监听 3601 端口）：
+
+```bash
+docker run -d \
+  --name rss-ai-backend \
+  -p 3601:3601 \
+  -v "$(pwd)/backend/config.yaml:/app/config.yaml" \
+  -v "$(pwd)/backend/data:/app/data" \
+  -v "$(pwd)/backend/logs:/app/logs" \
+  zhuchenyu2008/rss-ai-backend
+```
+
+前端镜像为纯静态资源服务，需要指定后端地址并映射 3602 端口：
+
+```bash
+docker run -d \
+  --name rss-ai-frontend \
+  -p 3602:3602 \
+  -e BACKEND_BASE_URL="http://127.0.0.1:3601" \
+  zhuchenyu2008/rss-ai-frontend
+```
+
+两者配合使用时，请保证前端容器能够访问后端地址（可在同一主机使用默认端口，或结合反向代理/自定义网络）。
+
 确保已安装 Docker 与 Docker Compose：
 
 ```
