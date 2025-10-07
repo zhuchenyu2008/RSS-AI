@@ -1,58 +1,99 @@
-# RSS-AI 配置示例
-
-# 服务监听配置
 server:
   host: 0.0.0.0
   port: 3601
-
-# 抓取与存储配置
 fetch:
-  interval_minutes: 10     # 定时抓取间隔（分钟）
-  max_items: 500           # 本地存储的文章上限（总量）
-  feeds:                   # RSS 列表
-      - https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
-      - https://feeds.bbci.co.uk/news/rss.xml?edition=int
-      - https://sanhua.himrr.com/daily-news/feed
-      - https://feeds.washingtonpost.com/rss/world
-      - https://www.theguardian.com/international/rss
-      - https://feeds.bloomberg.com/technology/news.rss
-      - https://feeds.washingtonpost.com/rss/technology
-      - https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
-      - https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
-      - https://feeds.npr.org/1002/rss.xml
-  use_article_page: true   # 抓取原文网页并抽取正文后再送AI
+  interval_minutes: 10
+  max_items: 500
+  feeds:
+  - https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml
+  - https://feeds.bbci.co.uk/news/rss.xml?edition=int
+  - https://sanhua.himrr.com/daily-news/feed
+  - https://feeds.washingtonpost.com/rss/world
+  - https://www.theguardian.com/international/rss
+  - https://feeds.bloomberg.com/technology/news.rss
+  - https://feeds.washingtonpost.com/rss/technology
+  - https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
+  - https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
+  - https://feeds.npr.org/1002/rss.xml
+  filter_keywords:[] #格式如下，若非空需把“[]”删除
+  #- 人工智能
+  #- AI
+  #- 生成式AI
+  #- generative AI
+  
+  use_article_page: true
   article_timeout_seconds: 15
-  per_feed_limit: 10       # 单个RSS源每次抓取的最大条数（越新的优先）
-
-# AI 接口配置（OpenAI 通用格式）
+  per_feed_limit: 1
 ai:
   enabled: true
   base_url: https://api.openai.com/v1
   api_key: "YOUR_API_KEY"
-  model: gpt-4o-mini
-  # 温度可选
+  model: glm-4.6
   temperature: 0.2
-  # 自定义提示词
-  system_prompt: |
-    你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link, pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可，如果不是北京时间需要转换成北京时间）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
-  user_prompt_template: |
-    标题: {title}
+  system_prompt: '你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link,
+    pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可，如果不是北京时间需要转换成北京时间）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
+
+    '
+  user_prompt_template: '标题: {title}
+
     链接: {link}
+
     发布时间: {pub_date}
+
     作者: {author}
+
     正文/摘要(可能包含HTML):
+
     {content}
+
 
     请只输出JSON，不要任何解释或markdown。
 
-# Telegram 推送配置
+    '
 telegram:
-  enabled: false
+  enabled: true
   bot_token: "YOUR_TELEGRAM_BOT_TOKEN"
   chat_id: "@your_channel_or_chat_id"
-  push_summary: false
+  push_summary: true
+reports:
+  daily_enabled: true
+  hourly_enabled: true
+  report_timeout_seconds: 60
+  system_prompt: '你是一名资深中文资讯编辑，需要汇总给定时间范围内的RSS内容。
 
-# 运行时日志
+    请输出结构化的纯文本报告，包含以下部分：
+
+    1. 概览：总结整体趋势、领域，给出文章总量。
+
+    2. 重点事件：列出2-6条最值得关注的资讯，每条1-2句话。
+
+    3. 其余事件：除重点时间外的咨询汇总成2-6条，每条1-2句话
+
+    3. 数据统计：概括主要来源及数量，指出值得注意的变化。
+
+    输出使用中文，避免Markdown或HTML。
+
+    '
+  user_prompt_template: '请基于以下信息生成报告，输出时直接从“概览”部分开始，不要重复报告类型、时间范围或文章总数等字段。
+
+
+    报告元信息：
+
+    - 报告类型：{label}
+
+    - 时间范围：{timeframe}
+
+    - 文章总数：{article_count}
+
+
+    来源统计：
+
+    {feed_stats}
+
+
+    文章详情（按时间排序）：
+
+    {article_details}'
 logging:
   level: INFO
   file: logs/app.log

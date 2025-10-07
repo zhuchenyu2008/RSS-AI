@@ -2,7 +2,8 @@ from __future__ import annotations
 
 import logging
 import os
-from typing import Optional
+from datetime import datetime, timedelta, timezone
+from typing import Dict, Optional, Tuple
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -16,13 +17,26 @@ from .models import (
     FetchRequest,
     FetchResponse,
     HealthResponse,
+    ReportInDB,
+    ReportListResponse,
+    ReportGenerateRequest,
 )
-from .storage import init_db, list_articles, get_article, insert_article, prune_articles, exists_article
+from .storage import (
+    init_db,
+    list_articles,
+    get_article,
+    insert_article,
+    prune_articles,
+    exists_article,
+    list_reports,
+    get_report,
+)
 from .rss_service import fetch_feed
 from .extractor import extract_from_url
 from .ai_client import AIClient, fallback_summary
 from .telegram_client import TelegramClient
-from .scheduler import FetchScheduler
+from .scheduler import FetchScheduler, AlignedScheduler
+from .report_service import generate_report as run_report, BEIJING_TZ
 
 
 app = FastAPI(title="RSS-AI API", version="0.1.0")
@@ -37,6 +51,7 @@ app.add_middleware(
 )
 
 _scheduler: Optional[FetchScheduler] = None
+_report_schedulers: Dict[str, AlignedScheduler] = {}
 
 
 def _setup_logging():
@@ -69,13 +84,83 @@ def _build_telegram_client(settings: AppSettings) -> Optional[TelegramClient]:
     return None
 
 
-def _format_telegram_message(item: dict) -> str:
+def _next_top_of_hour(now: datetime) -> datetime:
+    local = now.astimezone(BEIJING_TZ)
+    aligned = local.replace(minute=0, second=0, microsecond=0)
+    if local >= aligned:
+        aligned += timedelta(hours=1)
+    return aligned.astimezone(timezone.utc)
+
+
+def _next_midnight(now: datetime) -> datetime:
+    local = now.astimezone(BEIJING_TZ)
+    aligned = local.replace(hour=0, minute=0, second=0, microsecond=0)
+    if local >= aligned:
+        aligned += timedelta(days=1)
+    return aligned.astimezone(timezone.utc)
+
+
+def _run_report(report_type: str):
+    settings = load_settings()
+    if report_type == "daily" and not settings.reports.daily_enabled:
+        logging.debug("日报已禁用，跳过生成")
+        return
+    if report_type == "hourly" and not settings.reports.hourly_enabled:
+        logging.debug("小时报已禁用，跳过生成")
+        return
+    ai = _build_ai_client(settings)
+    tg = _build_telegram_client(settings)
+    run_report(report_type, settings=settings, ai_client=ai, telegram_client=tg)
+
+
+def _configure_report_schedulers(settings: AppSettings):
+    global _report_schedulers
+
+    def ensure_scheduler(report_type: str, enabled: bool, compute):
+        scheduler = _report_schedulers.get(report_type)
+        if enabled:
+            if scheduler is None:
+                scheduler = AlignedScheduler(
+                    name=f"ReportScheduler-{report_type}",
+                    compute_next_run=compute,
+                    task=lambda rt=report_type: _run_report(rt),
+                )
+                _report_schedulers[report_type] = scheduler
+                # Generate once immediately for当前时间段
+                _run_report(report_type)
+            scheduler.start()
+        else:
+            if scheduler is not None:
+                scheduler.stop()
+                del _report_schedulers[report_type]
+
+    ensure_scheduler("hourly", settings.reports.hourly_enabled, _next_top_of_hour)
+    ensure_scheduler("daily", settings.reports.daily_enabled, _next_midnight)
+
+
+def _manual_report_timeframe(report_type: str) -> Tuple[datetime, datetime]:
+    now_local = datetime.now(BEIJING_TZ)
+    if report_type == "daily":
+        start_local = now_local.replace(hour=0, minute=0, second=0, microsecond=0)
+        end_local = now_local
+    elif report_type == "hourly":
+        end_local = now_local
+        start_local = end_local - timedelta(hours=1)
+    else:
+        raise ValueError("unsupported report type")
+    start_utc = start_local.astimezone(timezone.utc)
+    end_utc = end_local.astimezone(timezone.utc)
+    return start_utc, end_utc
+
+
+def _format_telegram_message(item: dict, matched_keywords: Optional[list[str]] = None) -> str:
     # item has title, link, pubDate, author, summary_text
     title = item.get("title", "")
     link = item.get("link", "")
     pub_date = item.get("pubDate", "")
     author = item.get("author", "")
     summary_text = item.get("summary_text", "")
+    keywords = matched_keywords or []
     # HTML formatting for Telegram
     parts = [
         f"<b>{title}</b>",
@@ -86,6 +171,8 @@ def _format_telegram_message(item: dict) -> str:
         meta.append(f"发布时间：{pub_date}")
     if author:
         meta.append(f"作者：{author}")
+    if keywords:
+        meta.append("关键词：" + "、".join(keywords))
     if meta:
         parts.append(" | ".join(meta))
     if summary_text:
@@ -110,6 +197,11 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
     tokens_completion = 0
     tokens_total = 0
     feed_fetch_failed = 0
+    raw_keywords = getattr(settings.fetch, "filter_keywords", []) or []
+    filter_keywords = [kw.strip() for kw in raw_keywords if isinstance(kw, str) and kw.strip()]
+    keyword_terms = list(filter_keywords)
+    keyword_match_hits = 0
+    keyword_match_articles = 0
     for feed in settings.fetch.feeds:
         logging.info(f"开始抓取: {feed}")
         try:
@@ -136,40 +228,60 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 dup += 1
                 continue
 
-            # summarize via AI or fallback
+            # Prefer extracted fulltext for downstream usage
+            extracted_content = None
+            if settings.fetch.use_article_page and e.link:
+                extracted_content = extract_from_url(
+                    e.link,
+                    timeout=float(settings.fetch.article_timeout_seconds),
+                )
+                if extracted_content:
+                    logging.info("使用原文抽取正文进行内容处理")
+
+            content_source = extracted_content or e.content or ""
+            haystack_parts = [e.title, e.author, e.content, extracted_content]
+            haystack = " \n ".join(part for part in haystack_parts if part)
+            matched_keywords: list[str] = []
+            if keyword_terms:
+                matched_keywords = [kw for kw in keyword_terms if kw and kw in haystack]
+                if matched_keywords:
+                    matched_keywords = list(dict.fromkeys(matched_keywords))
+                keywords_matched = bool(matched_keywords)
+                if keywords_matched:
+                    keyword_match_articles += 1
+                    keyword_match_hits += len(matched_keywords)
+            else:
+                keywords_matched = True
+            if not keywords_matched and filter_keywords:
+                logging.debug("关键词未匹配，跳过AI总结与推送: %s", e.title)
+
+            # summarize via AI when keywords matched; otherwise fallback
             ai_obj = None
-            if ai is not None:
+            attempted_ai = False
+            if ai is not None and keywords_matched:
                 logging.debug(f"AI总结开始: {e.title}")
-                # Prefer extracted fulltext from original page when enabled
-                content_for_ai = None
-                if settings.fetch.use_article_page and e.link:
-                    content_for_ai = extract_from_url(e.link, timeout=float(settings.fetch.article_timeout_seconds))
-                    if content_for_ai:
-                        logging.info("使用原文抽取正文进行AI总结")
-                if not content_for_ai:
-                    content_for_ai = e.content
+                attempted_ai = True
                 ai_calls += 1
                 ai_obj = ai.summarize(
                     title=e.title,
                     link=e.link,
                     pub_date=e.pub_date,
                     author=e.author,
-                    content=content_for_ai,
+                    content=content_source,
                     system_prompt=settings.ai.system_prompt,
                     user_prompt_template=settings.ai.user_prompt_template,
                 )
+                if ai_obj is None:
+                    ai_failed += 1
             if ai_obj is None:
-                logging.info("AI未启用或调用失败，使用降级摘要")
-                ai_failed += 1 if ai is not None else 0
-                content_for_fallback = None
-                if settings.fetch.use_article_page and e.link:
-                    content_for_fallback = extract_from_url(e.link, timeout=float(settings.fetch.article_timeout_seconds))
+                if attempted_ai:
+                    logging.info("AI调用失败，使用降级摘要")
                 ai_obj = fallback_summary(
                     e.title,
                     e.link,
                     e.pub_date,
                     e.author,
-                    content_for_fallback or e.content,
+                    content_source or e.content,
                 )
             else:
                 ai_success += 1
@@ -189,6 +301,7 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 pub_date=ai_obj.get("pubDate") or e.pub_date,
                 author=ai_obj.get("author") or e.author,
                 summary_text=ai_obj.get("summary_text") or "",
+                matched_keywords=matched_keywords,
             )
             try:
                 row_id = insert_article(article)
@@ -197,8 +310,8 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                     logging.info(f"新文章入库: {article.title} ({row_id})")
                     prune_articles(settings.fetch.max_items)
                     # send to telegram
-                    if tg is not None:
-                        text = _format_telegram_message(ai_obj)
+                    if tg is not None and keywords_matched:
+                        text = _format_telegram_message(ai_obj, matched_keywords)
                         ok = tg.send_message(settings.telegram.chat_id, text, parse_mode="HTML", disable_web_page_preview=False)
                         logging.info(f"推送Telegram: {'成功' if ok else '失败'}")
                 else:
@@ -223,6 +336,10 @@ def do_fetch_once(force: bool = False) -> FetchResponse:
                 f"AI 调用：{ai_calls} 次（成功 {ai_success}，失败 {ai_failed}）",
                 f"Token 消耗：prompt {tokens_prompt}，completion {tokens_completion}，total {tokens_total}",
             ])
+        if filter_keywords:
+            summary_lines.append(
+                f"关键词匹配：{keyword_match_hits} 次，命中文章：{keyword_match_articles} 篇"
+            )
         if feed_fetch_failed:
             summary_lines.append(f"源抓取失败：{feed_fetch_failed} 个源")
         tg.send_message(settings.telegram.chat_id, "\n".join(summary_lines), parse_mode="HTML", disable_web_page_preview=True)
@@ -244,6 +361,7 @@ def on_startup():
     global _scheduler
     _scheduler = FetchScheduler(settings.fetch.interval_minutes, task=lambda: do_fetch_once(force=False))
     _scheduler.start()
+    _configure_report_schedulers(settings)
     logging.info("应用已启动")
 
 
@@ -253,6 +371,10 @@ def on_shutdown():
     global _scheduler
     if _scheduler:
         _scheduler.stop()
+    global _report_schedulers
+    for sched in list(_report_schedulers.values()):
+        sched.stop()
+    _report_schedulers.clear()
     logging.info("应用已停止")
 
 
@@ -276,6 +398,12 @@ def get_settings():
         safe.ai.system_prompt = defaults.ai.system_prompt
     if not (safe.ai.user_prompt_template and safe.ai.user_prompt_template.strip()):
         safe.ai.user_prompt_template = defaults.ai.user_prompt_template
+    if not (safe.reports.system_prompt and safe.reports.system_prompt.strip()):
+        safe.reports.system_prompt = defaults.reports.system_prompt
+    if not (safe.reports.user_prompt_template and safe.reports.user_prompt_template.strip()):
+        safe.reports.user_prompt_template = defaults.reports.user_prompt_template
+    if not safe.reports.report_timeout_seconds:
+        safe.reports.report_timeout_seconds = defaults.reports.report_timeout_seconds
     return safe
 
 
@@ -293,12 +421,19 @@ def update_settings(new_settings: AppSettings):
         new_settings.ai.system_prompt = defaults.ai.system_prompt
     if not (new_settings.ai.user_prompt_template and new_settings.ai.user_prompt_template.strip()):
         new_settings.ai.user_prompt_template = defaults.ai.user_prompt_template
+    if not (new_settings.reports.system_prompt and new_settings.reports.system_prompt.strip()):
+        new_settings.reports.system_prompt = defaults.reports.system_prompt
+    if not (new_settings.reports.user_prompt_template and new_settings.reports.user_prompt_template.strip()):
+        new_settings.reports.user_prompt_template = defaults.reports.user_prompt_template
+    if not new_settings.reports.report_timeout_seconds:
+        new_settings.reports.report_timeout_seconds = defaults.reports.report_timeout_seconds
     save_settings(new_settings)
     logging.info("配置已更新")
     # 重启调度器
     global _scheduler
     if _scheduler:
         _scheduler.update_interval(new_settings.fetch.interval_minutes)
+    _configure_report_schedulers(new_settings)
     return get_settings()
 
 
@@ -321,6 +456,35 @@ def api_get_article(article_id: int):
     if not item:
         raise HTTPException(status_code=404, detail="Article not found")
     return item
+
+
+@app.get("/api/reports", response_model=ReportListResponse)
+def api_list_reports(limit: int = 10, offset: int = 0, report_type: Optional[str] = None):
+    total, items = list_reports(limit=limit, offset=offset, report_type=report_type)
+    return ReportListResponse(total=total, items=items)
+
+
+@app.post("/api/reports/generate", response_model=ReportInDB)
+def api_generate_report(req: ReportGenerateRequest):
+    settings = load_settings()
+    report_type = req.report_type
+    start_utc, end_utc = _manual_report_timeframe(report_type)
+    ai = _build_ai_client(settings)
+    tg = _build_telegram_client(settings)
+    report_id = run_report(
+        report_type,
+        settings=settings,
+        ai_client=ai,
+        telegram_client=tg,
+        start_override=start_utc,
+        end_override=end_utc,
+    )
+    if report_id is None:
+        raise HTTPException(status_code=400, detail="报告生成失败或时间范围内无可用数据")
+    report = get_report(report_id)
+    if not report:
+        raise HTTPException(status_code=404, detail="Report not found")
+    return report
 
 
 def run():

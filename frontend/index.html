@@ -16,6 +16,7 @@
       <nav class="nav">
         <button class="tab-btn active" data-tab="content">内容</button>
         <button class="tab-btn" data-tab="settings">设置</button>
+        <button class="tab-btn" data-tab="reports">定时汇总报告</button>
       </nav>
     </header>
 
@@ -62,6 +63,10 @@
             <label>
               RSS 列表（每行一个URL）
               <textarea id="feeds" rows="6" placeholder="https://..."></textarea>
+            </label>
+            <label>
+              关键词筛选（每行一个，留空表示不过滤）
+              <textarea id="filterKeywords" rows="4" placeholder="例如：科技\n芯片"></textarea>
             </label>
             <label class="switch">
               <input type="checkbox" id="useArticlePage" />
@@ -125,11 +130,57 @@
             </label>
           </fieldset>
 
+          <fieldset>
+            <legend>定时汇总报告</legend>
+            <label class="switch">
+              <input type="checkbox" id="reportHourly" />
+              <span>启用小时报（每整点，覆盖过去1小时）</span>
+            </label>
+            <label class="switch">
+              <input type="checkbox" id="reportDaily" />
+              <span>启用日报（每日00:00，覆盖过去24小时）</span>
+            </label>
+            <label>
+              报告 AI 超时时间（秒）
+              <input type="number" id="reportTimeout" min="10" max="300" />
+            </label>
+            <label>
+              报告 System Prompt
+              <textarea id="reportSystemPrompt" rows="5" placeholder="自定义报告系统提示词"></textarea>
+            </label>
+            <label>
+              报告 User Prompt 模板（可用 {label},{timeframe},{article_count},{feed_stats},{article_details} 占位符）
+              <textarea id="reportUserPrompt" rows="8" placeholder="自定义报告用户提示词模板"></textarea>
+            </label>
+          </fieldset>
+
           <div class="actions">
             <button type="submit" class="primary">保存设置</button>
             <span id="saveStatus"></span>
           </div>
         </form>
+      </section>
+
+      <section id="reports" class="tab">
+        <div class="toolbar">
+          <div class="toolbar-row row1">
+            <select id="reportTypeFilter" class="select">
+              <option value="">全部类型</option>
+              <option value="hourly">小时报</option>
+              <option value="daily">日报</option>
+            </select>
+          </div>
+          <div class="toolbar-row row2">
+            <button id="generateHourlyReport" class="ghost">生成上一小时</button>
+            <button id="generateDailyReport" class="primary">生成今日汇总</button>
+          </div>
+        </div>
+        <div id="reportsList" class="list"></div>
+        <div class="pager">
+          <button id="reportPrevPage">上一页</button>
+          <span id="reportPageInfo"></span>
+          <button id="reportNextPage">下一页</button>
+        </div>
       </section>
     </main>
 

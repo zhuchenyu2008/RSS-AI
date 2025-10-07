@@ -91,6 +91,7 @@ main { max-width: 980px; margin: 0 auto; padding: 24px 16px 80px; }
 .switch.as-btn input#forceFetch:checked + span::before { background: #7f1d1d; border-color: #7f1d1d; color: #fca5a5; }
 
 .list { display: grid; gap: 12px; }
+.empty { padding: 32px 16px; text-align: center; color: var(--muted); border: 1px dashed #2a2a2e; border-radius: 12px; }
 .card { background: var(--card); border: 1px solid #232329; border-radius: 12px; padding: 16px; transition: transform .16s ease, background .2s ease; will-change: transform; }
 .card:hover { transform: translateY(-2px); background: #1a1a1e; }
 .title { font-weight: 600; margin: 0 0 6px; }
