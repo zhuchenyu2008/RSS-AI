@@ -48,11 +48,22 @@
 ## 目录结构
 
 - `backend/` 后端源码与依赖
-  - `app/` FastAPI 应用、调度器、AI/Telegram 客户端、存储等模块
-  - `config.example.yaml` 示例配置（首次运行会拷贝为 `config.yaml`）
-  - `requirements.txt` 后端依赖
-  - `run.sh` 启动脚本
-- `frontend/` 前端静态页面（纯原生 HTML/CSS/JS，黑白配色）
+  - `app/` FastAPI 应用主体
+    - `main.py` 启动入口（含 API、依赖注入与路由）
+    - `scheduler.py` 抓取调度器，包含定时任务与热更新逻辑
+    - `rss_service.py` RSS 抓取、去重与正文抽取流程
+    - `ai_client.py`/`telegram_client.py` AI 与 Telegram 适配器
+    - `storage.py`/`models.py` SQLite 数据访问层
+    - `report_service.py` 周期汇总报告的生成与推送
+  - `config.yaml` 运行时配置（首次启动自动生成，可在前端修改并回写）
+  - `data/` SQLite 数据文件，默认持久化于本地
+  - `logs/` 运行日志目录
+  - `requirements.txt` 后端依赖声明
+  - `run.sh` & `Dockerfile` 快速启动/容器化脚本
+- `frontend/` 前端静态页面（原生 HTML/CSS/JS）
+  - `index.html` 与 `styles.css` UI 布局与样式
+  - `app.js` 调用后端 API、处理设置保存与手动抓取
+  - `server.py`/`run.sh` 简易静态文件服务器（支持 `/api` 反代）
 
 ## 快速开始
 
@@ -153,33 +164,31 @@ docker compose down
 
 ## 配置说明（backend/config.yaml）
 
-首次运行若不存在会自动从 `config.example.yaml` 生成。关键字段：
+首次运行若不存在会自动从内置模板生成。核心结构示例：
 
-```
+```yaml
 server:
   host: 0.0.0.0
   port: 3601
 
 fetch:
-  interval_minutes: 10   # 抓取间隔（分钟）
-  max_items: 500         # 存储上限（总条数）
-  feeds:                 # RSS 列表
-    - https://hnrss.org/frontpage
-  filter_keywords:       # 关键词列表，命中后才会入库/推送，可留空；英文匹配区分大小写
-    - 人工智能
-    - Generative AI
-  use_article_page: true # 抓取原文网页并抽取正文后再送AI
-  article_timeout_seconds: 15
-  per_feed_limit: 20     # 单个RSS源每次抓取的最大条数（按时间倒序优先）
+  interval_minutes: 10        # 抓取间隔（分钟），保存配置后自动热更新
+  max_items: 500              # SQLite 存储上限（超出后裁剪最旧记录）
+  feeds:                      # RSS 列表
+    - https://example.com/rss
+  filter_keywords: []         # 命中才会入库/推送；留空表示不过滤，填写时请删除 [] 并逐行写入
+  use_article_page: true      # 先抓取原文并抽取正文再交给 AI
+  article_timeout_seconds: 15 # 抽取正文超时时间
+  per_feed_limit: 1           # 单个源每次处理的最大条数（按时间倒序）
 
-ai:                      # OpenAI 通用格式
+ai:                           # OpenAI 兼容接口
   enabled: true
-  base_url: https://api.openai.com/v1   # 可填 https://api.openai.com 或 https://api.openai.com/v1，二者均兼容
+  base_url: https://api.openai.com/v1
   api_key: YOUR_API_KEY
-  model: gpt-4o-mini
+  model: glm-4.6
   temperature: 0.2
   system_prompt: |
-    你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link, pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
+    你是一个中文内容编辑助手。请对RSS文章进行信息抽取与高质量中文摘要，并输出严格的JSON对象，字段必须为：title, link, pubDate, author, summary_text。其中：title为原文标题或优化后的标题；link为原始URL；pubDate为发布时间（原文给出即可，若不是北京时间需转换）；author为作者（若未知可留空字符串）；summary_text为简洁、条理清晰的段落式中文总结。务必只输出JSON，不要任何解释或markdown。
   user_prompt_template: |
     标题: {title}
     链接: {link}
@@ -191,19 +200,41 @@ ai:                      # OpenAI 通用格式
     请只输出JSON，不要任何解释或markdown。
 
 telegram:
-  enabled: false
+  enabled: true
   bot_token: YOUR_TELEGRAM_BOT_TOKEN
   chat_id: "@your_channel_or_chat_id"
-  push_summary: false   # 是否推送抓取汇总
+  push_summary: true          # 是否推送抓取汇总
+
+reports:                      # 可选的周期汇总报告
+  daily_enabled: true         # 每日汇总
+  hourly_enabled: true        # 每小时汇总
+  report_timeout_seconds: 60  # 调用 AI 生成报告的超时
+  system_prompt: |            # 报告生成提示词，可自定义
+    你是一名资深中文资讯编辑，需要汇总给定时间范围内的RSS内容。
+    请输出结构化的纯文本报告，包含概览、重点事件、其余事件与数据统计。
+  user_prompt_template: |
+    请基于以下信息生成报告，输出时直接从“概览”部分开始，不要重复报告类型、时间范围或文章总数等字段。
+
+    报告元信息：
+    - 报告类型：{label}
+    - 时间范围：{timeframe}
+    - 文章总数：{article_count}
+
+    来源统计：
+    {feed_stats}
+
+    文章详情（按时间排序）：
+    {article_details}
 
 logging:
   level: INFO
   file: logs/app.log
 ```
 
-- AI 接口为 OpenAI 兼容格式（`/v1/chat/completions`），你可替换 `base_url` 与 `model` 指向任意兼容服务。
-- 前端“设置”页支持在线更新以上配置。为安全起见，`api_key` 与 `bot_token` 在界面不回显；若不修改请留空，后端会保留旧值。
-- 若开启 `telegram.push_summary`，每次抓取结束后会发送一条汇总消息，包含：源数量、获取条目、入库成功、重复跳过、处理失败、AI 调用次数（成功/失败）、Token 消耗；有助于监控运行状态与用量。
+- AI 接口为 OpenAI 兼容格式（`/v1/chat/completions`），可自由替换 `base_url` 与 `model` 指向任意兼容服务。
+- `fetch.filter_keywords` 支持中英文混排；英文匹配区分大小写，若需要字面量方括号请使用 YAML 字符串语法包裹。
+- `reports` 模块会在抓取成功后按配置周期自动生成汇总文本，可结合 Telegram 推送或外部通知。
+- 前端“设置”页支持在线更新上述配置。为安全起见，`api_key` 与 `bot_token` 在界面不回显；若不修改请留空，后端会保留旧值。
 - 自定义提示词：
   - System Prompt 与 User Prompt 模板均可在前端“AI 设置”中修改并保存。
   - 若模板中需要字面量大括号，请使用双大括号进行转义，例如 `{{` 与 `}}`。
