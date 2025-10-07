@@ -13,9 +13,16 @@ let state = {
   items: [],
   settings: null,
   feeds: [],
+  filterKeywords: [],
   filterFeed: '',
   autoRefresh: false,
   autoTimer: null,
+  reports: [],
+  reportPage: 0,
+  reportPageSize: 10,
+  reportTotal: 0,
+  reportTypeFilter: '',
+  reportGenerating: { hourly: false, daily: false },
 };
 
 function toast(msg) {
@@ -53,9 +60,17 @@ function renderArticles() {
     const el = document.createElement('div');
     el.className = 'card enter';
     el.style.animationDelay = `${Math.min(idx * 30, 300)}ms`;
+    const keywordList = Array.isArray(item.matched_keywords) ? item.matched_keywords : [];
+    const metaParts = [];
+    if (item.pub_date) metaParts.push(escapeHtml(item.pub_date));
+    if (item.author) metaParts.push(escapeHtml(item.author));
+    if (keywordList.length) {
+      metaParts.push(`关键词：${escapeHtml(keywordList.join('、'))}`);
+    }
+    const metaHtml = metaParts.join(' · ');
     el.innerHTML = `
       <h3 class="title clickable" data-id="${item.id}">${escapeHtml(item.title)}</h3>
-      <div class="meta">${escapeHtml(item.pub_date || '')} · ${escapeHtml(item.author || '')}</div>
+      <div class="meta">${metaHtml}</div>
       <div class="summary">${escapeHtml(item.summary_text)}</div>
       <div class="actions-row">
         <a class="link" target="_blank" rel="noopener" href="${item.link}">原文链接</a>
@@ -77,6 +92,12 @@ function renderArticles() {
 function escapeHtml(s) {
   return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 }
+function formatDateTime(value) {
+  if (!value) return '';
+  const dt = new Date(value);
+  if (Number.isNaN(dt.getTime())) return value;
+  return dt.toLocaleString();
+}
 
 async function manualFetch() {
   q('#statusText').textContent = '抓取中…';
@@ -97,10 +118,12 @@ async function loadSettings() {
   const s = await api('/api/settings');
   state.settings = s;
   state.feeds = s.fetch.feeds || [];
+  state.filterKeywords = s.fetch.filter_keywords || [];
   q('#interval').value = s.fetch.interval_minutes;
   q('#maxItems').value = s.fetch.max_items;
   q('#perFeedLimit').value = s.fetch.per_feed_limit ?? 20;
   q('#feeds').value = (s.fetch.feeds || []).join('\n');
+  q('#filterKeywords').value = state.filterKeywords.join('\n');
   q('#useArticlePage').checked = !!s.fetch.use_article_page;
   q('#articleTimeout').value = s.fetch.article_timeout_seconds ?? 15;
 
@@ -117,6 +140,12 @@ async function loadSettings() {
   q('#tgChatId').value = s.telegram.chat_id || '';
   q('#tgPushSummary').checked = !!s.telegram.push_summary;
 
+  q('#reportHourly').checked = !!(s.reports?.hourly_enabled);
+  q('#reportDaily').checked = !!(s.reports?.daily_enabled);
+  q('#reportTimeout').value = s.reports?.report_timeout_seconds ?? 60;
+  q('#reportSystemPrompt').value = s.reports?.system_prompt || '';
+  q('#reportUserPrompt').value = s.reports?.user_prompt_template || '';
+
   // 渲染筛选源
   const sel = q('#feedSelect');
   sel.innerHTML = '<option value="">全部源</option>' + state.feeds.map(f => `<option value="${escapeHtml(f)}">${escapeHtml(f)}</option>`).join('');
@@ -126,6 +155,13 @@ async function loadSettings() {
 function gatherSettingsFromForm() {
   const current = state.settings;
   const feeds = q('#feeds').value.split(/\n+/).map(s => s.trim()).filter(Boolean);
+  const filterKeywords = q('#filterKeywords').value.split(/\n+/).map(s => s.trim()).filter(Boolean);
+  let reportTimeout = parseInt(q('#reportTimeout').value, 10);
+  if (!Number.isFinite(reportTimeout)) {
+    reportTimeout = 60;
+  } else {
+    reportTimeout = Math.min(Math.max(reportTimeout, 10), 300);
+  }
   return {
     server: current.server,
     fetch: {
@@ -133,6 +169,7 @@ function gatherSettingsFromForm() {
       max_items: parseInt(q('#maxItems').value, 10),
       per_feed_limit: parseInt(q('#perFeedLimit').value, 10),
       feeds,
+      filter_keywords: filterKeywords,
       use_article_page: q('#useArticlePage').checked,
       article_timeout_seconds: parseInt(q('#articleTimeout').value, 10),
     },
@@ -150,6 +187,13 @@ function gatherSettingsFromForm() {
       bot_token: q('#tgToken').value.trim() || '***',
       chat_id: q('#tgChatId').value.trim(),
       push_summary: q('#tgPushSummary').checked,
+    },
+    reports: {
+      hourly_enabled: q('#reportHourly').checked,
+      daily_enabled: q('#reportDaily').checked,
+      report_timeout_seconds: reportTimeout,
+      system_prompt: q('#reportSystemPrompt').value,
+      user_prompt_template: q('#reportUserPrompt').value,
     },
     logging: current.logging,
   };
@@ -195,6 +239,68 @@ function showSkeleton(show) {
   }
 }
 
+async function loadReports() {
+  const offset = state.reportPage * state.reportPageSize;
+  const typeParam = state.reportTypeFilter ? `&report_type=${encodeURIComponent(state.reportTypeFilter)}` : '';
+  const data = await api(`/api/reports?limit=${state.reportPageSize}&offset=${offset}${typeParam}`);
+  state.reports = data.items || [];
+  state.reportTotal = data.total || 0;
+  renderReports();
+}
+
+async function triggerReport(reportType) {
+  const btn = reportType === 'daily' ? q('#generateDailyReport') : q('#generateHourlyReport');
+  if (!btn) return;
+  if (state.reportGenerating[reportType]) return;
+  state.reportGenerating[reportType] = true;
+  const originalText = btn.textContent;
+  btn.textContent = '生成中…';
+  btn.disabled = true;
+  try {
+    await api('/api/reports/generate', {
+      method: 'POST',
+      body: JSON.stringify({ report_type: reportType }),
+    });
+    toast(reportType === 'daily' ? '日报已生成' : '小时报已生成');
+    state.reportPage = 0;
+    await loadReports();
+  } catch (err) {
+    console.error(err);
+    toast('生成失败');
+  } finally {
+    btn.textContent = originalText;
+    btn.disabled = false;
+    state.reportGenerating[reportType] = false;
+  }
+}
+
+function renderReports() {
+  const root = q('#reportsList');
+  if (!root) return;
+  root.innerHTML = '';
+  if (!state.reports.length) {
+    root.innerHTML = '<div class="empty">暂无定时汇总报告</div>';
+    q('#reportPageInfo').textContent = '0 / 0';
+    return;
+  }
+  state.reports.forEach((report, idx) => {
+    const el = document.createElement('div');
+    el.className = 'card enter';
+    el.style.animationDelay = `${Math.min(idx * 30, 300)}ms`;
+    const typeLabel = report.report_type === 'daily' ? '日报' : '小时报';
+    const start = formatDateTime(report.timeframe_start);
+    const end = formatDateTime(report.timeframe_end);
+    el.innerHTML = `
+      <h3 class="title">${escapeHtml(report.title)}</h3>
+      <div class="meta">类型：${typeLabel} · 时间范围：${escapeHtml(start)} ~ ${escapeHtml(end)} · 文章：${report.article_count}</div>
+      <div class="summary">${escapeHtml(report.summary_text).replace(/\n/g,'<br/>')}</div>
+    `;
+    root.appendChild(el);
+  });
+  const pages = Math.ceil(state.reportTotal / state.reportPageSize) || 1;
+  q('#reportPageInfo').textContent = `${state.reportPage + 1} / ${pages}`;
+}
+
 // 搜索高亮功能已移除
 
 async function openModal(id) {
@@ -203,7 +309,14 @@ async function openModal(id) {
     if (!item) return;
     const m = q('#modal');
     q('#modalTitle').textContent = item.title;
-    q('#modalMeta').textContent = `${item.pub_date || ''} · ${item.author || ''}`;
+    const keywordList = Array.isArray(item.matched_keywords) ? item.matched_keywords : [];
+    const metaParts = [];
+    if (item.pub_date) metaParts.push(item.pub_date);
+    if (item.author) metaParts.push(item.author);
+    if (keywordList.length) {
+      metaParts.push(`关键词：${keywordList.join('、')}`);
+    }
+    q('#modalMeta').textContent = metaParts.join(' · ');
     q('#modalSummary').innerHTML = escapeHtml(item.summary_text).replace(/\n/g,'<br/>');
     q('#modalLink').href = item.link;
     m.classList.add('show');
@@ -227,6 +340,40 @@ function bindEvents() {
   q('#autoRefresh').addEventListener('change', (e)=> setAutoRefresh(e.target.checked));
   q('#modal').addEventListener('click', (e)=>{ if (e.target.id==='modal' || e.target.dataset.close==='1') closeModal(); });
   q('#toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+  const reportTypeSel = q('#reportTypeFilter');
+  if (reportTypeSel) {
+    reportTypeSel.addEventListener('change', (e)=> {
+      state.reportTypeFilter = e.target.value;
+      state.reportPage = 0;
+      loadReports().catch(()=>{});
+    });
+  }
+  const reportPrev = q('#reportPrevPage');
+  const reportNext = q('#reportNextPage');
+  if (reportPrev && reportNext) {
+    reportPrev.addEventListener('click', () => {
+      if (state.reportPage > 0) {
+        state.reportPage--;
+        loadReports().catch(()=>{});
+      }
+    });
+    reportNext.addEventListener('click', () => {
+      const pages = Math.ceil(state.reportTotal / state.reportPageSize) || 1;
+      if (state.reportPage + 1 < pages) {
+        state.reportPage++;
+        loadReports().catch(()=>{});
+      }
+    });
+  }
+
+  const generateHourly = q('#generateHourlyReport');
+  const generateDaily = q('#generateDailyReport');
+  if (generateHourly) {
+    generateHourly.addEventListener('click', () => triggerReport('hourly'));
+  }
+  if (generateDaily) {
+    generateDaily.addEventListener('click', () => triggerReport('daily'));
+  }
 
   // 显示/隐藏返回顶部（移动端更友好）
   const onScroll = () => {
@@ -242,6 +389,7 @@ async function init() {
   setAutoRefresh(localStorage.getItem('autoRefresh')==='1');
   await loadSettings();
   await loadArticles();
+  await loadReports();
 }
 
 init().catch(console.error);

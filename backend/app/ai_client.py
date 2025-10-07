@@ -124,6 +124,63 @@ class AIClient:
             return None
 
 
+    def generate_report(
+        self,
+        *,
+        report_type: str,
+        timeframe: str,
+        user_prompt: str,
+        system_prompt: Optional[str] = None,
+        timeout: Optional[float] = None,
+    ) -> Optional[str]:
+        if not self.api_key:
+            logging.info("AI 未配置 api_key，跳过报告生成，使用降级摘要")
+            return None
+
+        url = self._chat_url()
+        system = system_prompt or (
+            "你是一名资深中文资讯编辑，需要总结给定时间范围内的RSS文章。"
+            "请输出结构化的纯文本报告，包含概览、重点事件、数据统计和建议，语言需正式且简洁。"
+        )
+        payload = {
+            "model": self.model,
+            "temperature": self.temperature,
+            "messages": [
+                {"role": "system", "content": system},
+                {
+                    "role": "user",
+                    "content": f"请生成{report_type}，时间范围：{timeframe}\n\n{user_prompt}",
+                },
+            ],
+        }
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        try:
+            with httpx.Client(timeout=timeout or self.timeout) as client:
+                logging.info(f"AI报告请求: url={url} model={self.model}")
+                resp = client.post(url, headers=headers, json=payload)
+                if resp.status_code >= 400:
+                    logging.warning(f"AI报告请求失败 status={resp.status_code} body={resp.text[:200]}")
+                resp.raise_for_status()
+                data = resp.json()
+        except Exception as e:
+            logging.warning(f"AI报告请求异常: {e}")
+            return None
+
+        try:
+            content = data["choices"][0]["message"]["content"].strip()
+            if content.startswith("```"):
+                content = content.strip("`")
+                if content.lower().startswith("json\n"):
+                    content = content[5:]
+            return content
+        except Exception as e:
+            logging.warning(f"AI报告响应解析失败: {e}")
+            return None
+
+
 def fallback_summary(title: str, link: str, pub_date: Optional[str], author: Optional[str], content: str) -> dict:
     # Very simple fallback summarization: strip HTML tags and truncate
     import re

@@ -36,6 +36,7 @@
   - `pubDate` 发布时间
   - `author` 作者
   - `summary_text` AI 中文总结
+- 关键词过滤与标注：支持在配置中维护关键词列表，仅保留命中关键词的文章；命中的关键词会同步展示在 Web 列表、弹窗与 Telegram 推送，方便快速定位关注点（英文匹配区分大小写）。
 - 去重与存储：使用 SQLite 本地存储，基于 `feed_url + item_uid` 唯一约束去重；可配置最大存储条数，自动裁剪旧数据。
 - 单源抓取上限：可为每个 RSS 源设置“单次抓取最多处理 N 条”，按时间倒序优先（越新越先处理）。
 - Telegram 推送：将 AI 总结以精简排版推送到指定群组或频道。
@@ -131,6 +132,9 @@ fetch:
   max_items: 500         # 存储上限（总条数）
   feeds:                 # RSS 列表
     - https://hnrss.org/frontpage
+  filter_keywords:       # 关键词列表，命中后才会入库/推送，可留空；英文匹配区分大小写
+    - 人工智能
+    - Generative AI
   use_article_page: true # 抓取原文网页并抽取正文后再送AI
   article_timeout_seconds: 15
   per_feed_limit: 20     # 单个RSS源每次抓取的最大条数（按时间倒序优先）
@@ -215,4 +219,3 @@ logging:
 - 首次运行前请在配置中填入有效的 AI `api_key` 与 `base_url`/`model`，以及 Telegram `bot_token` 与 `chat_id`（可选）。
 - 网络环境受限时（例如公司内网），前端可本地打开使用；后端需要能访问 RSS、AI 接口与 Telegram。
 - 本项目以稳定、可维护为目标，尽量减少外部依赖（存储使用 SQLite，调度器为内置线程）。
-

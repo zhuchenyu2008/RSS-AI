@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Optional, Literal
 from pydantic import BaseModel, Field, HttpUrl
 
 
@@ -12,6 +12,7 @@ class SettingsFetch(BaseModel):
     interval_minutes: int = Field(10, ge=1, le=24 * 60)
     max_items: int = Field(500, ge=10, le=50000)
     feeds: List[str] = Field(default_factory=list)
+    filter_keywords: List[str] = Field(default_factory=list)
     use_article_page: bool = True
     article_timeout_seconds: int = Field(15, ge=5, le=60)
     per_feed_limit: int = Field(20, ge=1, le=1000)
@@ -46,6 +47,31 @@ class SettingsTelegram(BaseModel):
     push_summary: bool = False
 
 
+class SettingsReports(BaseModel):
+    daily_enabled: bool = False
+    hourly_enabled: bool = False
+    report_timeout_seconds: int = Field(60, ge=10, le=300)
+    system_prompt: str = (
+        "你是一名资深中文资讯编辑，需要汇总给定时间范围内的RSS内容。"
+        "请输出结构化的纯文本报告，包含以下部分：\n"
+        "1. 概览：总结整体趋势、领域，给出文章总量。\n"
+        "2. 重点事件：列出2-6条最值得关注的资讯，每条1-2句话。\n"
+        "3. 数据统计：概括主要来源及数量，指出值得注意的变化。\n"
+        "4. 建议：如有必要提出关注方向。\n"
+        "输出使用中文，避免Markdown或HTML。"
+    )
+    user_prompt_template: str = (
+        "请基于以下信息生成报告，输出时直接从“概览”部分开始，"
+        "不要重复报告类型、时间范围或文章总数等字段。\n\n"
+        "报告元信息：\n"
+        "- 报告类型：{label}\n"
+        "- 时间范围：{timeframe}\n"
+        "- 文章总数：{article_count}\n\n"
+        "来源统计：\n{feed_stats}\n\n"
+        "文章详情（按时间排序）：\n{article_details}"
+    )
+
+
 class SettingsLogging(BaseModel):
     level: str = "INFO"
     file: str = "logs/app.log"
@@ -61,6 +87,7 @@ class AppSettings(BaseModel):
     fetch: SettingsFetch = SettingsFetch()
     ai: SettingsAI = SettingsAI()
     telegram: SettingsTelegram = SettingsTelegram()
+    reports: SettingsReports = SettingsReports()
     logging: SettingsLogging = SettingsLogging()
 
 
@@ -73,6 +100,7 @@ class ArticleInDB(BaseModel):
     pub_date: Optional[str] = None
     author: Optional[str] = None
     summary_text: str
+    matched_keywords: List[str] = Field(default_factory=list)
     created_at: str
 
 
@@ -84,11 +112,41 @@ class ArticleCreate(BaseModel):
     pub_date: Optional[str] = None
     author: Optional[str] = None
     summary_text: str
+    matched_keywords: List[str] = Field(default_factory=list)
 
 
 class ArticleListResponse(BaseModel):
     total: int
     items: List[ArticleInDB]
+
+
+class ReportInDB(BaseModel):
+    id: int
+    report_type: str
+    title: str
+    summary_text: str
+    timeframe_start: str
+    timeframe_end: str
+    article_count: int
+    created_at: str
+
+
+class ReportCreate(BaseModel):
+    report_type: str
+    title: str
+    summary_text: str
+    timeframe_start: str
+    timeframe_end: str
+    article_count: int
+
+
+class ReportListResponse(BaseModel):
+    total: int
+    items: List[ReportInDB]
+
+
+class ReportGenerateRequest(BaseModel):
+    report_type: Literal["daily", "hourly"]
 
 
 class FetchRequest(BaseModel):
