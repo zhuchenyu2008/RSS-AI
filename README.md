@@ -2,10 +2,10 @@
 
 一个前后端分离的 RSS 助手：定时抓取多个 RSS 源，使用用户自定义的 AI（OpenAI 通用格式）对最新文章进行总结并排版，去重入库，推送到 Telegram 群组，同时提供标准 API 与前端 Web 管理界面。默认监听端口 `3601`。
 
-– 后端：Python + FastAPI（含 OpenAPI/Swagger、详细日志、可热更新配置、后台定时任务）
-– 前端：黑白配色、简约高级的 Web 页面（查看摘要与在线修改配置）
+- 后端：Python + FastAPI（含 OpenAPI/Swagger、详细日志、可热更新配置、后台定时任务）
+- 前端：黑白配色、简约高级的 Web 页面（查看摘要与在线修改配置）
 
-注意：本仓库为可直接运行的完整实现；首次运行会自动生成 `backend/config.yaml`。
+
 
 ## 图片
 
@@ -255,7 +255,7 @@ logging:
 - `GET /api/articles?limit=20&offset=0&feed=` 列表查询
 - `GET /api/articles/{id}` 文章详情
 
-完整接口文档请见 `/docs`（Swagger UI）。
+完整接口文档请见 `:3601/docs`（Swagger UI）。
 
 ## 前端界面与操作
 
