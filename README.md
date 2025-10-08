@@ -49,11 +49,19 @@
 ## 目录结构
 
 - `backend/` 后端源码与依赖
-  - `app/` FastAPI 应用、调度器、AI/Telegram 客户端、存储等模块
-  - `config.example.yaml` 示例配置（首次运行会拷贝为 `config.yaml`）
+  - `app/` FastAPI 应用、调度器、AI/Telegram/报告客户端、正文抽取、存储等模块（如 `main.py`、`scheduler.py`、`ai_client.py`、`report_service.py` 等）
+  - `config.yaml` 运行时配置（仓库已提供一份可直接修改的默认配置）
+  - `data/` SQLite 数据库存放目录
+  - `logs/` 运行日志输出目录
   - `requirements.txt` 后端依赖
-  - `run.sh` 启动脚本
-- `frontend/` 前端静态页面（纯原生 HTML/CSS/JS，黑白配色）
+  - `run.sh` 本地启动脚本
+  - `Dockerfile` 后端容器镜像构建文件
+- `frontend/` 前端静态页面与轻量服务（原生 HTML/CSS/JS + Python 反代脚本）
+  - `index.html`、`app.js`、`styles.css` Web 界面资源
+  - `server.py` 简易静态文件 + 反向代理服务
+  - `run.sh` 本地启动脚本（默认 3602 端口）
+  - `Dockerfile` 前端容器镜像构建文件
+- `docker-compose.yml` 一键启动前后端组合服务
 
 ## 快速开始
 
@@ -156,7 +164,7 @@ docker compose down
 
 ## 配置说明（backend/config.yaml）
 
-首次运行若不存在会自动从 `config.example.yaml` 生成。关键字段：
+仓库内已提供 `backend/config.yaml`，可直接修改（前端“设置”页保存也会写回此文件）。关键字段：
 
 ```
 server:
@@ -199,6 +207,13 @@ telegram:
   chat_id: "@your_channel_or_chat_id"
   push_summary: false   # 是否推送抓取汇总
 
+reports:
+  daily_enabled: true             # 是否生成每日汇总报告
+  hourly_enabled: true            # 是否生成每小时汇总报告
+  report_timeout_seconds: 60      # 生成报告时的 AI 请求超时时间（秒）
+  system_prompt: "..."            # 报告生成的系统提示词，可按需调整
+  user_prompt_template: "..."     # 报告生成的用户提示词模板，可使用 {label}/{timeframe}/{article_count} 等占位符
+
 security:
   admin_password: "1234"   # 前端保存设置所需的 4 位数字密码，可在界面上输入旧密码后更新
 
@@ -210,6 +225,7 @@ logging:
 - AI 接口为 OpenAI 兼容格式（`/v1/chat/completions`），你可替换 `base_url` 与 `model` 指向任意兼容服务。
 - 前端“设置”页支持在线更新以上配置。为安全起见，`api_key` 与 `bot_token` 在界面不回显；若不修改请留空，后端会保留旧值。
 - 若开启 `telegram.push_summary`，每次抓取结束后会发送一条汇总消息，包含：源数量、获取条目、入库成功、重复跳过、处理失败、AI 调用次数（成功/失败）、Token 消耗；有助于监控运行状态与用量。
+- 报告任务可通过 `reports` 模块配置是否启用每日/每小时汇总，并自定义提示词模板；生成的报告同样会写入数据库与日志，便于二次处理或对接其他通知渠道。
 - 自定义提示词：
   - System Prompt 与 User Prompt 模板均可在前端“AI 设置”中修改并保存。
   - 若模板中需要字面量大括号，请使用双大括号进行转义，例如 `{{` 与 `}}`。
