@@ -4,6 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>RSS‑AI 控制台</title>
+  <script>
+    (function() {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'light' || stored === 'dark') {
+          document.documentElement.dataset.theme = stored;
+        }
+      } catch (_) {}
+    })();
+  </script>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +23,23 @@
   <div id="app">
     <header class="header">
       <div class="brand">RSS‑AI</div>
-      <nav class="nav">
-        <button class="tab-btn active" data-tab="content">内容</button>
-        <button class="tab-btn" data-tab="settings">设置</button>
-        <button class="tab-btn" data-tab="reports">定时汇总报告</button>
-      </nav>
+      <div class="header-actions">
+        <nav class="nav" aria-label="页面切换">
+          <button class="tab-btn primary-tab active" type="button" data-tab="content" aria-selected="true">内容</button>
+          <button class="tab-btn primary-tab" type="button" data-tab="reports" aria-selected="false">定时汇总报告</button>
+        </nav>
+        <div class="header-utilities">
+          <button id="themeToggle" class="utility-btn theme-toggle" type="button" aria-label="切换到白天模式" title="切换到白天模式">🌞 白天</button>
+          <button class="utility-btn primary-tab" type="button" data-tab="settings" aria-selected="false">设置</button>
+        </div>
+      </div>
     </header>
 
     <main>
+      <div class="mobile-tab-switch" role="tablist" aria-label="查看内容或汇总">
+        <button class="mobile-tab-option active" type="button" role="tab" data-tab="content" aria-selected="true">内容</button>
+        <button class="mobile-tab-option" type="button" role="tab" data-tab="reports" aria-selected="false">定时汇总报告</button>
+      </div>
       <section id="content" class="tab active">
         <div class="toolbar">
           <div class="toolbar-row row1">
@@ -154,6 +173,19 @@
             </label>
           </fieldset>
 
+          <fieldset>
+            <legend>安全</legend>
+            <label>
+              当前密码
+              <input type="password" id="currentPassword" inputmode="numeric" pattern="[0-9]{4}" placeholder="必填，4位数字" autocomplete="current-password" />
+            </label>
+            <label>
+              新密码（可选）
+              <input type="password" id="newPassword" inputmode="numeric" pattern="[0-9]{4}" placeholder="4位数字" autocomplete="new-password" />
+            </label>
+            <p class="form-hint">保存设置需输入当前密码。新密码需为4位数字，留空则保持不变。</p>
+          </fieldset>
+
           <div class="actions">
             <button type="submit" class="primary">保存设置</button>
             <span id="saveStatus"></span>
@@ -164,15 +196,14 @@
       <section id="reports" class="tab">
         <div class="toolbar">
           <div class="toolbar-row row1">
-            <select id="reportTypeFilter" class="select">
-              <option value="">全部类型</option>
-              <option value="hourly">小时报</option>
-              <option value="daily">日报</option>
-            </select>
+            <div class="segment-switch" role="tablist" aria-label="筛选定时汇总类型">
+              <button class="segment-option active" type="button" role="tab" data-report-filter="hourly" aria-selected="true">小时报</button>
+              <button class="segment-option" type="button" role="tab" data-report-filter="daily" aria-selected="false">日报</button>
+            </div>
           </div>
           <div class="toolbar-row row2">
-            <button id="generateHourlyReport" class="ghost">生成上一小时</button>
-            <button id="generateDailyReport" class="primary">生成今日汇总</button>
+            <button id="generateHourlyReport" class="primary">生成小时报</button>
+            <button id="generateDailyReport" class="primary">生成日报</button>
           </div>
         </div>
         <div id="reportsList" class="list"></div>
@@ -207,16 +238,30 @@
 
   <script src="./app.js"></script>
   <script>
-    // Tab switching
-    document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const tab = btn.dataset.tab;
-        document.querySelectorAll('.tab').forEach(sec => sec.classList.remove('active'));
-        document.getElementById(tab).classList.add('active');
+    const primaryTabs = Array.from(document.querySelectorAll('.primary-tab'));
+    const mobileTabs = Array.from(document.querySelectorAll('.mobile-tab-option'));
+
+    function setActiveTab(tab) {
+      const target = document.getElementById(tab);
+      if (!target) return;
+      primaryTabs.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tab);
+        btn.setAttribute('aria-selected', btn.dataset.tab === tab ? 'true' : 'false');
       });
-    });
+      mobileTabs.forEach(btn => {
+        const isActive = btn.dataset.tab === tab;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      document.querySelectorAll('.tab').forEach(sec => sec.classList.remove('active'));
+      target.classList.add('active');
+    }
+
+    primaryTabs.forEach(btn => btn.addEventListener('click', () => setActiveTab(btn.dataset.tab)));
+    mobileTabs.forEach(btn => btn.addEventListener('click', () => setActiveTab(btn.dataset.tab)));
+
+    const currentTab = document.querySelector('.tab.active')?.id || 'content';
+    setActiveTab(currentTab);
   </script>
 </body>
 </html>

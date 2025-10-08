@@ -82,6 +82,10 @@ class ServerSettings(BaseModel):
     port: int = 3601
 
 
+class SettingsSecurity(BaseModel):
+    admin_password: str = "1234"
+
+
 class AppSettings(BaseModel):
     server: ServerSettings = ServerSettings()
     fetch: SettingsFetch = SettingsFetch()
@@ -89,6 +93,7 @@ class AppSettings(BaseModel):
     telegram: SettingsTelegram = SettingsTelegram()
     reports: SettingsReports = SettingsReports()
     logging: SettingsLogging = SettingsLogging()
+    security: SettingsSecurity = SettingsSecurity()
 
 
 class ArticleInDB(BaseModel):
@@ -158,3 +163,9 @@ class FetchResponse(BaseModel):
     new_items: int
     processed_items: int
     message: str = ""
+
+
+class UpdateSettingsRequest(BaseModel):
+    settings: AppSettings
+    password: str
+    new_password: Optional[str] = None
