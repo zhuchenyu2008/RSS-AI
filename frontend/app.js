@@ -21,9 +21,51 @@ let state = {
   reportPage: 0,
   reportPageSize: 10,
   reportTotal: 0,
-  reportTypeFilter: '',
+  reportTypeFilter: 'hourly',
   reportGenerating: { hourly: false, daily: false },
 };
+
+function updateThemeToggle(theme) {
+  const btn = q('#themeToggle');
+  if (!btn) return;
+  if (theme === 'light') {
+    btn.textContent = '🌙 夜间';
+    btn.setAttribute('aria-label', '切换到夜间模式');
+    btn.setAttribute('title', '切换到夜间模式');
+  } else {
+    btn.textContent = '🌞 白天';
+    btn.setAttribute('aria-label', '切换到白天模式');
+    btn.setAttribute('title', '切换到白天模式');
+  }
+}
+
+function applyTheme(theme, persist = true) {
+  const nextTheme = theme === 'light' ? 'light' : 'dark';
+  document.body.dataset.theme = nextTheme;
+  document.documentElement.dataset.theme = nextTheme;
+  if (persist) {
+    localStorage.setItem('theme', nextTheme);
+  }
+  updateThemeToggle(nextTheme);
+}
+
+function initTheme() {
+  const saved = localStorage.getItem('theme');
+  let current = saved === 'light' || saved === 'dark' ? saved : null;
+  if (!current) {
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    current = prefersLight ? 'light' : 'dark';
+  }
+  applyTheme(current, !saved);
+}
+
+function updateReportFilterUI(filter) {
+  qa('[data-report-filter]').forEach(btn => {
+    const isActive = btn.dataset.reportFilter === filter;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+  });
+}
 
 function toast(msg) {
   const t = q('#toast');
@@ -38,7 +80,18 @@ async function api(path, opts = {}) {
     headers: { 'Content-Type': 'application/json' },
     ...opts,
   });
-  if (!res.ok) throw new Error(await res.text());
+  if (!res.ok) {
+    const text = await res.text();
+    let msg = text;
+    try {
+      const data = text ? JSON.parse(text) : {};
+      msg = data.detail || data.message || msg;
+    } catch {}
+    throw new Error(msg || '请求失败');
+  }
+  if (res.status === 204) {
+    return null;
+  }
   return res.json();
 }
 
@@ -150,6 +203,11 @@ async function loadSettings() {
   const sel = q('#feedSelect');
   sel.innerHTML = '<option value="">全部源</option>' + state.feeds.map(f => `<option value="${escapeHtml(f)}">${escapeHtml(f)}</option>`).join('');
   sel.value = state.filterFeed;
+
+  const currentPassword = q('#currentPassword');
+  const newPassword = q('#newPassword');
+  if (currentPassword) currentPassword.value = '';
+  if (newPassword) newPassword.value = '';
 }
 
 function gatherSettingsFromForm() {
@@ -201,13 +259,35 @@ function gatherSettingsFromForm() {
 
 async function saveSettings(e) {
   e.preventDefault();
+  const passwordInput = q('#currentPassword');
+  const newPasswordInput = q('#newPassword');
+  const password = passwordInput ? passwordInput.value.trim() : '';
+  const newPassword = newPasswordInput ? newPasswordInput.value.trim() : '';
+  const pinRule = /^\d{4}$/;
+  if (!pinRule.test(password)) {
+    toast('请输入4位数当前密码');
+    if (passwordInput) passwordInput.focus();
+    return;
+  }
+  if (newPassword && !pinRule.test(newPassword)) {
+    toast('新密码需为4位数字');
+    if (newPasswordInput) newPasswordInput.focus();
+    return;
+  }
   try {
     const body = gatherSettingsFromForm();
-    await api('/api/settings', { method: 'PUT', body: JSON.stringify(body) });
+    const payload = { settings: body, password };
+    if (newPassword) {
+      payload.new_password = newPassword;
+    }
+    await api('/api/settings', { method: 'PUT', body: JSON.stringify(payload) });
+    await loadSettings();
     toast('设置已保存');
+    if (passwordInput) passwordInput.value = '';
+    if (newPasswordInput) newPasswordInput.value = '';
   } catch (err) {
     console.error(err);
-    toast('保存失败');
+    toast(err.message || '保存失败');
   }
 }
 
@@ -340,13 +420,26 @@ function bindEvents() {
   q('#autoRefresh').addEventListener('change', (e)=> setAutoRefresh(e.target.checked));
   q('#modal').addEventListener('click', (e)=>{ if (e.target.id==='modal' || e.target.dataset.close==='1') closeModal(); });
   q('#toTop').addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-  const reportTypeSel = q('#reportTypeFilter');
-  if (reportTypeSel) {
-    reportTypeSel.addEventListener('change', (e)=> {
-      state.reportTypeFilter = e.target.value;
-      state.reportPage = 0;
-      loadReports().catch(()=>{});
+  const themeToggle = q('#themeToggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+      applyTheme(next);
     });
+  }
+  const reportFilterBtns = qa('[data-report-filter]');
+  if (reportFilterBtns.length) {
+    reportFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const value = btn.dataset.reportFilter || '';
+        if (state.reportTypeFilter === value) return;
+        state.reportTypeFilter = value;
+        state.reportPage = 0;
+        updateReportFilterUI(value);
+        loadReports().catch(()=>{});
+      });
+    });
+    updateReportFilterUI(state.reportTypeFilter);
   }
   const reportPrev = q('#reportPrevPage');
   const reportNext = q('#reportNextPage');
@@ -385,11 +478,13 @@ function bindEvents() {
 }
 
 async function init() {
+  initTheme();
   bindEvents();
   setAutoRefresh(localStorage.getItem('autoRefresh')==='1');
   await loadSettings();
   await loadArticles();
   await loadReports();
+  updateReportFilterUI(state.reportTypeFilter);
 }
 
 init().catch(console.error);

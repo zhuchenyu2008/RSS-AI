@@ -20,6 +20,7 @@ from .models import (
     ReportInDB,
     ReportListResponse,
     ReportGenerateRequest,
+    UpdateSettingsRequest,
 )
 from .storage import (
     init_db,
@@ -392,6 +393,8 @@ def get_settings():
         safe.ai.api_key = "***"
     if safe.telegram.bot_token:
         safe.telegram.bot_token = "***"
+    if safe.security and safe.security.admin_password:
+        safe.security.admin_password = ""
     # 为避免用户从零填写提示词，若为空则回填默认提示词
     defaults = AppSettings()
     if not (safe.ai.system_prompt and safe.ai.system_prompt.strip()):
@@ -408,15 +411,25 @@ def get_settings():
 
 
 @app.put("/api/settings", response_model=AppSettings)
-def update_settings(new_settings: AppSettings):
+def update_settings(req: UpdateSettingsRequest):
     # 注意：允许前端传入完整设置；若前端传***，不覆盖旧密钥
     old = load_settings()
+
+    password = (req.password or "").strip()
+    if not (password.isdigit() and len(password) == 4):
+        raise HTTPException(status_code=400, detail="密码必须为4位数字")
+    if password != old.security.admin_password:
+        raise HTTPException(status_code=403, detail="密码错误")
+
+    new_settings = req.settings
+    # 若提示词为空，填充为默认值，避免出现空白
+    defaults = AppSettings()
+
     if new_settings.ai.api_key == "***":
         new_settings.ai.api_key = old.ai.api_key
     if new_settings.telegram.bot_token == "***":
         new_settings.telegram.bot_token = old.telegram.bot_token
-    # 若提示词为空，填充为默认值，避免出现空白
-    defaults = AppSettings()
+
     if not (new_settings.ai.system_prompt and new_settings.ai.system_prompt.strip()):
         new_settings.ai.system_prompt = defaults.ai.system_prompt
     if not (new_settings.ai.user_prompt_template and new_settings.ai.user_prompt_template.strip()):
@@ -427,6 +440,17 @@ def update_settings(new_settings: AppSettings):
         new_settings.reports.user_prompt_template = defaults.reports.user_prompt_template
     if not new_settings.reports.report_timeout_seconds:
         new_settings.reports.report_timeout_seconds = defaults.reports.report_timeout_seconds
+    if new_settings.security is None:
+        new_settings.security = defaults.security
+
+    new_password = (req.new_password or "").strip()
+    if new_password:
+        if not (new_password.isdigit() and len(new_password) == 4):
+            raise HTTPException(status_code=400, detail="新密码必须为4位数字")
+        new_settings.security.admin_password = new_password
+    else:
+        new_settings.security.admin_password = old.security.admin_password
+
     save_settings(new_settings)
     logging.info("配置已更新")
     # 重启调度器

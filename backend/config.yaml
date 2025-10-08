@@ -15,12 +15,7 @@ fetch:
   - https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml
   - https://rss.nytimes.com/services/xml/rss/nyt/Opinion.xml
   - https://feeds.npr.org/1002/rss.xml
-  filter_keywords: [] #格式如下，若非空需把“[]”删除
-  #- 人工智能
-  #- AI
-  #- 生成式AI
-  #- generative AI
-  
+  filter_keywords: []
   use_article_page: true
   article_timeout_seconds: 15
   per_feed_limit: 1
@@ -97,3 +92,5 @@ reports:
 logging:
   level: INFO
   file: logs/app.log
+security:
+  admin_password: '1234'
