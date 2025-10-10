@@ -239,7 +239,12 @@ main { max-width: 980px; margin: 0 auto; padding: 24px 16px 80px; }
 .title { font-weight: 600; margin: 0 0 6px; }
 .title.clickable { cursor: pointer; }
 .meta { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
-.summary { line-height: 1.6; color: var(--summary); }
+.summary {
+  line-height: 1.6;
+  color: var(--summary);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 .link { color: var(--accent); text-decoration: none; }
 .link:hover { text-decoration: underline; }
 
